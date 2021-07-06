@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IDropdownSettings } from 'ng-multiselect-dropdown/public_api';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Hours } from "../../models/hours.model";
 import { WeekDay } from 'src/app/models/weekDay.models';
 @Component({
@@ -10,6 +10,16 @@ import { WeekDay } from 'src/app/models/weekDay.models';
 })
 export class AddScheduleComponent implements OnInit {
   newSchedule = new WeekDay();
+  @Input() colors: string[] = ['blue'];
+public formGroup: FormGroup;
+  newDays = [
+    { i: 1, hours: [{sh: '00.00', eh: '00.00'},{sh: '00.00', eh: '00.00'}] },
+    { i: 2, hours:  [ {sh: '00.00', eh: '00.00'},{sh: '00.00', eh: '00.00'}]},
+    { i: 3, hours: [{sh: '00.00', eh: '00.00'},{sh: '00.00', eh: '00.00'}]},
+    { i: 4, hours:  [{sh: '00.00', eh: '00.00'},{sh: '00.00', eh: '00.00'}] },
+    { i: 5, hours:  [{sh: '00.00', eh: '00.00'},{sh: '00.00', eh: '00.00'}]},
+    { i: 6, hours:  [{sh: '00.00', eh: '00.00'},{sh: '00.00', eh: '00.00'}] }
+  ]
   time1 = '08.00';
   form: FormGroup;
   dropdownList = [
@@ -35,10 +45,18 @@ days= new FormControl();
   wedhours:Hours[];
   thuhours:Hours[];
   frihours:Hours[];
-
-  constructor() { }
+selectedOptions= [];
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    const formControls = {};
+    for (let i = 0; i < this.newDays.length; i++) {
+     // this.newDays[i].hours.forEach(e => {
+    //formControls[e] = new FormControl(e);
+  //  });
+    }
+ 
+  this.formGroup = this.formBuilder.group(formControls);
  this.time1
  this.dropdownList = [
       { item_id: 1, item_text: 'Sunday' },
@@ -48,9 +66,9 @@ days= new FormControl();
       { item_id: 5, item_text: 'Thursday' },
       { item_id: 6, item_text: 'Friday' }
     ];
-    this.form = new FormGroup({
-      days: this.selectedDaysControl
-        });
+  //  this.form = new FormGroup({
+    //  days: this.selectedDaysControl
+      //  });
    
   }
   ampm(event:any) {
@@ -61,41 +79,36 @@ days= new FormControl();
       var minutes = time.split(":")[1];
       hours = hours % 12 || 12;
       hours = hours < 10 ? "0" + hours : hours;
-  
-      this.time1 = hours + ":" + ((Math.round(minutes/15) * 15) % 60);
-      document.getElementById("time1").innerHTML = this.time1;
+      minutes = ((Math.round(minutes/15) * 15) % 60)
+      this.time1 = hours + ":" + minutes;
     }
   }
 
-    onItemSelect(item: any) {
-      let hrs = new Hours()
-      hrs.StartHour= '00.00';
-      hrs.EndHour = '00.00'; 
-
-      let code = item.item_id;
-      if( code = 1)
-          this.newSchedule.SundayHours.push(hrs);
-      if(code = 2)
-          this.newSchedule.MondayHours.push(hrs);
-      if(code = 3)
-           this.newSchedule.TuedayHours.push(hrs);  
-      if(code = 4)
-           this.newSchedule.WednesdayHours.push(hrs);
-      if(code = 5)
-           this.newSchedule.ThursdayHours.push(hrs);
-      if(code = 6)
-           this.newSchedule.FridayHours.push(hrs);
-     
-    }
-    onSelectAll(items: any) {
-      console.log(items);
-    }
-    addhours(item:any)
+  onNgModelChange(event){
+    console.log("event:" + event)
+    let newlen = event.length
+   console.log(this.newDays)
+    if(newlen> this.selectedDays.length)
     {
       let hrs = new Hours()
-      hrs.StartHour= '00.00';
-      hrs.EndHour = '00.00';
-      item.hours.push(hrs); 
+    hrs.StartHour= '00.00';
+    hrs.EndHour = '00.00'; 
+    var object ={i:event[0], hours: [hrs]}
+    //this.newDays.push(object)
+    }
+    else{
+      for (let item of event) {
+        this.newDays = this.newDays.filter(({ i }) => i == item);        
+      }    
+    }
+     this.selectedDays = event;
+    console.log(this.newDays);
+  }
+ 
+    addhours(dayi:number)
+    { 
+      
+      console.log(this.newDays)
     }
     
 

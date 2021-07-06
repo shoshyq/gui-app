@@ -1,22 +1,24 @@
 <form [formGroup]="form">
     <mat-form-field appearance="fill">
         <mat-label>Select days:</mat-label>
-        <mat-select #selectdays [formControl]="selectedDaysControl" multiple>
-          <mat-option *ngFor="let item of dropdownList" [value]="item.item_text">{{item.item_text}}</mat-option>
+        <mat-select #selectdays [formControl]="selectedDaysControl" (ngModelChange)="onNgModelChange($event)"  multiple>
+          <mat-option *ngFor="let item of dropdownList" [value]="item.item_id">{{item.item_text}}</mat-option>
         </mat-select>
       </mat-form-field>
       <div style="height: fit-content;">
            <mat-list #days role="list" style="height: fit-content;">
-        <mat-list-item style="height: fit-content;" *ngFor="let day of selectedDaysControl.value">
-            <div  style="padding: 3px;">
-              <div>{{day}}:</div>
+        <mat-list-item style="height: fit-content;" *ngFor="let day of selectedDays">
+            <div  style="padding: 3px;"> 
+             <div>{{dropdownList[day].item_text}}:</div>
               <span>please choose time in quarter hours</span>
              <div>
-                    <input type="time" #time1 (keyup)="ampm($event)" (onchange)="ampm($event)" step="900"><span> - </span>  <input  type="time" step="900" >
+                    <input [(ngModel)]="newDays[day].hours[0].sh" type="time" step="900"><span> - </span>  <input [(ngModel)]="newDays[day].hours[0].eh"  type="time" step="900" >
                 </div>
+                <button (click)="addhours(day)">Add</button>
                 <div>
-             <input type="time" step="900"><span> - </span>  <input  type="time" step="900">
-              </div>
+                    <input [(ngModel)]="newDays[day].hours[1].sh" type="time" step="900"><span> - </span>  <input [(ngModel)]="newDays[day].hours[1].eh"  type="time" step="900" >
+                </div>
+                <button (click)="addhours(day)">Add</button>
 </div>
         </mat-list-item>
       </mat-list>
@@ -38,3 +40,4 @@
 <mat-divider></mat-divider>
 </mat-list>-->
   </form>
+  
