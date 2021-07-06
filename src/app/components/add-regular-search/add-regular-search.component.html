@@ -1,0 +1,103 @@
+<div>
+  <form  novalidate  (submit)="AddRegularSearch(frm)" #frm="ngForm">
+      
+    <div>
+    <mat-form-field appearance="fill">
+        <mat-label>Address (destination)</mat-label>
+        <input matInput placeholder="address" style="text-align: left; align-content: flex-end;"  [(ngModel)]="newSearch.MyLocationAddress" name="myLocationAddress" type="text" #address="ngModel" required >
+        <mat-error *ngIf="addressFormControl.hasError('required')">
+           Address is required
+        </mat-error>  
+    </mat-form-field>
+    </div>
+    <!--<div>
+      <input ngx-google-places-autocomplete  value="{{formattedaddress}}" (onAddressChange)="AddressChange($event)"/>
+   <input id="pac-input"
+   class="controls"
+   type="text"
+   placeholder="Search Box"/>
+ 
+    </div>-->
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>City</mat-label>
+        <mat-select [(ngModel)]="selectedCity" name="city">
+          <mat-option *ngFor="let city of cities" [value]="city.Code">
+            {{city.CityName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <p><mat-checkbox color="primary" formControlName="sizePref" #size [(ngModel)]="newSearch.SizeOpt">Size preferences</mat-checkbox></p>
+    </div>
+    <div *ngIf="size.checked" style="display: inline-block;">
+<mat-form-field appearance="fill">
+      <mat-label>Width</mat-label>
+      <input matInput placeholder="width" style="text-align: left; align-content: flex-end; width:50px;"  [(ngModel)]="newSearch.PreferableWidth" name="PreferableWidth" type="text" #width="ngModel" >
+      <mat-error *ngIf="widthFormControl.hasError('pattern')">
+         Number only
+      </mat-error>  
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Length</mat-label>
+    <input matInput placeholder="length" style="text-align: left; align-content: flex-end; width:50px;"  [(ngModel)]="newSearch.PreferableLength" name="PreferableLength" type="text" #length="ngModel" >
+    <mat-error *ngIf="lengthFormControl.hasError('pattern')">
+       Number only
+    </mat-error>  
+</mat-form-field>
+    </div>
+    
+
+    <div>
+      <p><mat-checkbox color="primary" #roofOpt formControlName="roofOpt">Has a roof</mat-checkbox></p>
+    </div>
+    <p>Prices:</p>
+    <div  >
+      <mat-form-field appearance="fill" >
+            <input matInput placeholder="00.00"   [(ngModel)]="newSearch.MinPrice" name="MinPrice" type="text" #minprice="ngModel" required >
+            <mat-error *ngIf="minpriceFormControl.hasError('pattern')">
+               Number only
+            </mat-error>  
+        </mat-form-field>
+        <p> - </p>
+        <mat-form-field appearance="fill">
+          <input matInput placeholder="00.00"   [(ngModel)]="newSearch.MaxPrice" name="MaxPrice" type="text" #maxprice="ngModel" required >
+          <mat-error *ngIf="maxpriceFormControl.hasError('pattern')">
+             Number only
+          </mat-error>  
+      </mat-form-field>
+      <p>ILS</p>
+    </div>
+          <form>
+            <p>Select days:</p>
+            <ng-multiselect-dropdown
+  [placeholder]="'custom placeholder'"
+  [settings]="dropdownSettings"
+  [data]="dropdownList"
+  [(ngModel)]="selectedItems"
+  (onSelect)="onItemSelect($event)"
+  (onSelectAll)="onSelectAll($event)"
+>
+</ng-multiselect-dropdown>
+<mat-list>
+  <mat-list-item *ngFor="let item of selectedItems">
+    {{item.item_text}}
+    <mat-list *ngIf="item">
+      <mat-list-item *ngFor="let hour of item.hours">
+          <input type="time" ><span> - </span>  <input type="time" >
+          <span (click)="addhours(item)">Add</span>
+          <mat-divider></mat-divider>
+
+      </mat-list-item>
+    </mat-list>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+</mat-list>
+          </form>
+    <div class="btnfrm">
+        <button mat-raised-button type="submit" [disabled]="!frm.valid"  class="btnOK" selected>add</button>
+
+    </div>
+</form>
+</div>

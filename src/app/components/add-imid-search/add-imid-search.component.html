@@ -1,0 +1,16 @@
+<p>add-imid-search works!</p>
+<div class="wrapdiv">
+    <form  novalidate  (submit)="AddImmidiateSearch(frm)" #frm="ngForm">
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Search Code</mat-label>
+                 <input matInput placeholder="code"  [(ngModel)]="newSearch.Code" name="Code" type="text" #code="ngModel" required >
+                  
+            </mat-form-field>
+        </div>
+        <div class="btnfrm">
+            <button mat-button type="submit" [disabled]="!frm.valid"  class="btnOK" selected>search</button>
+
+        </div>
+    </form>
+</div>

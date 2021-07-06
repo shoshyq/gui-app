@@ -1,0 +1,17 @@
+.mat-form-field {
+    font-size: inherit;
+    font-weight: 300;
+    line-height: 1;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: normal;
+    background-color: #a13fb5;
+}
+.mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: rgb(231, 240, 249) !important;
+}
+.mat-form-field-appearance-fill .mat-form-field-infix {
+    padding: 0.25em 0 0.50em 0;
+}
+.mat-input-element {
+    caret-color: #a13fb5;
+}

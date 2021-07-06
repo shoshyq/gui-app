@@ -1,0 +1,15 @@
+<p>dashboard works!</p>
+<div>my account details</div>
+<button (click)="updateUserDetails()">update account details</button>
+<div>my searches</div>
+<button (click)="updateRegSearch()">update regularly search</button>
+<button (click)="addRegSearch()">add regularly search</button>
+<button (click)="imidSearch()">add quick search</button>
+<button (click)="feedbacks()" >my feedbacks</button>
+<app-feedback-details *ngIf="disable==true"></app-feedback-details>
+
+<div>my payment accounts' details</div>
+<button (click)="updatePaymentDetails()">update payment details</button>
+<button (click)="addPaymentDetails()">add payment account</button>
+<button (click)="getuser()" >{{newUser.Username}}</button>
+<button>add parking spot</button>

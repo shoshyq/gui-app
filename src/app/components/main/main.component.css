@@ -1,0 +1,15 @@
+.map{
+    display: block;
+      text-align: center;
+      margin: auto;
+      width: 100%;
+      align-items: center;
+  }
+  #map2 {
+    height: 500px;
+    width: 100%;
+   }
+   #map {
+    height: 500px;
+    width: 100%;
+  }

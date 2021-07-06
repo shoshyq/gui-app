@@ -1,0 +1,60 @@
+.btns{
+    text-align: center;
+    width:40vh;
+    margin: auto; 
+}
+.wrapdiv{
+    text-align: center;
+    align-items: center;
+     display: block; 
+     margin: 1% 0% 7% 0%;
+
+    padding: 2% 10%;
+
+}
+.submit {
+    width: 200px;
+    background-color: RGB(126, 176, 222);
+    color: #ffffff;
+    border: 1px solid RGB(126, 176, 222);
+    padding: 6px;
+    margin: auto;
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+    .submit:hover {
+        
+        opacity: 0.6;
+    }
+    .forgotpsw {
+        flex: 1;
+        color: #5699cf;
+        display: flex;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+    .createac
+    {
+        flex: 8;
+        display: flex;
+        position: relative;
+        justify-content: center;
+        color: #5699cf;
+    }
+    .createac > span {
+        margin: auto;
+        display: block;
+    }
+
+    .createac > label {
+        position: absolute;
+    }
+
+        .createac label span {
+            font-weight: bold;
+            cursor: pointer;
+            color: RGB(46, 117, 182);
+        }
