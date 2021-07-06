@@ -1,1 +1,40 @@
-<p>add-schedule works!</p>
+<form [formGroup]="form">
+    <mat-form-field appearance="fill">
+        <mat-label>Select days:</mat-label>
+        <mat-select #selectdays [formControl]="selectedDaysControl" multiple>
+          <mat-option *ngFor="let item of dropdownList" [value]="item.item_text">{{item.item_text}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div style="height: fit-content;">
+           <mat-list #days role="list" style="height: fit-content;">
+        <mat-list-item style="height: fit-content;" *ngFor="let day of selectedDaysControl.value">
+            <div  style="padding: 3px;">
+              <div>{{day}}:</div>
+              <span>please choose time in quarter hours</span>
+             <div>
+                    <input type="time" #time1 (keyup)="ampm($event)" (onchange)="ampm($event)" step="900"><span> - </span>  <input  type="time" step="900" >
+                </div>
+                <div>
+             <input type="time" step="900"><span> - </span>  <input  type="time" step="900">
+              </div>
+</div>
+        </mat-list-item>
+      </mat-list>
+      </div>
+     
+  
+<!--<mat-list>
+<mat-list-item *ngFor="let item of selectedItems">
+{{item.item_text}}
+<mat-list *ngIf="item">
+<mat-list-item *ngFor="let hour of item.hours">
+  <input type="time" value="hour.StartHour"><span> - </span>  <input value="hour.EndHour" type="time" >
+  <span (click)="addhours(item)">Add</span>
+  <mat-divider></mat-divider>
+
+</mat-list-item>
+</mat-list>
+</mat-list-item>
+<mat-divider></mat-divider>
+</mat-list>-->
+  </form>

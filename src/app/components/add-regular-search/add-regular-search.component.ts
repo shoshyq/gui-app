@@ -13,6 +13,7 @@ import { ViewEncapsulation } from '@angular/core';
 import { IDropdownSettings } from 'ng-multiselect-dropdown/public_api';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Hours } from "../../models/hours.model";
+import { WeekDay } from 'src/app/models/weekDay.models';
 
 @Component({
   selector: 'app-add-regular-search',
@@ -26,10 +27,7 @@ export class AddRegularSearchComponent implements OnInit {
   newSearch:Search = new Search();
   subscribe:any;
   cities: City[];
-  dropdownList = [];
-  selectedItems = [];
-  hours = [];
-  dropdownSettings:IDropdownSettings = {};
+  
    addressFormControl = new FormControl('', [
       Validators.required,
       ]);
@@ -55,43 +53,13 @@ export class AddRegularSearchComponent implements OnInit {
   ngOnInit()
   { 
     
-    this.dropdownList = [
-      { item_id: 1, item_text: 'Sunday',hours:[] },
-      { item_id: 2, item_text: 'Monday',hours:[] },
-      { item_id: 3, item_text: 'Tuesday' ,hours:[]},
-      { item_id: 4, item_text: 'Wednesday',hours:[] },
-      { item_id: 5, item_text: 'Thursday',hours:[] },
-      { item_id: 5, item_text: 'Friday',hours:[] }
-    ];
-  
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'item_id',
-      textField: 'item_text',
-            itemsShowLimit: 6,
-      allowSearchFilter: false
-    };
    this.searchesService.GetCities().subscribe(list=>
       {       
             this.cities=list;        
       });  
     }
-    onItemSelect(item: any) {
-     this.selectedItems.push(item); 
-     item.hours = [
-        { starth: '00.00', endh:'00.00'}    
-      ];     
-    }
-    onSelectAll(items: any) {
-      console.log(items);
-    }
-    addhours(item:any)
-    {
-      let hrs = new Hours()
-      hrs.StartHour= '00.00';
-      hrs.EndHour = '00.00';
-      item.hours.push(hrs); 
-    }
+  
+  
 public AddressChange(address: any) {
       //setting address from API to local variable
        this.formattedaddress=address.formatted_address
