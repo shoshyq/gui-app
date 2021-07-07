@@ -52,7 +52,14 @@ export class AddRegularSearchComponent implements OnInit {
   constructor(private searchesService:SearchesService,private router: Router, private fb: FormBuilder) {
    
   }
-  
+  chRO(completed: boolean) {
+    this.newSearch.RoofOpt = completed;
+
+  }
+  chSO(completed: boolean) {
+    this.newSearch.SizeOpt = completed;
+
+  }
   ngOnInit()
   { 
     this.newSearch.SizeOpt = false;
@@ -72,8 +79,7 @@ public AddressChange(address: any) {
       }
   AddRegularSearch(frm:any){
     this.newSearch.UserId = +sessionStorage.getItem('ucode');
-    this.newSearch.RoofOpt = this.roofOpt.value;
-    this.newSearch.SizeOpt = this.sizePref.value;
+ 
     this.newSearch.CityCode  = this.selectedCity;
     this.newSearch.Regularly = true;
     this.newSearch.SearchDate = new Date()

@@ -29,7 +29,7 @@
       </mat-form-field>
     </div>
     <div>
-      <p><mat-checkbox color="primary" formControlName="sizePref" #size [(ngModel)]="newSearch.SizeOpt">Size preferences</mat-checkbox></p>
+      <p><mat-checkbox color="primary" formControlName="sizePref" #size (change)="chSO($event.checked)" [(ngModel)]="newSearch.SizeOpt">Size preferences</mat-checkbox></p>
     </div>
     <div *ngIf="size.checked" style="display: inline-block;">
 <mat-form-field appearance="fill">
@@ -50,9 +50,9 @@
     
 
     <div>
-      <p><mat-checkbox color="primary" #roofOpt [(ngModel)]="newSearch.RoofOpt" formControlName="roofOpt">Has a roof</mat-checkbox></p>
+      <p><mat-checkbox color="primary" (change)="chRO($event.checked)" #roofOpt [(ngModel)]="newSearch.RoofOpt" formControlName="roofOpt">Has a roof</mat-checkbox></p>
     </div>
-    <p>Prices:</p>
+    <p>Prices:</p> 
     <div  >
       <mat-form-field appearance="fill" >
             <input matInput placeholder="00.00"   [(ngModel)]="newSearch.MinPrice" name="MinPrice" type="text" #minprice="ngModel" required >
