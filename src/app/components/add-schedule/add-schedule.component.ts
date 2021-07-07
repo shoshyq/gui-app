@@ -163,7 +163,6 @@ export class AddScheduleComponent implements OnInit {
   
     console.log(this.newSchedule);
     this.searchesService.AddSchedule(this.newSchedule).subscribe((code: number)=>{
-      //לקבל את הקוד חברה שנכנס עכשיו ולשלוח אותו להוספת בחירה
       this.newSchedule.Code=code; 
       console.log(code);
       if(code!=0)

@@ -23,7 +23,7 @@ import { WeekDay } from 'src/app/models/weekDay.models';
 
 })
 export class AddRegularSearchComponent implements OnInit {
-  selectedCity: string;
+  selectedCity: number;
   newSearch:Search = new Search();
   subscribe:any;
   cities: City[];
@@ -57,6 +57,7 @@ export class AddRegularSearchComponent implements OnInit {
       {       
             this.cities=list;        
       });  
+   
     }
   
   
@@ -66,21 +67,29 @@ public AddressChange(address: any) {
       }
   AddRegularSearch(frm:any){
   
+    this.newSearch.UserId = +sessionStorage.getItem('ucode');
+    this.newSearch.CityCode  = this.selectedCity;
+    this.newSearch.Regularly = true;
+    this.newSearch.SearchDate = new Date()
+    this.newSearch.DaysSchedule = +sessionStorage.getItem('scheduleCode');
     this.searchesService.AddRegularSearch(this.newSearch).subscribe(code=>
       {
         this.newSearch.Code=code; 
+        console.log(code);
         if(code!=0)
          {
+           
            console.log("search has been added successfully")
            sessionStorage.setItem('rsearch',code.toString());
-   
-          this.router.navigate(['/Main',sessionStorage.getItem('ucode')]);
-         }
+            }
         else 
         console.log("something is wrong")
         });
     
   }
+  onSelection(e){
+    this.selectedCity = e.value;
+ }
   initAutocomplete() {
   
   

@@ -14,6 +14,6 @@ export class Search{
  MinPrice? : number
  MaxPrice? : number
  Regularly : boolean
- SearchDate  : Date
+ SearchDate?  : Date
 
 }

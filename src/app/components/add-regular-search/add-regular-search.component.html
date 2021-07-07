@@ -21,8 +21,8 @@
     <div>
       <mat-form-field appearance="fill">
         <mat-label>City</mat-label>
-        <mat-select [(ngModel)]="selectedCity" name="city">
-          <mat-option *ngFor="let city of cities" [value]="city.Code">
+        <mat-select (selectionChange)="onSelection($event)" [(ngModel)]="selectedCity" name="city">
+          <mat-option #city *ngFor="let city of cities" [value]="city.Code">
             {{city.CityName}}
           </mat-option>
         </mat-select>
