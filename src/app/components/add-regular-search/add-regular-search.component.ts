@@ -27,7 +27,8 @@ export class AddRegularSearchComponent implements OnInit {
   newSearch:Search = new Search();
   subscribe:any;
   cities: City[];
-  
+  sizePref =  new FormControl('', [
+    ]);
    addressFormControl = new FormControl('', [
       Validators.required,
       ]);
@@ -43,6 +44,8 @@ export class AddRegularSearchComponent implements OnInit {
             maxpriceFormControl = new FormControl('', [
               Validators.pattern("^[0-9]*$"),
               ]);
+              roofOpt=  new FormControl('', [
+              ]);
 
   formattedaddress=" ";
       
@@ -52,7 +55,9 @@ export class AddRegularSearchComponent implements OnInit {
   
   ngOnInit()
   { 
-    
+    this.newSearch.SizeOpt = false;
+    this.newSearch.RoofOpt = false;
+
    this.searchesService.GetCities().subscribe(list=>
       {       
             this.cities=list;        
@@ -66,8 +71,9 @@ public AddressChange(address: any) {
        this.formattedaddress=address.formatted_address
       }
   AddRegularSearch(frm:any){
-  
     this.newSearch.UserId = +sessionStorage.getItem('ucode');
+    this.newSearch.RoofOpt = this.roofOpt.value;
+    this.newSearch.SizeOpt = this.sizePref.value;
     this.newSearch.CityCode  = this.selectedCity;
     this.newSearch.Regularly = true;
     this.newSearch.SearchDate = new Date()
@@ -81,6 +87,9 @@ public AddressChange(address: any) {
            
            console.log("search has been added successfully")
            sessionStorage.setItem('rsearch',code.toString());
+           this.router.navigate(['/AddedRSearch']);
+
+           
             }
         else 
         console.log("something is wrong")

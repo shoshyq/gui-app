@@ -47,6 +47,7 @@ import {MatDividerModule} from '@angular/material/divider';
 
 import { } from 'googlemaps';
 import { AddScheduleComponent } from './components/add-schedule/add-schedule.component';
+import { SearchAddedMsgComponent } from './components/search-added-msg/search-added-msg.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,7 +68,8 @@ import { AddScheduleComponent } from './components/add-schedule/add-schedule.com
      AddRegularSearchComponent,
      UpdateRegularSearchComponent,
      PaypalComponent,
-     AddScheduleComponent
+     AddScheduleComponent,
+     SearchAddedMsgComponent
      
   ],
   imports: [
