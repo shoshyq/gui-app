@@ -2,7 +2,7 @@ import { Hours } from "./hours.model"
 
 export class WeekDay{
 
-    Code : Hours[]
+    Code? : number
     SundayHours? : Hours[]
     MondayHours? : Hours[]
     TuedayHours? : Hours[]
