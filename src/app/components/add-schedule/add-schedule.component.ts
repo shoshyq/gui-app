@@ -6,6 +6,7 @@ import { WeekDay } from 'src/app/models/weekDay.models';
 import { SearchesService } from 'src/app/services/searches.service';
 import { Router } from '@angular/router';
 import { FocusTrap } from '@angular/cdk/a11y';
+import { compileNgModule } from '@angular/compiler';
 
 let emailRegex = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$";
 
@@ -19,12 +20,12 @@ export class AddScheduleComponent implements OnInit {
    public formGroup: FormGroup;
 
   newDays = [
-    { i: 1, hours: [] },
-    { i: 2, hours:  []},
-    { i: 3, hours: []},
-    { i: 4, hours:  [] },
-    { i: 5, hours:  []},
-    { i: 6, hours:  [] }
+    {  hours: [] },
+    {  hours:  []},
+    { hours: []},
+    {  hours:  [] },
+    { hours:  []},
+    {  hours:  [] }
   ]
   time1 = '08.00';
   form: FormGroup;
@@ -52,7 +53,13 @@ export class AddScheduleComponent implements OnInit {
     //formControls[e] = new FormControl(e);
   //  });
     }
- 
+ this.newSchedule.SundayHours=[];
+ this.newSchedule.MondayHours=[];
+ this.newSchedule.TuedayHours=[];
+ this.newSchedule.WednesdayHours=[];
+ this.newSchedule.ThursdayHours=[];
+ this.newSchedule.FridayHours=[];
+
  this.dropdownList = [
       { item_id: 1, item_text: 'Sunday' },
       { item_id: 2, item_text: 'Monday'},
@@ -115,21 +122,45 @@ export class AddScheduleComponent implements OnInit {
    
   }
   addSchedule(){
+   
+    for (let index = -1; index < this.newDays.length; index++) {
+      console.log("i"+index)
+      if (index == 0) {
+        this.newDays[index].hours.forEach( (element) => {
+          this.newSchedule.SundayHours.push(element.hours[0])
+      });
+      }
+      if (index == 1) {
+        this.newDays[index].hours.forEach( (element) => {
+          this.newSchedule.MondayHours.push(element.hours[0])
+      });
 
-    for (let index = 0; index < this.newDays.length; index++) {
-      if(index = 0)
-      this.newSchedule.SundayHours = this.newDays[index].hours;
-       if(index = 1)
-      this.newSchedule.MondayHours = this.newDays[index].hours; 
-        if(index = 2)
-         this.newSchedule.TuedayHours = this.newDays[index].hours;
-       if(index = 3)
-      this.newSchedule.WednesdayHours = this.newDays[index].hours;
-       if(index = 4)
-       this.newSchedule.ThursdayHours = this.newDays[index].hours; 
-       if(index = 5)
-        this.newSchedule.FridayHours = this.newDays[index].hours;
+      }
+      if (index==2) {
+        this.newDays[index].hours.forEach( (element) => {
+          this.newSchedule.TuedayHours.push(element.hours[0])
+      });
+      }
+      if (index==3) {
+        this.newDays[index].hours.forEach( (element) => {
+          this.newSchedule.WednesdayHours.push(element.hours[0])
+      });
+      }
+      if (index ==4) {
+        this.newDays[index].hours.forEach( (element) => {
+          this.newSchedule.ThursdayHours.push(element.hours[0])
+      });
+      }
+      if (index ==5) {
+        this.newDays[index].hours.forEach( (element) => {
+          this.newSchedule.FridayHours.push(element.hours[0])
+      });
+      }
+      console.log(this.newDays)
+
     }
+ 
+  
     console.log(this.newSchedule);
     this.searchesService.AddSchedule(this.newSchedule).subscribe((code: number)=>{
       //לקבל את הקוד חברה שנכנס עכשיו ולשלוח אותו להוספת בחירה
@@ -226,7 +257,7 @@ export class AddScheduleComponent implements OnInit {
       {
             hrs.StartHour= sth;
       hrs.EndHour =  enh;
-      var object ={i:dayi-1, hours: [hrs]}
+      var object ={hours: [hrs]}
       this.newDays[dayi-1].hours.push(object) ;
       }
   
