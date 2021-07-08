@@ -16,6 +16,7 @@ import { FeedbackDetailsComponent } from './components/feedback-details/feedback
 import { AddRegularSearchComponent } from './components/add-regular-search/add-regular-search.component';
 import { UpdateRegularSearchComponent } from './components/update-regular-search/update-regular-search.component';
 import {AddScheduleComponent} from './components/add-schedule/add-schedule.component';
+import { SearchAddedMsgComponent } from './components/search-added-msg/search-added-msg.component';
 const routes: Routes = [
   { path: 'LogIn', component:  LogInComponent},
   { path: 'SignUp', component: SignUpComponent },
@@ -33,7 +34,8 @@ const routes: Routes = [
  
   { path: 'AddRegularSearch/:ucode', component: AddRegularSearchComponent,pathMatch:'full',children: [ 
     { path: 'AddSchedule', component:  AddScheduleComponent} ]},
-  { path: 'UpdateRegularSearch', component: UpdateRegularSearchComponent }
+  { path: 'UpdateRegularSearch', component: UpdateRegularSearchComponent },
+  { path: 'AddedRSearch', component: SearchAddedMsgComponent }
 ];
 
 @NgModule({

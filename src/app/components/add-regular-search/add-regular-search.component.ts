@@ -24,10 +24,12 @@ import { WeekDay } from 'src/app/models/weekDay.models';
 })
 export class AddRegularSearchComponent implements OnInit {
   selectedCity: number;
+  citystring : string;
   newSearch:Search = new Search();
   subscribe:any;
   cities: City[];
-  
+  sizePref =  new FormControl('', [
+    ]);
    addressFormControl = new FormControl('', [
       Validators.required,
       ]);
@@ -43,16 +45,27 @@ export class AddRegularSearchComponent implements OnInit {
             maxpriceFormControl = new FormControl('', [
               Validators.pattern("^[0-9]*$"),
               ]);
+              roofOpt=  new FormControl('', [
+              ]);
 
   formattedaddress=" ";
       
   constructor(private searchesService:SearchesService,private router: Router, private fb: FormBuilder) {
    
   }
-  
+  chRO(completed: boolean) {
+    this.newSearch.RoofOpt = completed;
+
+  }
+  chSO(completed: boolean) {
+    this.newSearch.SizeOpt = completed;
+
+  }
   ngOnInit()
   { 
-    
+    this.newSearch.SizeOpt = false;
+    this.newSearch.RoofOpt = false;
+
    this.searchesService.GetCities().subscribe(list=>
       {       
             this.cities=list;        
@@ -66,8 +79,8 @@ public AddressChange(address: any) {
        this.formattedaddress=address.formatted_address
       }
   AddRegularSearch(frm:any){
-  
     this.newSearch.UserId = +sessionStorage.getItem('ucode');
+ this.newSearch.MyLocationAddress += ", " + this.citystring
     this.newSearch.CityCode  = this.selectedCity;
     this.newSearch.Regularly = true;
     this.newSearch.SearchDate = new Date()
@@ -81,6 +94,9 @@ public AddressChange(address: any) {
            
            console.log("search has been added successfully")
            sessionStorage.setItem('rsearch',code.toString());
+           this.router.navigate(['/AddedRSearch']);
+
+           
             }
         else 
         console.log("something is wrong")
@@ -88,20 +104,8 @@ public AddressChange(address: any) {
     
   }
   onSelection(e){
+    this.citystring = e.source.triggerValue; 
     this.selectedCity = e.value;
+    console.log(this.selectedCity); 
  }
-  initAutocomplete() {
-  
-  
-    // Create the search box and link it to the UI element.
-    const input = document.getElementById("pac-input") as HTMLInputElement;
-    const searchBox = new google.maps.places.SearchBox(input);  
-    // Bias the SearchBox results towards current map's viewport.
-
-  
-    // Listen for the event fired when the user selects a prediction and retrieve
-    // more details for that place.
-
-      }    // Clear out the old markers.
-
 }
