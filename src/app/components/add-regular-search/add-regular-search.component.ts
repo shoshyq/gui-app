@@ -78,6 +78,9 @@ public AddressChange(address: any) {
       //setting address from API to local variable
        this.formattedaddress=address.formatted_address
       }
+      add_city(){
+        
+      }
   AddRegularSearch(frm:any){
     this.newSearch.UserId = +sessionStorage.getItem('ucode');
  this.newSearch.MyLocationAddress += ", " + this.citystring
