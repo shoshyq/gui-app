@@ -24,6 +24,7 @@ import { WeekDay } from 'src/app/models/weekDay.models';
 })
 export class AddRegularSearchComponent implements OnInit {
   selectedCity: number;
+  citystring : string;
   newSearch:Search = new Search();
   subscribe:any;
   cities: City[];
@@ -79,7 +80,7 @@ public AddressChange(address: any) {
       }
   AddRegularSearch(frm:any){
     this.newSearch.UserId = +sessionStorage.getItem('ucode');
- 
+ this.newSearch.MyLocationAddress += ", " + this.citystring
     this.newSearch.CityCode  = this.selectedCity;
     this.newSearch.Regularly = true;
     this.newSearch.SearchDate = new Date()
@@ -103,20 +104,8 @@ public AddressChange(address: any) {
     
   }
   onSelection(e){
+    this.citystring = e.source.triggerValue; 
     this.selectedCity = e.value;
+    console.log(this.selectedCity); 
  }
-  initAutocomplete() {
-  
-  
-    // Create the search box and link it to the UI element.
-    const input = document.getElementById("pac-input") as HTMLInputElement;
-    const searchBox = new google.maps.places.SearchBox(input);  
-    // Bias the SearchBox results towards current map's viewport.
-
-  
-    // Listen for the event fired when the user selects a prediction and retrieve
-    // more details for that place.
-
-      }    // Clear out the old markers.
-
 }
