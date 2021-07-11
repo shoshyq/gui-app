@@ -6,6 +6,8 @@ import {FormsModule} from '@angular/forms';
 import {User} from './models/user.model';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
+import {MatRadioModule} from '@angular/material/radio';
+
 //import { SearchesComponent } from './components/searches/searches.component';
 /// <reference types="google.maps" />
 import { HttpClientModule } from '@angular/common/http';
@@ -83,6 +85,7 @@ import { MapComponent } from './components/map/map.component';
     HttpClientModule,
     MatDialogModule,
     CommonModule,
+    MatRadioModule,
     MatCardModule,
     MatDividerModule,
     HttpClientJsonpModule,

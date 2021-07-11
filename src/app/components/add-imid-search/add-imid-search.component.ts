@@ -26,6 +26,7 @@ export class AddImidSearchComponent implements OnInit {
   cities: City[];
   newCity:City = new City();
   addcitydiv= false;
+  
   addressFormControl = new FormControl('', [
     Validators.required,
     ]);
@@ -168,7 +169,16 @@ chSO(completed: boolean) {
       return '0';
     }
   }
-  AddCity(city:string){  
+  chl(e)
+  {
+    console.log(e);
+
+  }
+  other(e)
+{
+  console.log(e);
+
+}  AddCity(city:string){  
     this.newCity.CityName = city;    
  this.cityservice.AddCity(this.newCity).subscribe(result=>
   {       

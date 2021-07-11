@@ -1,16 +1,7 @@
 <div class="wrapdiv">
     <h4>Find parking now</h4>
     <form  novalidate  (submit)="AddImmidiateSearch(frm,st.value,en.value)" #frm="ngForm">
-        <div>
-            <mat-form-field appearance="fill">
-                <mat-label>Address (destination)</mat-label>
-                <input matInput placeholder="address" style="text-align: left; align-content: flex-end;"  [(ngModel)]="newSearch.MyLocationAddress" name="myLocationAddress" type="text" #address="ngModel" required >
-                <mat-error *ngIf="addressFormControl.hasError('required')">
-                   Address is required
-                </mat-error>  
-            </mat-form-field>
-          
-            </div>
+       
         <div>
             <mat-form-field appearance="fill">
               <mat-label>City</mat-label>
@@ -26,6 +17,20 @@
               <button (click)="AddCity(addcity.value)">Add</button>
             </div>-->
           </div>
+          <mat-radio-group>
+            <mat-radio-button value="1">My location</mat-radio-button>
+            <mat-radio-button  value="2">Other location</mat-radio-button>
+          </mat-radio-group>
+           <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Address (destination)</mat-label>
+                <input matInput placeholder="address" style="text-align: left; align-content: flex-end;"  [(ngModel)]="newSearch.MyLocationAddress" name="myLocationAddress" type="text" #address="ngModel" required >
+                <mat-error *ngIf="addressFormControl.hasError('required')">
+                   Address is required
+                </mat-error>  
+            </mat-form-field>
+          
+            </div>
           <div>
             <p><mat-checkbox color="primary" formControlName="sizePref" #size (change)="chSO($event.checked)" [(ngModel)]="newSearch.SizeOpt">Size preferences</mat-checkbox></p>
           </div>
