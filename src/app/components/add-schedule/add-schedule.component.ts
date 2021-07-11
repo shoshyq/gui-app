@@ -48,11 +48,7 @@ export class AddScheduleComponent implements OnInit {
   constructor(private searchesService:SearchesService,private router: Router,private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    for (let i = 0; i < this.newDays.length; i++) {
-     // this.newDays[i].hours.forEach(e => {
-    //formControls[e] = new FormControl(e);
-  //  });
-    }
+  
  this.newSchedule.SundayHours=[];
  this.newSchedule.MondayHours=[];
  this.newSchedule.TuedayHours=[];
@@ -189,7 +185,7 @@ export class AddScheduleComponent implements OnInit {
       {
        hours =  hours === '23' ? '00' : ++hours
       }
-      minutes = ((Math.round(minutes/15) * 15) % 60)
+      //minutes = ((Math.round(minutes/15) * 15) % 60)
       minutes = minutes===0? '00' : minutes;
       return hours + "." + minutes;
     }
@@ -262,16 +258,6 @@ export class AddScheduleComponent implements OnInit {
   
       console.log(this.newDays);
     }
-    
-
-  
-
   }
 
-function getday(code :number)
-    {
-      let name:string;
-     
-return name;
-    }
 

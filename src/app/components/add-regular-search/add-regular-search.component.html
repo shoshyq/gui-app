@@ -28,10 +28,11 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <div><label>No such city?</label><span (click)="add_city()" >  Add city</span></div>
-      <div>
-        <input />
-      </div>
+      <!--<div><label>No such city?</label><span (click)="open_add_city()" >  Add city</span></div>
+      <div *ngIf="addcitydiv===true">
+        <input #addcity  />
+        <button (click)="AddCity(addcity.value)">Add</button>
+      </div>-->
     </div>
     <div>
       <p><mat-checkbox color="primary" formControlName="sizePref" #size (change)="chSO($event.checked)" [(ngModel)]="newSearch.SizeOpt">Size preferences</mat-checkbox></p>

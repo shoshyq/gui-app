@@ -49,6 +49,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { } from 'googlemaps';
 import { AddScheduleComponent } from './components/add-schedule/add-schedule.component';
 import { SearchAddedMsgComponent } from './components/search-added-msg/search-added-msg.component';
+import { DialogLogInComponent } from './components/dialog-log-in/dialog-log-in.component';
+import { MapComponent } from './components/map/map.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,7 +72,9 @@ import { SearchAddedMsgComponent } from './components/search-added-msg/search-ad
      UpdateRegularSearchComponent,
      PaypalComponent,
      AddScheduleComponent,
-     SearchAddedMsgComponent
+     SearchAddedMsgComponent,
+     DialogLogInComponent,
+     MapComponent
      
   ],
   imports: [
@@ -98,6 +102,7 @@ import { SearchAddedMsgComponent } from './components/search-added-msg/search-ad
     NgMultiSelectDropDownModule.forRoot()
   ],
   entryComponents: [
+    DialogLogInComponent
     
   ],
   providers: [UserService],

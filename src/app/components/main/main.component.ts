@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import { GoogleMap, GoogleMapsModule, MapInfoWindow } from '@angular/google-maps';
 import { Router } from '@angular/router';
@@ -9,64 +9,60 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
-export class MainComponent implements OnInit {
-  //@ViewChild(GoogleMap, { static: false }) map: GoogleMap
-  @ViewChild(GoogleMap, { static: false }) map!: GoogleMap 
-  @ViewChild(MapInfoWindow, { static: false }) infoWindow! : MapInfoWindow
-  center!: google.maps.LatLngLiteral ;
-  zoom = 16
-  markers:any;
-  options: google.maps.MapOptions = {
+export class MainComponent implements AfterViewInit {
+  @ViewChild("mapContainer", { static: false }) gmap: ElementRef;
+  map: google.maps.Map;
+  lat = 40.73061;
+  lng = -73.935242;
+ markers = [];
+
+  //Coordinates to set the center of the map
+  coordinates = new google.maps.LatLng(this.lat, this.lng);
+
+  mapOptions: google.maps.MapOptions = {
+    center: this.coordinates,
+    zoom: 15,
+    mapTypeControl: true,
+    mapTypeControlOptions: {
+      style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+      position: google.maps.ControlPosition.TOP_CENTER,
+    },
     zoomControl: true,
-    scrollwheel: true,
-    disableDoubleClickZoom: false,
+    scaleControl: true,
+    streetViewControl: true,
+    streetViewControlOptions: {
+      position: google.maps.ControlPosition.LEFT_TOP,
+    },
+    fullscreenControl: true,
+
   };
 
-  infoContent = '';
-  x:any;
+  //Default Marker
+  marker :any;
+  center!: google.maps.LatLngLiteral ;
+  currentLat: any;
+  currentLong: any;
+  isTracking: boolean;
+
+
   constructor(private router: Router) { 
     
-    navigator.geolocation.getCurrentPosition((position) => {
-      this.center = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-      }
-    })
-    this.markers = [];
-  }
-
-  ngOnInit(): void {
-    if (navigator.geolocation) {
-      var location_timeout = setTimeout("geolocFail()", 10000);
-  
-      navigator.geolocation.getCurrentPosition((position) => {
-          clearTimeout(location_timeout);
-  
-           var lat = position.coords.latitude;
-           var lng = position.coords.longitude;
-          this.markers.push({
-            position: {
-              lat: lat ,
-              lng: lng ,
-            },
-            label: {
-              color: 'red',
-              text: 'Your Location',
-            },
-            title: 'Your location',
-            info: 'Marker info ' + (this.markers.length + 1),
-            options: {
-            },
-          })
-      }, function(error) {
-          clearTimeout(location_timeout);
+    this.marker = new google.maps.Marker;
+    this.marker.addListener("click", () => {
+      const infoWindow = new google.maps.InfoWindow({
+        content: this.marker.getTitle()
       });
-  } else {
-      // Fallback for no geolocation
-  }
- 
-    console.log(this.center)
-    console.log(JSON.stringify(this.map.getCenter()))
+      infoWindow.open(this.marker.getMap(), this.marker);
+    });
+    console.log(this.marker.getTitle());
+    
+  }  
+
+  ngAfterViewInit(): void {
+    this.showc();
+    this.mapInitializer();
+
+     console.log(JSON.stringify(this.map.getCenter()))
   }
   click(event: google.maps.MouseEvent) {
     console.log(event)
@@ -140,6 +136,96 @@ this.markers.push({
   })
 
 }    
+
 }
 
+mapInitializer(): void {
+  this.map = new google.maps.Map(this.gmap.nativeElement, this.mapOptions);
+
+  //Adding Click event to default marker
+  //Adding default marker to map
+  this.marker.setMap(this.map);
+
+  //Adding other markers
+  this.loadAllMarkers();
+}
+showPosition(position) {
+  this.currentLat = position.coords.latitude;
+  this.currentLong = position.coords.longitude;
+  this.map.setZoom(15);
+
+  let location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+  this.map.panTo(location);
+
+    this.marker = new google.maps.Marker({
+      position: location,
+      map: this.map,
+      title: 'Your location'
+    });
+    this.marker.addListener("click", () => {
+      const infoWindow = new google.maps.InfoWindow({
+        content: this.marker.getTitle()
+      });
+      infoWindow.open(this.marker.getMap(), this.marker);
+    });
+    this.marker.setPosition(location);
+}
+loadAllMarkers(): void {
+  this.markers.forEach(markerInfo => {
+    //Creating a new marker object
+    const marker = new google.maps.Marker({
+      ...markerInfo
+    });
+
+    //creating a new info window with markers info
+    const infoWindow = new google.maps.InfoWindow({
+      content: marker.getTitle()
+    });
+
+    //Add click event to open info window on marker
+    marker.addListener("click", () => {
+      infoWindow.open(marker.getMap(), marker);
+    });
+
+    //Adding marker to google map
+    marker.setMap(this.map);
+  });
+}
+trackMe() {
+  this.showc();
+  if (navigator.geolocation) {
+    this.isTracking = true;
+    navigator.geolocation.watchPosition((position) => {
+      this.showTrackingPosition(position);
+    });
+  } else {
+    alert("Geolocation is not supported by this browser.");
+  }
+}
+showTrackingPosition(position) {
+  console.log(`tracking position:  ${position.coords.latitude} - ${position.coords.longitude}`);
+  this.currentLat = position.coords.latitude;
+  this.currentLong = position.coords.longitude;
+  let location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+  this.map.panTo(location);
+
+  if (!this.marker) {
+    this.marker = new google.maps.Marker({
+      position: location,
+      map: this.map,
+      title: 'Got you!'
+    });
+  }
+  else {
+    this.marker.setPosition(location);
+  }
+}
+ showc() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.showPosition(position);
+    });
+  } else {
+    alert("Geolocation is not supported by this browser.");
+  }}
 }
