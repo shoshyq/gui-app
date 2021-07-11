@@ -52,6 +52,17 @@ export class SignUpComponent {
     return g.get('password').value === g.get('passwordConfirm').value
        ? null : {'mismatch': true};
  }
+ getErrorMessage(value?: any): any {
+  let formControl: FormControl = value as FormControl;
+  if (formControl.hasError('required'))
+    return 'You must enter a value';
+  else if (formControl.hasError('minlength'))
+    return 'Minimum 5 characters';
+  else if (formControl.hasError('maxlength'))
+    return 'The string is too long';
+  else if (formControl.hasError('email'))
+    return 'Please enter a valid email address';
+}
   SignUp(frm:any){
     console.log(this.newUser.Code,this.newUser.Username,this.newUser.UserPassword);
     this.userService.SignUp(this.newUser).subscribe((code: number)=>{

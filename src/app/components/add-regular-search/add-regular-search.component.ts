@@ -14,6 +14,7 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown/public_api';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Hours } from "../../models/hours.model";
 import { WeekDay } from 'src/app/models/weekDay.models';
+import { CitiesService } from 'src/app/services/cities.service';
 
 @Component({
   selector: 'app-add-regular-search',
@@ -26,10 +27,13 @@ export class AddRegularSearchComponent implements OnInit {
   selectedCity: number;
   citystring : string;
   newSearch:Search = new Search();
+  newCity:City = new City();
   subscribe:any;
   cities: City[];
+  addcitydiv= false;
   sizePref =  new FormControl('', [
     ]);
+
    addressFormControl = new FormControl('', [
       Validators.required,
       ]);
@@ -50,17 +54,10 @@ export class AddRegularSearchComponent implements OnInit {
 
   formattedaddress=" ";
       
-  constructor(private searchesService:SearchesService,private router: Router, private fb: FormBuilder) {
+  constructor(private cityservice:CitiesService, private searchesService:SearchesService,private router: Router, private fb: FormBuilder) {
    
   }
-  chRO(completed: boolean) {
-    this.newSearch.RoofOpt = completed;
-
-  }
-  chSO(completed: boolean) {
-    this.newSearch.SizeOpt = completed;
-
-  }
+ 
   ngOnInit()
   { 
     this.newSearch.SizeOpt = false;
@@ -72,11 +69,46 @@ export class AddRegularSearchComponent implements OnInit {
       });  
    
     }
+    chRO(completed: boolean) {
+      this.newSearch.RoofOpt = completed;
   
+    }
+    chSO(completed: boolean) {
+      this.newSearch.SizeOpt = completed;
   
+    }
+    AddCity(city:string){  
+      this.newCity.CityName = city;    
+   this.cityservice.AddCity(this.newCity).subscribe(result=>
+    {       
+      if(result==1)
+      {
+        console.log(city);
+        
+ this.cityservice.GetCities().subscribe(list=>
+    {       
+          this.cities=list;  
+          console.log("list");
+                
+    });  
+ 
+      }
+      else{
+        console.log("error!!!");
+        
+      }
+                 
+    });  
+ 
+  
+    }
 public AddressChange(address: any) {
       //setting address from API to local variable
        this.formattedaddress=address.formatted_address
+      }
+      open_add_city(){
+        this.addcitydiv = true;
+
       }
   AddRegularSearch(frm:any){
     this.newSearch.UserId = +sessionStorage.getItem('ucode');

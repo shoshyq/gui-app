@@ -9,24 +9,17 @@ import { AddScheduleComponent } from '../components/add-schedule/add-schedule.co
 @Injectable({
   providedIn: 'root'
 })
-export class SearchesService {
+export class CitiesService {
  
 
   url="https://localhost:44374/api/searches"
   constructor(private http:HttpClient) { }
-  AddImmidiateSearch(newSearch:Search):Observable<Map<ParkSpot,string>> {
-      return this.http.post<Map<ParkSpot,string>>(`${this.url}/addImmidSearch`,newSearch);
-      }
-AddRegularSearch(newSearch:Search):Observable<number> {
-        return this.http.post<number>(`${this.url}/addRegSearch`,newSearch);
-      }
+
       GetCities():Observable<City[]> {
           return this.http.get<City[]>(`${this.url}/getCities`);
           }
       AddCity(city:City):Observable<number> {
           return this.http.post<number>(`${this.url}/addCity`,city);
           }
-  AddSchedule(newSchedule:WeekDay):Observable<number> {
-            return this.http.post<number>(`${this.url}/addSchedule`,newSchedule);
-    }
+
 }

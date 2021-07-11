@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { UserService } from './services/user.service';
 import { HttpClient } from '@angular/common/http';
@@ -6,6 +6,8 @@ import {FormsModule} from '@angular/forms';
 import {User} from './models/user.model';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
+import {MatRadioModule} from '@angular/material/radio';
+
 //import { SearchesComponent } from './components/searches/searches.component';
 /// <reference types="google.maps" />
 import { HttpClientModule } from '@angular/common/http';
@@ -43,11 +45,16 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 //import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 import {MatListModule} from '@angular/material/list';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 import { } from 'googlemaps';
 import { AddScheduleComponent } from './components/add-schedule/add-schedule.component';
 import { SearchAddedMsgComponent } from './components/search-added-msg/search-added-msg.component';
+import { DialogLogInComponent } from './components/dialog-log-in/dialog-log-in.component';
+import { MapComponent } from './components/map/map.component';
+import { HeaderComponent } from './components/header/header.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,14 +76,19 @@ import { SearchAddedMsgComponent } from './components/search-added-msg/search-ad
      UpdateRegularSearchComponent,
      PaypalComponent,
      AddScheduleComponent,
-     SearchAddedMsgComponent
+     SearchAddedMsgComponent,
+     DialogLogInComponent,
+     MapComponent,
+     HeaderComponent
      
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    MatDialogModule,
     CommonModule,
+    MatRadioModule,
     MatCardModule,
     MatDividerModule,
     HttpClientJsonpModule,
@@ -95,6 +107,11 @@ import { SearchAddedMsgComponent } from './components/search-added-msg/search-ad
   //  GooglePlaceModule,
     NgMultiSelectDropDownModule.forRoot()
   ],
+  entryComponents: [
+    DialogLogInComponent
+    
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [UserService],
   bootstrap: [AppComponent]
 })

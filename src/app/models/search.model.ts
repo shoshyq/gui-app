@@ -1,7 +1,7 @@
 import { computeDecimalDigest } from "@angular/compiler/src/i18n/digest";
 
 export class Search{
- Code : number
+ Code? : number
  UserId : number 
  MyLocationAddress: string; 
  Place_id? : string 
