@@ -10,6 +10,8 @@ import { City } from 'src/app/models/city.models';
 import { CitiesService } from 'src/app/services/cities.service';
 import { WeekDay } from 'src/app/models/weekDay.models';
 import { Hours } from 'src/app/models/hours.model';
+import { createElementCssSelector } from '@angular/compiler';
+import { getLocaleCurrencyCode } from '@angular/common';
 @Component({
   selector: 'app-add-imid-search',
   templateUrl: './add-imid-search.component.html',
@@ -17,7 +19,7 @@ import { Hours } from 'src/app/models/hours.model';
 })
 export class AddImidSearchComponent implements OnInit {
   newSchedule = new WeekDay();
-
+addressdiv=false;
   selectedCity: number;
   citystring : string;
   parkSpotResultList:ParkSpot[]
@@ -26,7 +28,8 @@ export class AddImidSearchComponent implements OnInit {
   cities: City[];
   newCity:City = new City();
   addcitydiv= false;
-  
+  lat:any;
+  lng:any;
   addressFormControl = new FormControl('', [
     Validators.required,
     ]);
@@ -118,7 +121,36 @@ chSO(completed: boolean) {
          console.log(this.newSchedule.Code)
          sessionStorage.setItem('imScheduleCode',code.toString());
          this.newSearch.UserId = +sessionStorage.getItem('ucode');
- this.newSearch.MyLocationAddress += ", " + this.citystring
+         if(this.addressdiv=true)
+         {
+          this.newSearch.MyLocationAddress += ", " + this.citystring
+         }
+         else
+         {
+         this.getMyLocation();
+        
+         // var address = this.newSearch.MyLocationAddress;
+         // geocoder.geocode( { 'address': address}, function(results, status) {
+         // if (status == google.maps.GeocoderStatus.OK)
+          //{
+              // do something with the geocoded result
+              //
+           //   console.log(results[0].geometry.location.lat)
+             // this.lat = results[0].geometry.location.lat
+              //console.log(results[0].geometry.location.lng)
+              //this.lng = results[0].geometry.location.lng
+              // results[0].geometry.location.longitude
+          //}
+          //else
+          //{
+            //console.log("failed");
+            
+         // }
+        //});
+     
+
+      }
+
     this.newSearch.CityCode  = this.selectedCity;
     this.newSearch.Regularly = false;
     this.newSearch.DaysSchedule = code;
@@ -145,6 +177,7 @@ chSO(completed: boolean) {
     
     
   }
+  
   gethours(h:any) {
     let time = h;
    
@@ -171,14 +204,48 @@ chSO(completed: boolean) {
   }
   chl(e)
   {
-    console.log(e);
-
+  if(e.value==2)
+     {
+      this.addressdiv=true;
+     }
+     else{
+      this.addressdiv=false;
+      this.getMyLocation();
+     }
   }
-  other(e)
-{
-  console.log(e);
+  getMyLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.lat = position.coords.latitude;
+        this.lng = position.coords.longitude;
+        console.log(this.lat,this.lng);
+        
+      });
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+      
+       // var geocoder = new google.maps.Geocoder();
+     //   var latitude=this.lat;               
+    //var longitude=this.lng;
+//var latlng = {lat: parseFloat(latitude), lng: parseFloat(longitude)};
 
-}  AddCity(city:string){  
+//geocoder.geocode({'location': latlng}, function(results, status) {
+  //  if (status === google.maps.GeocoderStatus.OK) {
+    //  if (results[1]) {
+      //  console.log(results[1].place_id);
+      //} else {
+        
+        //window.alert('No results found');
+     // }
+  //  } else {
+    //  console.log("result: + "+ results )
+
+      //window.alert('Geocoder failed due to: ' + status);
+    //}//
+  //});
+  }
+   AddCity(city:string){  
     this.newCity.CityName = city;    
  this.cityservice.AddCity(this.newCity).subscribe(result=>
   {       
