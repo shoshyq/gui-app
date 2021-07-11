@@ -1,0 +1,22 @@
+.wrap-header {
+    padding: 25px 10px 10px;
+    background-color: #8fbbe13d;
+    align-items: center;
+    display: grid;
+    margin-bottom: 25px;
+}
+
+.wrap-header img {
+    width: 50%;
+    max-width: 250px;
+    margin: auto;
+}
+
+.wrap-header.bigger {
+    padding: 45px 20px 20px;
+}
+
+.wrap-header.bigger img {
+    width: 75%;
+    max-width: 280px;
+}

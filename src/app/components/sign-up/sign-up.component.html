@@ -1,91 +1,52 @@
-<div>
-    <img style="    max-width: 250px;
-    " src="assets/images/logo.png"  />
-    <!--<h1>ParkMark</h1>-->
-  </div><h2>Sign Up</h2>
-<div class="wrapdiv">
-    <form  novalidate  (submit)="SignUp(frm)" #frm="ngForm">
-      
-        <div>
-        <mat-form-field appearance="fill">
-            <mat-label>User name</mat-label>
-            <input matInput placeholder="username"  [(ngModel)]="newUser.Username" name="Username" type="text" #username="ngModel" required minlength="5" maxlength="30">
-            <mat-error *ngIf="usernameFormControl.hasError('required')">
-                Username is required
-           
-            </mat-error>  
-        </mat-form-field>
-        </div>
-        <!--<div>
-            <div class="form-group row">  
-                <label for="pass" class="col-md-4 col-form-label text-md-right">Password</label>  
-                <div class="col-md-6">  
-                    <input type="password" [ngModel]='newUser.userpassword' class="form-control" name="txtPassword" #txtPassword="ngModel" compare-password="txtConfirmPassword" parent="true" required>  
-                    <span class="text-danger" *ngIf="txtPassword.dirty && txtPassword.errors && txtPassword.errors.required">Password is required </span>  
-                </div>  
-            </div>  
-            <div class="form-group row">  
-                <label for="confirm" class="col-md-4 col-form-label text-md-right">Confirm Password</label>  
-                <div class="col-md-6">  
-                    <input type="password" [ngModel]='newUser.userpassword' class="form-control" name="txtConfirmPassword" #txtConfirmPassword="ngModel" compare-password="txtPassword" required>   
-                    <span class="text-danger" *ngIf="txtConfirmPassword.dirty && txtConfirmPassword.errors && txtConfirmPassword.errors.required">Password is required </span>  
-                    <span class="text-danger" *ngIf="txtConfirmPassword.dirty && ((txtPassword.errors && txtPassword.errors.compare) || (txtConfirmPassword.errors && txtConfirmPassword.errors.compare)) && !txtConfirmPassword.errors.required">Password Doesn't match</span>  
-                </div>  
-            </div> 
-        </div>-->
-        <div>
-          <mat-form-field appearance="fill">
-            <mat-label>Password</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'" placeholder="password" name="UserPassword" [(ngModel)]="newUser.UserPassword" class="form-control"  #userpassword="ngModel" compare-password="txtConfirmPassword" required minlength="5" maxlength="20">
-        
-        <mat-error *ngIf="passwordFormControl.hasError('required')">
-          Password is required
+<div class="wrap-sign-up">
 
-        </mat-error>
-        </mat-form-field>
-        </div>
-       
-            <div>
-    
-                <mat-form-field appearance="fill">
-                  <mat-label>Email</mat-label>
-                  <input [(ngModel)]="newUser.UserEmail" name="UserEmail"  required type="email" matInput [formControl]="emailFormControl" placeholder="Ex.pat@example.com">
-                  <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                    Please enter a valid email address
-                  </mat-error>
-                  <mat-error *ngIf="emailFormControl.hasError('required')">
-                    Email is required
-                 
-                  </mat-error>
-                </mat-form-field>
+    <header [attr.bigger]="true"></header>
+    <div class="wrapdiv">
+        <div class="explaination">
+            <p>
+              <mat-icon>tips_and_updates</mat-icon>Log in and rent or lease a parking easily
+            </p>
+          </div>
+        <form novalidate (submit)="SignUp(frm)" #frm="ngForm">
 
-            </div>
-        <div>
             <mat-form-field appearance="fill">
-                <mat-label>Phone number</mat-label>
-                <input matInput placeholder="phone number"  [(ngModel)]="newUser.UserPhoneNumber" name="UserPhoneNumber" type="text" #userphone="ngModel"  minlength="5" maxlength="20">
-              </mat-form-field>
-         </div>       
-       
-        <div class="btnfrm">
-            <button mat-raised-button type="submit" [disabled]="!frm.valid"  class="btnOK" selected>register</button>
+                <input value="" placeholder="User Name" matInput name="Username" [(ngModel)]="newUser.Username"
+                    type="text" #username="ngModel" required minlength="5" maxlength="20">
+                <mat-error *ngIf="username.invalid">{{getErrorMessage(username)}}</mat-error>
+            </mat-form-field>
 
-        </div>
-    </form>
-    <div class="login">
-        <label >Already  have an account?<span id="login" (click)="LogIn()"> Log In</span></label>
+            <mat-form-field appearance="fill">
+                <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" name="UserPassword"
+                    [(ngModel)]="newUser.UserPassword" type="password" #userpassword="ngModel" required minlength="5"
+                    maxlength="12">
+                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                <mat-error *ngIf="userpassword.invalid">{{getErrorMessage(userpassword)}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <input [(ngModel)]="newUser.UserEmail" name="UserEmail" required type="email" matInput
+                    [formControl]="emailFormControl" placeholder="Ex.pat@example.com">
+                <mat-error *ngIf="emailFormControl.invalid">{{getErrorMessage(emailFormControl)}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <input matInput placeholder="Phone Number" [(ngModel)]="newUser.UserPhoneNumber" name="UserPhoneNumber"
+                    type="text" #userphone="ngModel" minlength="5" maxlength="20">
+                <mat-error *ngIf="userphone.invalid">{{getErrorMessage(userphone)}}</mat-error>
+            </mat-form-field>
+
+            <button mat-flat-button class="submit-button" type="submit" [disabled]="!frm.valid" selected>
+                <span>Register</span>
+                <mat-icon>app_registration</mat-icon>
+            </button>
+        </form>
+
     </div>
 
- </div>
-<!--
-<div>
-    <form novalidate  (submit)="SignUp(frm)" #frm="ngForm">
-       
-        <div><input [(ngModel)]="newUser.username" name="username"/></div> 
-        <div> <input [(ngModel)]="newUser.userpassword" name="userpassword"/></div>
-        <div><input [(ngModel)]="newUser.useremail" name="useremail"/></div> 
-        <div> <input [(ngModel)]="newUser.userphone" name="userphone"/></div>
-         <button style="width:50px; height: 20px;" type="submit" >submit</button>
-    </form>
+    <div class="wrap-bottom">
+        <label>Already have an account?
+            <span class="link" id="login" (click)="LogIn()"> Log In</span>
+        </label>
+    </div>
+    
 </div>
--->

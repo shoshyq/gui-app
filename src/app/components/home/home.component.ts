@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
@@ -10,6 +11,8 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class HomeComponent  {
   newUser:User = new User();
+  hide = true;
+
   subscribe:any;
   passwordValidate:boolean;
   usernameValidate:boolean;
@@ -48,7 +51,15 @@ enter(frm:any){
 
 })
 }
-
+getErrorMessage(value?: any): any {
+  let formControl: FormControl = value as FormControl;
+  if (formControl.hasError('required'))
+    return 'You must enter a value';
+  else if (formControl.hasError('minlength'))
+    return 'Minimum 5 characters';
+  else if (formControl.hasError('maxlength'))
+    return 'The string is too long';
+}
 LogIn(){
         sessionStorage.setItem('disable','false')
 

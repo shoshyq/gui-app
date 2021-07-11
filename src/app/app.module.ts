@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { UserService } from './services/user.service';
 import { HttpClient } from '@angular/common/http';
@@ -53,6 +53,8 @@ import { AddScheduleComponent } from './components/add-schedule/add-schedule.com
 import { SearchAddedMsgComponent } from './components/search-added-msg/search-added-msg.component';
 import { DialogLogInComponent } from './components/dialog-log-in/dialog-log-in.component';
 import { MapComponent } from './components/map/map.component';
+import { HeaderComponent } from './components/header/header.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,7 +78,8 @@ import { MapComponent } from './components/map/map.component';
      AddScheduleComponent,
      SearchAddedMsgComponent,
      DialogLogInComponent,
-     MapComponent
+     MapComponent,
+     HeaderComponent
      
   ],
   imports: [
@@ -108,6 +111,7 @@ import { MapComponent } from './components/map/map.component';
     DialogLogInComponent
     
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [UserService],
   bootstrap: [AppComponent]
 })
