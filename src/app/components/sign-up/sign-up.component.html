@@ -1,6 +1,6 @@
-<div class="wrap-sign-up">
+<div id="wrap-sign-up">
 
-    <header [attr.bigger]="true"></header>
+    <header [bigger]="true"></header>
     <div class="wrapdiv">
         <div class="explaination">
             <p>
@@ -9,13 +9,13 @@
           </div>
         <form novalidate (submit)="SignUp(frm)" #frm="ngForm">
 
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="legacy">
                 <input value="" placeholder="User Name" matInput name="Username" [(ngModel)]="newUser.Username"
                     type="text" #username="ngModel" required minlength="5" maxlength="20">
                 <mat-error *ngIf="username.invalid">{{getErrorMessage(username)}}</mat-error>
             </mat-form-field>
 
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="legacy">
                 <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" name="UserPassword"
                     [(ngModel)]="newUser.UserPassword" type="password" #userpassword="ngModel" required minlength="5"
                     maxlength="12">
@@ -23,13 +23,13 @@
                 <mat-error *ngIf="userpassword.invalid">{{getErrorMessage(userpassword)}}</mat-error>
             </mat-form-field>
 
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="legacy">
                 <input [(ngModel)]="newUser.UserEmail" name="UserEmail" required type="email" matInput
                     [formControl]="emailFormControl" placeholder="Ex.pat@example.com">
                 <mat-error *ngIf="emailFormControl.invalid">{{getErrorMessage(emailFormControl)}}</mat-error>
             </mat-form-field>
 
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="legacy">
                 <input matInput placeholder="Phone Number" [(ngModel)]="newUser.UserPhoneNumber" name="UserPhoneNumber"
                     type="text" #userphone="ngModel" minlength="5" maxlength="20">
                 <mat-error *ngIf="userphone.invalid">{{getErrorMessage(userphone)}}</mat-error>

@@ -1,3 +1,8 @@
+#logIn {
+    font-size: 16px;
+    text-align: center;
+}
+
 .wrap-bottom {
     color: #000000c9;
     display: grid;
@@ -15,14 +20,14 @@ form {
     display: grid;
     grid-row-gap: 15px;
     align-items: center;
-    grid-template-rows: 50px;
+    grid-template-rows: 45px 45px 60px;
 }
 
 mat-form-field {
     margin-inline: auto;
     padding-bottom: 5px;
     border-radius: 4px;
-    background-color: #8fbbe11c;
+    /* background-color: #8fbbe11c; */
     font-family: assistant;
     width: 220px;
 }
@@ -45,6 +50,12 @@ button.submit-button {
 
 button.submit-button span {
     margin-right: 7px;
+}
+
+button.mat-button-disabled {
+    background-color: #8fbbe2 !important;
+    color: #ffffff !important;
+    font-weight: 400;
 }
 
 .explaination {

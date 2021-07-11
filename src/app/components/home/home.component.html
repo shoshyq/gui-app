@@ -1,6 +1,6 @@
-<div *ngIf="disable==true" id="logIn" style="text-align:center">
+<div *ngIf="disable==true" id="logIn">
 
-  <header [attr.bigger]="true"></header>
+  <header [bigger]="true"></header>
   <div class="wrapdiv">
 
     <div class="explaination">
@@ -10,13 +10,13 @@
     </div>
     <form novalidate (submit)="enter(frm)" #frm="ngForm">
       <!-- user name -->
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="legacy">
         <input value="" placeholder="User Name" matInput name="Username" [(ngModel)]="newUser.Username" type="text"
           #username="ngModel" required minlength="5" maxlength="20">
         <mat-error *ngIf="username.invalid">{{getErrorMessage(username)}}</mat-error>
       </mat-form-field>
       <!-- password -->
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="legacy">
         <input matInput placeholder="Password" name="UserPassword" [(ngModel)]="newUser.UserPassword" type="password"
           #userpassword="ngModel" required minlength="5" maxlength="12">
         <mat-error *ngIf="userpassword.invalid">{{getErrorMessage(userpassword)}}</mat-error>
