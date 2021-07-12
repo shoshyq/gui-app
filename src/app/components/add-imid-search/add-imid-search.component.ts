@@ -156,6 +156,7 @@ chSO(completed: boolean) {
     this.searchesService.AddImmidiateSearch(this.newSearch).subscribe(dic=>
       {
         let i=0;
+        console.log(dic);
         dic.forEach((value: string, key: ParkSpot) => {
           this.parkSpotResultList[i] = key;
           i++;
