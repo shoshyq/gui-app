@@ -6,7 +6,8 @@
     "types": [
       "jasmine",
       "googlemaps"
-    ]
+    ],
+    "strict": false
   },
   "files": [
     "src/test.ts",

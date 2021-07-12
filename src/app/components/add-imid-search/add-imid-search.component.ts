@@ -123,15 +123,16 @@ chSO(completed: boolean) {
          console.log(this.newSchedule.Code)
          sessionStorage.setItem('imScheduleCode',code.toString());
          this.newSearch.UserId = +sessionStorage.getItem('ucode');
-         if(this.addressdiv=true)
+         if(this.addressdiv==true)
          {
-          this.newSearch.MyLocationAddress += ", " + this.citystring
+          this.newSearch.MyLocationAddress += ", " + this.citystring;
          }
          else
          {
          this.newSearch.Place_id = this.getMyLocation();
          this.newSearch.Place_id = res;
-         console.log(this.newSearch.Place_id);
+         console.log("res"+res);
+         console.log("id"+this.newSearch.Place_id);
          const geocoder = new google.maps.Geocoder();
         
 
@@ -149,8 +150,7 @@ chSO(completed: boolean) {
     }
     
          });
-        }
-    this.newSearch.CityCode  = this.selectedCity;
+         this.newSearch.CityCode  = this.selectedCity;
     this.newSearch.Regularly = false;
     this.newSearch.DaysSchedule = code;
     this.searchesService.AddImmidiateSearch(this.newSearch).subscribe(dic=>
@@ -168,7 +168,9 @@ chSO(completed: boolean) {
       }
      else 
      console.log("something on the search level went wrong")
-     });
+    });
+        }
+       
    }
   });
 }
