@@ -47,13 +47,14 @@ import {MatListModule} from '@angular/material/list';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatDialogModule} from '@angular/material/dialog';
 
-
 import { } from 'googlemaps';
 import { AddScheduleComponent } from './components/add-schedule/add-schedule.component';
 import { SearchAddedMsgComponent } from './components/search-added-msg/search-added-msg.component';
 import { DialogLogInComponent } from './components/dialog-log-in/dialog-log-in.component';
 import { MapComponent } from './components/map/map.component';
 import { HeaderComponent } from './components/header/header.component';
+import { SearchesService } from './services/searches.service';
+
 
 @NgModule({
   declarations: [
@@ -112,7 +113,7 @@ import { HeaderComponent } from './components/header/header.component';
     
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [UserService],
+  providers: [UserService, SearchesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

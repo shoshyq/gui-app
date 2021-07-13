@@ -1,15 +1,16 @@
-<div>
-  <form  novalidate  (submit)="AddRegularSearch(frm)" #frm="ngForm">
-      
+<div class="wrap-add-regular-search">
+  <form novalidate (submit)="AddRegularSearch(frm)" #frm="ngForm">
+
     <div>
-    <mat-form-field appearance="fill">
+      <mat-form-field appearance="legacy">
         <mat-label>Address (destination)</mat-label>
-        <input matInput placeholder="address" style="text-align: left; align-content: flex-end;"  [(ngModel)]="newSearch.MyLocationAddress" name="myLocationAddress" type="text" #address="ngModel" required >
+        <input matInput placeholder="address" style="text-align: left; align-content: flex-end;"
+          [(ngModel)]="newSearch.MyLocationAddress" name="myLocationAddress" type="text" #address="ngModel" required>
         <mat-error *ngIf="addressFormControl.hasError('required')">
-           Address is required
-        </mat-error>  
-    </mat-form-field>
-  
+          Address is required
+        </mat-error>
+      </mat-form-field>
+
     </div>
     <!--<div>
       <input ngx-google-places-autocomplete  value="{{formattedaddress}}" (onAddressChange)="AddressChange($event)"/>
@@ -20,7 +21,7 @@
  
     </div>-->
     <div>
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="legacy">
         <mat-label>City</mat-label>
         <mat-select (selectionChange)="onSelection($event)" [(ngModel)]="selectedCity" name="city">
           <mat-option #city *ngFor="let city of cities" [value]="city.Code">
@@ -28,59 +29,64 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <!--<div><label>No such city?</label><span (click)="open_add_city()" >  Add city</span></div>
-      <div *ngIf="addcitydiv===true">
-        <input #addcity  />
-        <button (click)="AddCity(addcity.value)">Add</button>
-      </div>-->
     </div>
-    <div>
-      <p><mat-checkbox color="primary" formControlName="sizePref" #size (change)="chSO($event.checked)" [(ngModel)]="newSearch.SizeOpt">Size preferences</mat-checkbox></p>
-    </div>
-    <div *ngIf="size.checked" style="display: inline-block;">
-<mat-form-field appearance="fill">
-      <mat-label>Width</mat-label>
-      <input matInput placeholder="width" style="text-align: left; align-content: flex-end; width:50px;"  [(ngModel)]="newSearch.PreferableWidth" name="PreferableWidth" type="text" #width="ngModel" >
-      <mat-error *ngIf="widthFormControl.hasError('pattern')">
-         Number only
-      </mat-error>  
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Length</mat-label>
-    <input matInput placeholder="length" style="text-align: left; align-content: flex-end; width:50px;"  [(ngModel)]="newSearch.PreferableLength" name="PreferableLength" type="text" #length="ngModel" >
-    <mat-error *ngIf="lengthFormControl.hasError('pattern')">
-       Number only
-    </mat-error>  
-</mat-form-field>
-    </div>
-    
 
-    <div>
-      <p><mat-checkbox color="primary" (change)="chRO($event.checked)" #roofOpt [(ngModel)]="newSearch.RoofOpt" formControlName="roofOpt">Has a roof</mat-checkbox></p>
+    <div class="wrap-checkboxes">
+      <mat-checkbox color="primary" formControlName="sizePref" #size (change)="chSO($event.checked)"
+        [(ngModel)]="newSearch.SizeOpt">Size preferences</mat-checkbox>
+      <div *ngIf="size.checked" class="wrap-sizes">
+        <mat-form-field appearance="legacy">
+          <mat-label>Width</mat-label>
+          <input matInput placeholder="width" style="text-align: left; align-content: flex-end; width:50px;"
+            [(ngModel)]="newSearch.PreferableWidth" name="PreferableWidth" type="text" #width="ngModel">
+          <mat-error *ngIf="widthFormControl.hasError('pattern')">
+            Number only
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="legacy">
+          <mat-label>Length</mat-label>
+          <input matInput placeholder="length" style="text-align: left; align-content: flex-end; width:50px;"
+            [(ngModel)]="newSearch.PreferableLength" name="PreferableLength" type="text" #length="ngModel">
+          <mat-error *ngIf="lengthFormControl.hasError('pattern')">
+            Number only
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <mat-checkbox color="primary" (change)="chRO($event.checked)" #roofOpt [(ngModel)]="newSearch.RoofOpt"
+        formControlName="roofOpt">Has a roof</mat-checkbox>
     </div>
-    <p>Prices:</p> 
-    <div  >
-      <mat-form-field appearance="fill" >
-            <input matInput placeholder="00.00"   [(ngModel)]="newSearch.MinPrice" name="MinPrice" type="text" #minprice="ngModel" required >
-            <mat-error *ngIf="minpriceFormControl.hasError('pattern')">
-               Number only
-            </mat-error>  
+
+    <div class="wrap-prices">
+      <p>Prices:</p>
+      <div class="wrap-range">
+        <mat-form-field appearance="legacy">
+          <input matInput placeholder="00.00" [(ngModel)]="newSearch.MinPrice" name="MinPrice" type="text"
+            #minprice="ngModel" required>
+          <mat-error *ngIf="minpriceFormControl.hasError('pattern')">
+            Number only
+          </mat-error>
         </mat-form-field>
         <p> - </p>
-        <mat-form-field appearance="fill">
-          <input matInput placeholder="00.00"   [(ngModel)]="newSearch.MaxPrice" name="MaxPrice" type="text" #maxprice="ngModel" required >
+        <mat-form-field appearance="legacy">
+          <input matInput placeholder="00.00" [(ngModel)]="newSearch.MaxPrice" name="MaxPrice" type="text"
+            #maxprice="ngModel" required>
           <mat-error *ngIf="maxpriceFormControl.hasError('pattern')">
-             Number only
-          </mat-error>  
-      </mat-form-field>
-      <p>ILS</p>
-    </div>
-    <app-add-schedule>
-    </app-add-schedule>
-          
-    <div class="btnfrm">
-        <button mat-raised-button type="submit" [disabled]="!frm.valid"  class="btnOK" selected>add</button>
+            Number only
+          </mat-error>
+        </mat-form-field>
+        <p>ILS</p>
+      </div>
 
     </div>
-</form>
+
+    <app-add-schedule></app-add-schedule>
+
+    <div class="btnfrm">
+      <button mat-flat-button type="submit" [disabled]="!frm.valid" class="btnOK" selected>
+        <span>add</span>
+        <mat-icon>add_task</mat-icon>
+      </button>
+
+    </div>
+  </form>
 </div>

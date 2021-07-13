@@ -12,6 +12,7 @@ import { WeekDay } from 'src/app/models/weekDay.models';
 import { Hours } from 'src/app/models/hours.model';
 import { createElementCssSelector } from '@angular/compiler';
 import { getLocaleCurrencyCode } from '@angular/common';
+import { Result_Dictionary } from 'src/app/models/result_dictionary.model';
 let res= "";
 let resaddress = "";
 @Component({
@@ -24,7 +25,7 @@ export class AddImidSearchComponent implements OnInit {
 addressdiv=false;
   selectedCity: number;
   citystring : string;
-  parkSpotResultList:ParkSpot[]
+  resultList:Array<Result_Dictionary>;
   newSearch:Search = new Search();
   subscribe:any;
   cities: City[];
@@ -123,15 +124,16 @@ chSO(completed: boolean) {
          console.log(this.newSchedule.Code)
          sessionStorage.setItem('imScheduleCode',code.toString());
          this.newSearch.UserId = +sessionStorage.getItem('ucode');
-         if(this.addressdiv=true)
+         if(this.addressdiv==true)
          {
-          this.newSearch.MyLocationAddress += ", " + this.citystring
+          this.newSearch.MyLocationAddress += ", " + this.citystring;
          }
          else
          {
          this.newSearch.Place_id = this.getMyLocation();
          this.newSearch.Place_id = res;
-         console.log(this.newSearch.Place_id);
+         console.log("res"+res);
+         console.log("id"+this.newSearch.Place_id);
          const geocoder = new google.maps.Geocoder();
         
 
@@ -150,25 +152,28 @@ chSO(completed: boolean) {
     
          });
         }
-    this.newSearch.CityCode  = this.selectedCity;
+         this.newSearch.CityCode  = this.selectedCity;
     this.newSearch.Regularly = false;
     this.newSearch.DaysSchedule = code;
-    this.searchesService.AddImmidiateSearch(this.newSearch).subscribe(dic=>
+    this.searchesService.AddImmidiateSearch(this.newSearch).subscribe(list=>
       {
         let i=0;
-        dic.forEach((value: string, key: ParkSpot) => {
-          this.parkSpotResultList[i] = key;
-          i++;
-        });      
-     if(dic!=null)
+        console.log(list);
+        this.resultList = list;
+        this.resultList.forEach( (element) => {
+      });     
+     if(list!=null)
       {
         console.log("search has been added successfully")
         console.log(this.newSearch.Code);
-        console.log(this.parkSpotResultList);
+        console.log(this.resultList);
+        this.router.navigate(['/SearchResults'], {state: {data: this.resultList}});
       }
      else 
      console.log("something on the search level went wrong")
-     });
+    });
+        
+       
    }
   });
 }
