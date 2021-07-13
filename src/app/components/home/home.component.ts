@@ -12,6 +12,9 @@ import { UserService } from 'src/app/services/user.service';
 export class HomeComponent  {
   newUser:User = new User();
   hide = true;
+  wrongPswd = false;
+  wrong = false;
+  wrongUN = false;
 
   subscribe:any;
   passwordValidate:boolean;
@@ -22,6 +25,10 @@ constructor(private userService:UserService,private router: Router) { }
 ngOnInit(): void {
 }
 enter(frm:any){
+  this.wrongPswd = false;
+  this.wrongUN = false;
+  this.wrong = false;
+
   this.userService.Login(this.newUser.Username,this.newUser.UserPassword).subscribe(usercode=>
 {
   this.newUser.Code=usercode; 
@@ -39,6 +46,9 @@ enter(frm:any){
    if(usercode==-1)
    {
      this.passwordValidate= true;
+     this.wrong = true;
+     this.wrongPswd = true;
+
     console.log("wrong password");
    }
    else
@@ -46,10 +56,25 @@ enter(frm:any){
     this.usernameValidate= true;
     this.passwordValidate= false;
      console.log("there is no user with such username");
+     this.wrong = true;
+     this.wrongUN = true;
    }
  }
 
 })
+}
+getMessage():any
+{
+  if(this.wrongPswd == true)
+  
+    return 'Wrong password';
+  
+  else{
+    if(this.wrongUN == true)
+      return 'There is no such username';
+    else
+    return '';
+  }
 }
 getErrorMessage(value?: any): any {
   let formControl: FormControl = value as FormControl;

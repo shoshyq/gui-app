@@ -33,4 +33,8 @@ AddRegularSearch(newSearch:Search):Observable<number> {
   AddSchedule(newSchedule:WeekDay):Observable<number> {
             return this.http.post<number>(`${this.url}/addSchedule`,newSchedule);
     }
+    GetSchedule(scode:number):Observable<WeekDay>
+    {
+     return this.http.get<WeekDay>(this.url+'/getSchedule/'+scode)
+    }
 }
