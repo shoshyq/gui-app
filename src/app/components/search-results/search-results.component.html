@@ -1,21 +1,25 @@
 <div class="wrap-div">
 <h2>Search results</h2>
-<ul class="results">
-<mat-card class="wrap-div">
+  <div *ngFor="let result of resultList; let i = index;">
+    <mat-card class="wrap-div">
     <mat-card-header>
-      <div mat-card-avatar ></div>
-      <mat-card-title>Park-spot #1</mat-card-title>
-      <mat-card-subtitle>address1</mat-card-subtitle>
+      <mat-card-title>{{actulst[i].Username}}s' parking spot</mat-card-title>
+      <mat-card-subtitle>in {{result.Distance}} from You</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-  <div>park-spot details</div>
+  Address: {{result.PSpot.FullAddress}}
+  Price: {{result.PSpot.PricePerHour}}/h
+  Hours: {{schedlst[i]}}
+  <div></div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button>Change options</button>
+      <button mat-button>Select</button>
     </mat-card-actions>
   </mat-card>
   <br/>
-</ul>
+ 
+</div>
+
 <!--  <mat-card class="wrap-div">
     <mat-card-header>
       <div mat-card-avatar ></div>

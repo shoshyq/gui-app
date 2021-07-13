@@ -27,5 +27,9 @@ export class UserService {
   {
    return this.http.get<User>(this.url+'/getuser/'+usercode)
   }
+  GetAllUsers():Observable<Array<User>>
+  {
+   return this.http.get<Array<User>>(this.url+'/getallusers')
+  }
 
 }

@@ -8,6 +8,7 @@
         <mat-icon>tips_and_updates</mat-icon>Log in and rent or lease a parking easily
       </p>
     </div>
+    <div *ngIf="wrong===true" style=" margin-bottom: 15px; padding-bottom: 10px;"><mat-error>{{getMessage()}}</mat-error></div>
     <form novalidate (submit)="enter(frm)" #frm="ngForm">
       <!-- user name -->
       <mat-form-field appearance="legacy">
@@ -23,6 +24,7 @@
         <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </mat-form-field>
       <!-- submit button -->
+     
       <button mat-flat-button class="submit-button" color="primary" type="submit" [disabled]="!frm.valid" selected>
         <span>Log In</span>
         <mat-icon>login</mat-icon>
