@@ -53,6 +53,8 @@ import { SearchAddedMsgComponent } from './components/search-added-msg/search-ad
 import { DialogLogInComponent } from './components/dialog-log-in/dialog-log-in.component';
 import { MapComponent } from './components/map/map.component';
 import { HeaderComponent } from './components/header/header.component';
+import { SearchesService } from './services/searches.service';
+
 
 @NgModule({
   declarations: [
@@ -111,7 +113,7 @@ import { HeaderComponent } from './components/header/header.component';
     
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [UserService],
+  providers: [UserService, SearchesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
