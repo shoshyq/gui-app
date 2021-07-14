@@ -167,7 +167,7 @@ chSO(completed: boolean) {
         console.log("search has been added successfully")
         console.log(this.newSearch.Code);
         console.log(this.resultList);
-        sessionStorage.setItem('imidsearch',this.newSearch.Code.toString());
+        //sessionStorage.setItem('imidsearch',this.newSearch.Code.toString());
 
         this.router.navigate(['/SearchResults'], {state: {data: this.resultList}});
       }
