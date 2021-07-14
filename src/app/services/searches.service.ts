@@ -37,4 +37,8 @@ AddRegularSearch(newSearch:Search):Observable<number> {
     {
      return this.http.get<WeekDay>(this.url+'/getSchedule/'+scode)
     }
+    SelectResult(pspotCode:number,psearchCode:number):Observable<number>
+    {
+     return this.http.get<number>(this.url+'/confirmImidSearchResult/'+pspotCode+'/'+psearchCode)
+    }
 }

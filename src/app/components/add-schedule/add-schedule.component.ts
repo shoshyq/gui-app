@@ -51,7 +51,7 @@ export class AddScheduleComponent implements OnInit {
   
  this.newSchedule.SundayHours=[];
  this.newSchedule.MondayHours=[];
- this.newSchedule.TuedayHours=[];
+ this.newSchedule.TuesdayHours=[];
  this.newSchedule.WednesdayHours=[];
  this.newSchedule.ThursdayHours=[];
  this.newSchedule.FridayHours=[];
@@ -134,7 +134,7 @@ export class AddScheduleComponent implements OnInit {
       }
       if (index==2) {
         this.newDays[index].hours.forEach( (element) => {
-          this.newSchedule.TuedayHours.push(element.hours[0])
+          this.newSchedule.TuesdayHours.push(element.hours[0])
       });
       }
       if (index==3) {

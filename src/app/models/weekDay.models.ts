@@ -5,7 +5,7 @@ export class WeekDay{
     Code? : number
     SundayHours? : Hours[]
     MondayHours? : Hours[]
-    TuedayHours? : Hours[]
+    TuesdayHours? : Hours[]
     WednesdayHours? : Hours[]
     ThursdayHours? : Hours[]
     FridayHours? : Hours[]

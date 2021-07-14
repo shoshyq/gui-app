@@ -7,13 +7,44 @@
       <mat-card-subtitle>in {{result.Distance}} from You</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-  Address: {{result.PSpot.FullAddress}}
-  Price: {{result.PSpot.PricePerHour}}/h
-  Hours: {{schedlst[i]}}
-  <div></div>
+ <div> Address: {{result.PSpot.FullAddress}}</div>
+  <div>Price: {{result.PSpot.PricePerHour}}/h</div> 
+  <div>Free hours:</div>
+  <div >
+  </div>
+  <div *ngIf="today==0">
+    <div *ngFor="let hours of schedlst[i].SundayHours;">
+      <div >{{hours.StartHour}} - {{hours.EndHour}}</div>
+    </div>
+  </div>
+  <div  *ngIf="today==1">
+    <div  *ngFor="let hours of schedlst[i].MondayHours;">
+      <div >{{hours.StartHour}} - {{hours.EndHour}}</div>
+    </div>
+  </div>
+  <div *ngIf="today==2">
+    <div *ngFor="let hours of schedlst[i].TuesdayHours;">
+      <div >{{hours.StartHour}} - {{hours.EndHour}}</div>
+    </div>
+  </div>
+  <div *ngIf="today==3">
+    <div  *ngFor="let hours of schedlst[i].WednesdayHours;">
+      <div >{{hours.StartHour}} - {{hours.EndHour}}</div>
+    </div>
+  </div>
+  <div *ngIf="today==4">
+    <div *ngFor="let hours of schedlst[i].ThursdayHours;">
+      <div >{{hours.StartHour}} - {{hours.EndHour}}</div>
+    </div>
+  </div>
+  <div *ngIf="today==5">
+    <div *ngFor="let hours of schedlst[i].FridayHours;">
+      <div >{{hours.StartHour}} - {{hours.EndHour}}</div>
+    </div>
+  </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button>Select</button>
+      <button mat-button (click)="selectResult(i)" >Select</button>
     </mat-card-actions>
   </mat-card>
   <br/>

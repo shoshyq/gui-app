@@ -58,7 +58,7 @@ lengthFormControl = new FormControl('', [
   ngOnInit()
   {  this.newSchedule.SundayHours=[];
     this.newSchedule.MondayHours=[];
-    this.newSchedule.TuedayHours=[];
+    this.newSchedule.TuesdayHours=[];
     this.newSchedule.WednesdayHours=[];
     this.newSchedule.ThursdayHours=[];
     this.newSchedule.FridayHours=[];
@@ -100,7 +100,7 @@ chSO(completed: boolean) {
    }
    if(d == 2)
    {
-     this.newSchedule.TuedayHours.push(hrs)
+     this.newSchedule.TuesdayHours.push(hrs)
    }
    if(d == 3)
    {
@@ -167,6 +167,8 @@ chSO(completed: boolean) {
         console.log("search has been added successfully")
         console.log(this.newSearch.Code);
         console.log(this.resultList);
+        sessionStorage.setItem('imidsearch',this.newSearch.Code.toString());
+
         this.router.navigate(['/SearchResults'], {state: {data: this.resultList}});
       }
      else 
