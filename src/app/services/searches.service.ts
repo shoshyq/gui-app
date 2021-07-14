@@ -24,6 +24,10 @@ export class SearchesService {
 AddRegularSearch(newSearch:Search):Observable<number> {
         return this.http.post<number>(`${this.url}/addRegSearch`,newSearch);
       }
+      GetSearch(scode:number):Observable<Search>
+      {
+       return this.http.get<Search>(this.url+'/getSearch/'+scode)
+      }
       GetCities():Observable<City[]> {
           return this.http.get<City[]>(`${this.url}/getCities`);
           }
