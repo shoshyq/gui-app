@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Result_Dictionary } from 'src/app/models/result_dictionary.model';
 import { User } from 'src/app/models/user.model';
+import { WeekDay } from 'src/app/models/weekDay.models';
 import { SearchesService } from 'src/app/services/searches.service';
 import { UserService } from 'src/app/services/user.service';
 @Component({
@@ -12,14 +13,16 @@ export class SearchResultsComponent implements OnInit {
  // heroes: Hero[] = [
  //   { id: 11, name: 'Dr Nice' },
  // ];
+today:number;
 userslist : any = [];
 schedlst :any=[];
+schdl :WeekDay = new WeekDay();
 actulst : any =[];
  resultList:Array<Result_Dictionary>;
   constructor(private userService:UserService,private searchesService:SearchesService) { }
   //selectedHero?: Hero;
   ngOnInit(): void {
-   
+   this.today = new Date().getDay();
     this.resultList = history.state.data;
     console.log(this.resultList);
  this.userService.GetAllUsers().subscribe(list=>
@@ -27,17 +30,17 @@ actulst : any =[];
             this.userslist=list;  
             console.log(list);  
             console.log(this.userslist);    
-            for(let i=0; i<this.userslist.length; i++){
-              for(let j=0; j<this.resultList.length; j++){
+            for(let j=0; j<this.resultList.length; j++){
+              for(let i=0; i<this.userslist.length; i++){
                 if(this.resultList[j].PSpot.UserCode == this.userslist[i].Code)
                 {
                   this.actulst.push(this.userslist[i]);
                   this.searchesService.GetSchedule(this.resultList[j].PSpot.DaysSchedule).subscribe(schedule=>
-                    {  
-                        this.schedlst.push(schedule);
-                    });
-                }
-              }
+                  {   this.schdl= schedule;
+                      this.schedlst.push(this.schdl);
+                  });
+                }               
+              }             
             }
             console.log(this.schedlst);
       });
@@ -50,6 +53,70 @@ actulst : any =[];
     
     console.log(this.actulst);
     
+  }
+  ifDay(i:number,Day:string)
+  {
+    if(Day == 'Sunday')
+    {
+      if(this.schedlst[i].SundayHours!=null)
+       return true;
+       else 
+       return false;
+    }
+    if(Day == 'Monday')
+    {
+      if(this.schedlst[i].MondayHours!=null)
+       return true;
+       else 
+       return false;
+    }
+    if(Day == 'Tuesday')
+    {
+      if(this.schedlst[i].TuesdayHours!=null)
+       return true;
+       else 
+       return false;
+    }
+    if(Day == 'Wednesday')
+    {
+      if(this.schedlst[i].WednesdayHours!=null)
+       return true;
+       else 
+       return false;
+    }
+    if(Day == 'Thursday')
+    {
+      if(this.schedlst[i].ThursdayHours!=null)
+       return true;
+       else 
+       return false;
+    }
+    if(Day == 'Friday')
+    {
+      if(this.schedlst[i].FridayHours!=null)
+       return true;
+       else 
+       return false;
+    }
+    else 
+    return false;
+
+  }
+  selectResult(i:number)
+  {
+    this.searchesService.SelectResult(this.resultList[i].PSpot.Code,+sessionStorage.getItem('imidsearch')).subscribe(result=>
+      { 
+         console.log(result);
+        if(result==1)
+        {
+          console.log("cheeeers!");
+        }
+        else{
+          console.log("error in sending email");         
+        }    
+        
+          //this.schedlst.push(this.schdl);
+      });
   }
  // onSelect(hero: Hero): void {
   //  this.selectedHero = hero;

@@ -1,64 +1,43 @@
 <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-    <mat-form-field appearance="fill">
-        <mat-label>Select days:</mat-label>
-        <mat-select #selectdays formControlName="day" (ngModelChange)="onNgModelChange($event)"  multiple>
-          <mat-option *ngFor="let item of dropdownList" [value]="item.item_id">{{item.item_text}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <ng-container *ngFor="let daysFormGroup of formGroup['controls'].daytime['controls']; let i = index">
-     <!-- <form formGroupName="formTGroups">-->
-      <div [formGroup]="daysFormGroup" style="height: fit-content;">
-           <mat-list #days role="list" style="height: fit-content;">
-        <mat-list-item style="height: fit-content;"  *ngFor="let day of selectedDays">
-            
-            <div  style="padding: 3px;"> 
-             <div>{{dropdownList[day-1].item_text}}:</div>
-              <span style="font-size: small; color: red;">please choose time in quarter hours</span>
-             <div>
-                    <input #st type="time" step="900"><span> - </span>  <input #en  type="time" step="900" >
-                                <button (click)="addhours(day,st.value,en.value)">Add</button>
-              </div>
-                <div>
-                    <input #st2 type="time" step="900"><span> - </span>  <input #en2  type="time" step="900" >
-                             <button (click)="addhours(day,st2.value,en2.value)">Add</button> 
-                </div>
+  <mat-form-field appearance="legacy">
+    <mat-label>Select days:</mat-label>
+    <mat-select #selectdays formControlName="day" (ngModelChange)="onNgModelChange($event)" multiple>
+      <mat-option *ngFor="let item of dropdownList" [value]="item.item_id">{{item.item_text}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <ng-container *ngFor="let daysFormGroup of formGroup['controls'].daytime['controls']; let i = index">
+    <div class="wrap-list" [formGroup]="daysFormGroup">
+      <mat-list #days role="list" style="height: fit-content;">
+        <mat-list-item style="height: fit-content;" *ngFor="let day of selectedDays">
 
-               <!-- <div>
-                    <input [(ngModel)]="newDays[day].hours[1].sh" type="time" step="900"><span> - </span>  <input [(ngModel)]="newDays[day].hours[1].eh"  type="time" step="900" >
-                </div>
-                <button (click)="addhours(day)">Add</button>-->
+          <div class="wrap-list-item-content">
+            <div class="selected-day">
+              <p>{{dropdownList[day-1].item_text}}</p>
             </div>
+            <span style="font-size: small; color: red;">please choose time in quarter hours</span>
+            <div class="wrap-range">
+              <input matInput #st type="time" step="900"><span> - </span> <input matInput #en type="time" step="900">
+              <button mat-icon-button (click)="addhours(day,st.value,en.value)">
+                <mat-icon>add_circle</mat-icon>
+              </button>
+
+            </div>
+            <div class="wrap-range">
+              <input matInput #st2 type="time" step="900"><span> - </span> <input matInput #en2 type="time" step="900">
+              <button mat-icon-button (click)="addhours(day,st2.value,en2.value)">
+                <mat-icon>add_circle</mat-icon>
+              </button>
+            </div>
+          </div>
 
         </mat-list-item>
       </mat-list>
-      </div>
-</ng-container>      
-     
-<div >
-  <button (click)="addSchedule()">add schedule</button>
+    </div>
+  </ng-container>
 
-</div>
+  <div>
+    <button mat-flat-button class="submit-button" (click)="addSchedule()">add schedule</button>
 
-  </form><!--
-  <form [formGroup]="usersForm" (ngSubmit)="onSubmit()">
-    <ng-container *ngFor="let userFormGroup of usersForm['controls'].users['controls']; let i = index">
-      <div [formGroup]="userFormGroup">
-            <label>
-                First name:
-                <input type="text" formControlName="firstName">
-              </label>
-              <label>
-                Last name:
-                <input type="text" formControlName="lastName">
-              </label>
-              <label>
-                Email:
-                <input type="text" formControlName="email">
-              </label>
-              <label>
-                <button (click)="removeFormControl(i)">remove formGroup</button>
-              </label>
-            </div>
-          </ng-container>
-        </form>
-        <button (click)="addFormControl()">add new user formGroup</button>-->
+  </div>
+
+</form>
