@@ -39,6 +39,6 @@ AddRegularSearch(newSearch:Search):Observable<number> {
     }
     SelectResult(pspotCode:number,psearchCode:number):Observable<number>
     {
-     return this.http.get<number>(this.url+'/confirmImidSearchResult/'+pspotCode+'/'+psearchCode)
+     return this.http.get<number>(`${this.url}/confirmImidSearchResult/${pspotCode}/${psearchCode}`)
     }
 }
