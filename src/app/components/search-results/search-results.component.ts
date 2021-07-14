@@ -14,6 +14,8 @@ export class SearchResultsComponent implements OnInit {
  //   { id: 11, name: 'Dr Nice' },
  // ];
 today:number;
+searchCode:number;
+datalist :Array<Result_Dictionary>;
 userslist : any = [];
 schedlst :any=[];
 schdl :WeekDay = new WeekDay();
@@ -23,7 +25,10 @@ actulst : any =[];
   //selectedHero?: Hero;
   ngOnInit(): void {
    this.today = new Date().getDay();
-    this.resultList = history.state.data;
+    this.datalist = history.state.data;
+    this.searchCode = this.datalist[this.datalist.length-1].PSpot.Code;
+    this.datalist.pop();
+    this.resultList = this.datalist;
     console.log(this.resultList);
  this.userService.GetAllUsers().subscribe(list=>
       {       
@@ -104,7 +109,7 @@ actulst : any =[];
   }
   selectResult(i:number)
   {
-    this.searchesService.SelectResult(this.resultList[i].PSpot.Code,+sessionStorage.getItem('imidsearch')).subscribe(result=>
+    this.searchesService.SelectResult(this.resultList[i].PSpot.Code,this.searchCode).subscribe(result=>
       { 
          console.log(result);
         if(result==1)
