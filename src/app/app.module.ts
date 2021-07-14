@@ -54,6 +54,7 @@ import { DialogLogInComponent } from './components/dialog-log-in/dialog-log-in.c
 import { MapComponent } from './components/map/map.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SearchesService } from './services/searches.service';
+import { ImidSearchResultsComponent } from './components/imid-search-results/imid-search-results.component';
 
 
 @NgModule({
@@ -80,7 +81,8 @@ import { SearchesService } from './services/searches.service';
      SearchAddedMsgComponent,
      DialogLogInComponent,
      MapComponent,
-     HeaderComponent
+     HeaderComponent,
+     ImidSearchResultsComponent
      
   ],
   imports: [

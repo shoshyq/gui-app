@@ -1,0 +1,11 @@
+<div class="wrapper-msg">
+    <mat-icon>mood</mat-icon>
+    <p>You have selected {{spotOwner.Username}}'s parking spot on {{pspot.FullAddress}}.</p>
+    <p>You're renting it from {{hours.StartHour}} to {{hours.EndHour}}</p>
+    <p>Please, be sure to leave the parking spot and pay to {{spotOwner.Username}} on time!</p>
+    <p>Here is {{spotOwner.Username}}'s contact information:</p>
+    <p *ngIf="phone===true">Phone: {{spotOwner.UserPhoneNumber}}</p>
+    <p>Email: {{spotOwner.UserEmail}}</p>
+    <p>Enjoy!</p>
+    <button mat-flat-button (click)="main()">Main</button>
+</div>
