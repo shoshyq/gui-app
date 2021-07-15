@@ -10,10 +10,18 @@ import { UserService } from 'src/app/services/user.service';
 export class DashboardComponent implements OnInit {
 
 newUser:User=new User();
+phone=false;
   disable=false;
     constructor(private userService:UserService,private router: Router) { }
 
   ngOnInit(): void {
+    this.userService.GetUser(sessionStorage.getItem('ucode')).subscribe(user=>
+      {      
+        this.newUser=user; 
+        if(this.newUser.UserPhoneNumber!=null)  
+          if(this.newUser.UserPhoneNumber!="")
+            this.phone=true;
+       });
   }
   imidSearch(){
       this.router.navigate(['ImmidSearch/',sessionStorage.getItem('ucode')]); 
@@ -32,6 +40,14 @@ updateUserDetails(){
   this.router.navigate(['UpdateUserDetails/']); 
 
 }
+deleteUserDetails(){
+  console.log("delete user?");
+  
+}
+regSearchResults(){
+  this.router.navigate(['UserRegSearchDetails/']); 
+
+}
 updatePaymentDetails(){
   this.router.navigate(['UpdatePaymentDetails/']); 
 
@@ -44,17 +60,5 @@ updateRegSearch(){
   this.router.navigate(['UpdateRegularSearch/']); 
   
 }
-getuser(){
-  this.userService.GetUser(sessionStorage.getItem('ucode')).subscribe(user=>
-    {
-     
-      console.log(user)
-
-      this.newUser=user; 
-      console.log(this.newUser.Code)
-      
-   
-     })
-    }
 
 }

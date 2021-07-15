@@ -1,15 +1,15 @@
-<p>dashboard works!</p>
-<div>my account details</div>
-<button (click)="updateUserDetails()">update account details</button>
+<div><button>main</button><h4>ParkMark</h4></div>
+<div>      <img src="assets/images/UserIcon.png"  />
+    <h3>{{newUser.Username}}</h3>
+    <button (click)="updateUserDetails()">update</button>
+    <button (click)="deleteUserDetails()">delete</button>
+</div>
+<div>Email: <span>{{newUser.UserEmail}}</span></div>
+<div *ngIf="phone===true">Phone: <span>{{newUser.UserPhoneNumber}}</span></div>
+<div>Payment details <img src="assets/images/CreditCardIcon.png" ></div>
+<div>My parking spot <img src="assets/images/CarIcon.png"></div>
+<div><button (click)="regSearchResults()">Regularly renting parking spot search results</button></div>
+<div><button (click)="feedbacks()" >My feedbacks</button><button (click)="imidSearch()">Add quick search</button></div>
 <div>my searches</div>
-<button (click)="updateRegSearch()">update regularly search</button>
-<button (click)="addRegSearch()">add regularly search</button>
-<button (click)="imidSearch()">add quick search</button>
-<button (click)="feedbacks()" >my feedbacks</button>
 <app-feedback-details *ngIf="disable==true"></app-feedback-details>
-
-<div>my payment accounts' details</div>
-<button (click)="updatePaymentDetails()">update payment details</button>
-<button (click)="addPaymentDetails()">add payment account</button>
-<button (click)="getuser()" >{{newUser.Username}}</button>
 <button>add parking spot</button>

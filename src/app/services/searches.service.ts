@@ -9,6 +9,7 @@ import { Result_Dictionary } from '../models/result_dictionary.model';
 import { AddScheduleComponent } from '../components/add-schedule/add-schedule.component';
 import { Pipe } from '@angular/core';
 import { PipeTransform } from '@angular/core';
+import { Search_Results } from '../models/search_results.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -44,5 +45,9 @@ AddRegularSearch(newSearch:Search):Observable<number> {
     SelectResult(pspotCode:number,psearchCode:number):Observable<number>
     {
      return this.http.get<number>(`${this.url}/confirmImidSearchResult/${pspotCode}/${psearchCode}`)
+    }
+    GetRegSearchesResults(ucode:number):Observable<Array<Search_Results>>
+    {
+     return this.http.get<Array<Search_Results>>(this.url+'/getRegSearchesResults/'+ucode)
     }
 }
