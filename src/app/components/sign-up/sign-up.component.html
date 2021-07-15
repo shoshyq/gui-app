@@ -31,7 +31,7 @@
 
             <mat-form-field appearance="legacy">
                 <input matInput placeholder="Phone Number" [(ngModel)]="newUser.UserPhoneNumber" name="UserPhoneNumber"
-                    type="text" #userphone="ngModel" minlength="5" maxlength="20">
+                    type="text" #userphone="ngModel" minlength="5" maxlength="10">
                 <mat-error *ngIf="userphone.invalid">{{getErrorMessage(userphone)}}</mat-error>
             </mat-form-field>
 

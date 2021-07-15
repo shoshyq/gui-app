@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Result_Dictionary } from 'src/app/models/result_dictionary.model';
 import { User } from 'src/app/models/user.model';
 import { WeekDay } from 'src/app/models/weekDay.models';
@@ -14,16 +15,22 @@ export class SearchResultsComponent implements OnInit {
  //   { id: 11, name: 'Dr Nice' },
  // ];
 today:number;
+searchCode:number;
+datalist :Array<Result_Dictionary>;
 userslist : any = [];
 schedlst :any=[];
 schdl :WeekDay = new WeekDay();
 actulst : any =[];
+passlist :any=[];
  resultList:Array<Result_Dictionary>;
-  constructor(private userService:UserService,private searchesService:SearchesService) { }
+  constructor(private userService:UserService,private searchesService:SearchesService,private router: Router) { }
   //selectedHero?: Hero;
   ngOnInit(): void {
    this.today = new Date().getDay();
-    this.resultList = history.state.data;
+    this.datalist = history.state.data;
+    this.searchCode = this.datalist[this.datalist.length-1].PSpot.Code;
+    this.datalist.pop();
+    this.resultList = this.datalist;
     console.log(this.resultList);
  this.userService.GetAllUsers().subscribe(list=>
       {       
@@ -38,6 +45,7 @@ actulst : any =[];
                   this.searchesService.GetSchedule(this.resultList[j].PSpot.DaysSchedule).subscribe(schedule=>
                   {   this.schdl= schedule;
                       this.schedlst.push(this.schdl);
+
                   });
                 }               
               }             
@@ -104,12 +112,15 @@ actulst : any =[];
   }
   selectResult(i:number)
   {
-    this.searchesService.SelectResult(this.resultList[i].PSpot.Code,+sessionStorage.getItem('imidsearch')).subscribe(result=>
+    this.searchesService.SelectResult(this.resultList[i].PSpot.Code,this.searchCode).subscribe(result=>
       { 
          console.log(result);
         if(result==1)
         {
           console.log("cheeeers!");
+          this.passlist = [{spot: this.resultList[i].PSpot, searchCode:this.searchCode}];
+          this.router.navigate(['/ConfirmIResultMsg'], {state: {data:  this.passlist}});
+
         }
         else{
           console.log("error in sending email");         
