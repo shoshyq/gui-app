@@ -19,37 +19,37 @@
  <div>Free hours:</div>
   <div *ngIf="schedulelst[i].SundayHours!=null">
       <div>Sunday:</div>
-    <div *ngFor="let hours of schedlst[i].SundayHours;">
+    <div *ngFor="let hours of schedulelst[i].SundayHours;">
       <div >{{hours.StartHour}} - {{hours.EndHour}}</div>
     </div>
   </div>
   <div *ngIf="schedulelst[i].MondayHours!=null">
     <div>Monday:</div>
-    <div *ngFor="let hours of schedlst[i].MondayHours;">
+    <div *ngFor="let hours of schedulelst[i].MondayHours;">
       <div >{{hours.StartHour}} - {{hours.EndHour}}</div>
   </div>
 </div>
 <div *ngIf="schedulelst[i].TuesdayHours!=null">
     <div>Tuesday:</div>
-  <div *ngFor="let hours of schedlst[i].TuesdayHours;">
+  <div *ngFor="let hours of schedulelst[i].TuesdayHours;">
     <div >{{hours.StartHour}} - {{hours.EndHour}}</div>
   </div>
 </div>
 <div *ngIf="schedulelst[i].WednesdayHours!=null">
     <div>Wednesday:</div>
-  <div *ngFor="let hours of schedlst[i].WednesdayHours;">
+  <div *ngFor="let hours of schedulelst[i].WednesdayHours;">
     <div >{{hours.StartHour}} - {{hours.EndHour}}</div>
   </div>
 </div>
 <div *ngIf="schedulelst[i].ThursdayHours!=null">
     <div>Thursday:</div>
-  <div *ngFor="let hours of schedlst[i].ThursdayHours;">
+  <div *ngFor="let hours of schedulelst[i].ThursdayHours;">
     <div >{{hours.StartHour}} - {{hours.EndHour}}</div>
   </div>
 </div>
 <div *ngIf="schedulelst[i].FridayHours!=null">
     <div>Friday:</div>
-  <div *ngFor="let hours of schedlst[i].FridayHours;">
+  <div *ngFor="let hours of schedulelst[i].FridayHours;">
     <div >{{hours.StartHour}} - {{hours.EndHour}}</div>
   </div>
 </div>
