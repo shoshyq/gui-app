@@ -1,56 +1,54 @@
- <!--<h1 style="color:#3f51b5;">Log In</h1>-->
- 
+<!--<h1 style="color:#3f51b5;">Log In</h1>-->
+
 <div class="classA">
-  <div>
-      <img src="assets/images/logo.png"  />
-      <!--<h1>ParkMark</h1>-->
-  </div>
+    <header></header>
 
-  <div class="wrapdiv">
+    <div class="wrapdiv">
 
-      <form novalidate (submit)="enter(frm)" #frm="ngForm" class="classB">
-          <mat-error *ngIf="passwordValidate" class="classC" style="display: none;">
-              The password is wrong
-          </mat-error>
-          <mat-error *ngIf="usernameValidate" class="classC">
-              The username is wrong
-          </mat-error>
-          <div>
-              <mat-form-field appearance="fill" class="classD">
-                  <label required="" tester="" class="InputText">
-                      <input spellcheck="false" attr="" name="" type="text" oninput="foo(this)">
-                      <span span-before="" span-after="">User name</span>
-                  </label>
-                  <!--<mat-label>User name</mat-label>
+        <form novalidate (submit)="enter(frm)" #frm="ngForm" class="classB">
+            <mat-error *ngIf="passwordValidate" class="classC" style="display: none;">
+                The password is wrong
+            </mat-error>
+            <mat-error *ngIf="usernameValidate" class="classC">
+                The username is wrong
+            </mat-error>
+            <div>
+                <mat-form-field appearance="fill" class="classD">
+                    <label required="" tester="" class="InputText">
+                        <input spellcheck="false" attr="" name="" type="text" oninput="foo(this)">
+                        <span span-before="" span-after="">User name</span>
+                    </label>
+                    <!--<mat-label>User name</mat-label>
                   <input value="" placeholder="username" name="username" [(ngModel)]="newUser.username" type="text" #username="ngModel" required minlength="5" maxlength="20">-->
-              </mat-form-field>
-          </div>
-          <div>
-              <mat-form-field appearance="fill" class="classD">
-                  <label required="" tester="" class="InputText">
-                      <input spellcheck="false" attr="" name="" type="password" oninput="foo(this)">
-                      <span span-before="" span-after="">Password</span>
-                  </label>
-                  <!--<mat-label>Password</mat-label>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill" class="classD">
+                    <label required="" tester="" class="InputText">
+                        <input spellcheck="false" attr="" name="" type="password" oninput="foo(this)">
+                        <span span-before="" span-after="">Password</span>
+                    </label>
+                    <!--<mat-label>Password</mat-label>
                   <input placeholder="password" name="userpassword" [(ngModel)]="newUser.userpassword" type="password" #userpassword="ngModel" required minlength="5" maxlength="12">-->
-              </mat-form-field>
-          </div>
-          <div class="btnfrm">
-              <button color="primary" class="submit" type="submit" [disabled]="!frm.valid" class="btnOK" selected>Log In</button>
-          </div>
-      </form>
-  </div>
-  <div>
-      <span>Forgot your password?</span>
-  </div>
-  <div>
-      <label>Don't have an account? <span>Create one!</span></label>
-  </div>
+                </mat-form-field>
+            </div>
+            <div class="btnfrm">
+                <button color="primary" class="submit" type="submit" [disabled]="!frm.valid" class="btnOK" selected>Log
+                    In</button>
+            </div>
+        </form>
+    </div>
+    <div>
+        <span>Forgot your password?</span>
+    </div>
+    <div>
+        <label>Don't have an account? <span>Create one!</span></label>
+    </div>
 
 
 </div>
 
-      <!-- <body class="gradient">
+<!-- <body class="gradient">
   <div class="frm" id=frm>
         <div class="input">
           <div class="example-full-width">
@@ -75,4 +73,3 @@
   </div>
   </body>!
  -->
-
