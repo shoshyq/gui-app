@@ -1,18 +1,23 @@
 import { Component, Input, OnInit  } from '@angular/core';
 import { Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/
+
 
 @Component({
   selector: 'header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
-
 })
 export class HeaderComponent implements OnInit {
-  @Input() bigger?: boolean = false;
 
   disableMb=false; 
   selectedData:any;
   constructor(private router: Router) { 
+  @Input() bigger?: boolean = false;
+
+  constructor() { }
+
+  ngOnInit(): void {
   }
 ngOnInit()
 {
@@ -39,3 +44,4 @@ openLogIn(){
 
 
 
+}
