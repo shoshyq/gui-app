@@ -1,6 +1,5 @@
 import { Component, Input, OnInit  } from '@angular/core';
 import { Router } from '@angular/router';
-import { Component, Input, OnInit } from '@angular/
 
 
 @Component({
@@ -9,20 +8,15 @@ import { Component, Input, OnInit } from '@angular/
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  @Input() bigger?: boolean = false;
 
   enable=true; 
   selectedData:any;
-  constructor(private router: Router) { 
-  @Input() bigger?: boolean = false;
-
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
-ngOnInit()
-{
 
-}
  login(){
   this.enable=false;
 
@@ -48,4 +42,4 @@ openLogIn(){
 
 
 
-}
+
