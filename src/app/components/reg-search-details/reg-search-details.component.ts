@@ -22,11 +22,15 @@ export class RegSearchDetailsComponent implements OnInit {
   constructor(private spotService:ParkingSpotService, private searchesService:SearchesService) { }
 
   ngOnInit(): void {
+    this.doesnthave = true;
     this.searchesService.GetRegSearchesResults(+sessionStorage.getItem('ucode')).subscribe(lst =>{
      
       this.resultslist = lst;
+      console.log(this.resultslist);
+      this.checkifIs();
+      
       if((this.resultslist!=[])&&(this.resultslist!=null))
-          this.doesnthave = false;
+          this.doesnthave = true;
       for(let i=0; i<this.resultslist.length; i++){
 
         this.searchesService.GetSearch(this.resultslist[i].SearchCode).subscribe(search=>
@@ -48,7 +52,7 @@ export class RegSearchDetailsComponent implements OnInit {
   }
   checkifIs()
   {
-    if((this.resultslist==null)||(this.resultslist==[]))
+    if((this.resultslist==null)||(this.resultslist==[])||(this.resultslist==undefined))
       {
         this.doesnthave=true;
         return false;
