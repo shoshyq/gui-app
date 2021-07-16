@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   @Input() bigger?: boolean = false;
 
-  disableMb=false; 
+  enable=true; 
   selectedData:any;
   constructor(private router: Router) { 
   }
@@ -19,17 +19,21 @@ ngOnInit()
 
 }
  login(){
+  this.enable=false;
+
   this.router.navigate(['/Home']);
-  sessionStorage.setItem('disableMb','true')
-  this.disableMb = (sessionStorage.getItem('disableMb') ==='true');
+  //sessionStorage.setItem('disableMb','true')
+ // this.disableMb = (sessionStorage.getItem('disableMb') ==='true');
 
  }
  signup(){
   //sessionStorage.setItem('disable','false')
-        this.router.navigate(['/SignUp']);
-        sessionStorage.setItem('disableMb','true')
-        this.disableMb = (sessionStorage.getItem('disableMb') ==='true');
-       // this.disable=(sessionStorage.getItem('disable') ==='true');
+  this.enable=false;
+      
+  this.router.navigate(['/SignUp']);
+        // sessionStorage.setItem('disableMb','true')
+      // this.enable = (sessionStorage.getItem('disableMb') ==='true');
+        //this.disable=(sessionStorage.getItem('disable') ==='true');
 }
 openLogIn(){
   
