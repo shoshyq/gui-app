@@ -13,3 +13,41 @@
     height: 500px;
     width: 100%;
   }
+
+button {
+  color: #3373b3;
+  font-size: 17px;
+  font-family: assistant;
+}
+
+.wrap-top-buttons > button {
+  margin-inline: 4px;
+  margin-bottom: 12px;
+}
+
+button span {
+    margin-right: 7px;
+}
+
+button.mat-button-disabled {
+    background-color: #8fbbe2 !important;
+    color: #ffffff !important;
+    font-weight: 400;
+}
+
+.wrap-top-buttons {
+  width: fit-content;
+  margin: auto;
+}
+
+.wrap-bottom-buttons {
+  width: fit-content;
+  margin: auto;
+  display: grid;
+  padding-block: 10px 35px;
+}
+
+.wrap-bottom-buttons > button {
+  margin-top: 15px;
+  border: solid 1px #3373b38f;
+}

@@ -11,3 +11,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     font-family: assistant;
     src: url(assets/fonts/Assistant-Regular.ttf) format("opentype");
   }
+
+.mat-list-item-content {
+    display: none;
+    padding: 0 !important;
+}

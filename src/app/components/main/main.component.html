@@ -1,31 +1,34 @@
-<div>
-  <img style="    max-width: 250px;
-  " src="assets/images/logo.png"  />
-  <!--<h1>ParkMark</h1>-->
-</div>
-<button (click)="imidSearch()">quick search</button><button (click)="advancedSearch()">advanced search</button>
-<div class="map" height="500px">
+<div class="wrap-main">
+  <header></header>
+  <div class="wrap-top-buttons">
+    <button mat-flat-button (click)="imidSearch()">
+      <span>quick search</span>
+      <mat-icon>search</mat-icon>
+    </button>
+    <button mat-flat-button (click)="advancedSearch()">
+      <span>advanced search</span>
+      <mat-icon>flash_on</mat-icon>
+    </button>
+  </div>
+  <div class="map" height="500px">
 
-  <div #mapContainer id="map"></div><!--<google-map (centerChanged)="(center_changed())" height="350px"
-width="100%"
-[zoom]="zoom"
-[center]="center"
-[options]="options">  
-<map-marker
-#markerElem
-*ngFor="let marker of markers; index as i"
-[position]="marker.position"
-[label]="marker.label"
-[title]="marker.title"
-[options]="marker.options"
+    <div #mapContainer id="map"></div>
+    <!-- <google-map (centerChanged)="(center_changed())" height="350px" width="100%" [zoom]="zoom" [center]="center"
+      [options]="options">
+      <map-marker #markerElem *ngFor="let marker of markers; index as i" [position]="marker.position" [label]="marker.label"
+        [title]="marker.title" [options]="marker.options">
+      </map-marker>
+    </google-map> -->
 
->
-
- </map-marker>
- 
-</google-map>
--->
-</div>
-<div style="align-items: center; text-align: center;">
-  <button (click)="trackMe()">Show my location</button><button (click)="dashboard()">My account</button>
+  </div>
+  <div class="wrap-bottom-buttons">
+    <button mat-flat-button (click)="trackMe()">
+      <span>Show my location</span>
+      <mat-icon>location_on</mat-icon>
+    </button>
+    <button mat-flat-button (click)="dashboard()">
+      <span>My account</span>
+      <mat-icon>account_circle</mat-icon>
+    </button>
+  </div>
 </div>
