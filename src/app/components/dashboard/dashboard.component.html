@@ -1,37 +1,52 @@
-<div><button>main</button>
-    <h4>ParkMark</h4>
-</div>
-<!-- <div> <img src="assets/images/UserIcon.png" />
+<div class="wrap-dashboard">
+    <header></header>
+    <!-- <button mat-flat-button>main</button> -->
+    <!-- <div> <img src="assets/images/UserIcon.png" />
     <h3>{{newUser.Username}}</h3>
     <button (click)="updateUserDetails()">update</button>
     <button (click)="deleteUserDetails()">delete</button>
 </div> -->
-<div class="wrap-user-details">
-    <div class="wrap-top">
-        <mat-icon>account_circle</mat-icon>
-        <p>{{newUser.Username}}</p>
+    <div class="wrap-user-details">
+        <div class="wrap-top">
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+            <div class="right-part">
+                <mat-icon>account_circle</mat-icon>
+                <p>{{newUser.Username}}</p>
+            </div>
+        </div>
+
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="updateUserDetails()">
+              <mat-icon>edit</mat-icon>
+              <span>Update</span>
+            </button>
+            <button mat-menu-item (click)="deleteUserDetails()">
+              <mat-icon>delete</mat-icon>
+              <span>Delete</span>
+            </button>
+          </mat-menu>
+
+        <div class="wrap-details">
+            <span><strong>Email: </strong>{{newUser.UserEmail}}</span>
+            <span *ngIf="phone===true"><strong>Phone: </strong>{{newUser.UserPhoneNumber}}</span>
+        </div>
     </div>
-    <div class="wrap-details">
-        <span><strong>Email: </strong>{{newUser.UserEmail}}</span>
-        <span *ngIf="phone===true"><strong>Phone: </strong>{{newUser.UserPhoneNumber}}</span>
-    </div>
-    <div class="wrap-buttons">
-        <button mat-flat-button>
-            <span>update</span>
-            <mat-icon>edit</mat-icon>
-        </button>
-        <button mat-flat-button>
-            <span>delete</span>
-            <mat-icon>delete</mat-icon>
-        </button>
-    </div>
-</div>
-<!-- <div>Email: <span>{{newUser.UserEmail}}</span></div>
+    <!-- <div>Email: <span>{{newUser.UserEmail}}</span></div>
 <div *ngIf="phone===true">Phone: <span>{{newUser.UserPhoneNumber}}</span></div> -->
-<div>Payment details <img src="assets/images/CreditCardIcon.png"></div>
-<div>My parking spot <img src="assets/images/CarIcon.png"></div>
-<div><button (click)="regSearchResults()">Regularly renting parking spot search results</button></div>
-<div><button (click)="feedbacks()">My feedbacks</button><button (click)="imidSearch()">Add quick search</button></div>
-<div>my searches</div>
-<app-feedback-details *ngIf="disable==true"></app-feedback-details>
-<button>add parking spot</button>
+    <div class="wrap-content">
+        <p>Payment details</p>
+        <p>My parking spot</p>
+        <img src="assets/images/CreditCardIcon.png">
+        <img src="assets/images/CarIcon.png">
+        <span (click)="regSearchResults()">Regularly renting parking spot search results</span>
+    </div>
+
+    <button mat-flat-button (click)="feedbacks()">My feedbacks</button>
+    <button mat-flat-button (click)="imidSearch()">Add quick search</button>
+
+    <div>my searches</div>
+    <app-feedback-details *ngIf="disable==true"></app-feedback-details>
+    <button>add parking spot</button>
+</div>
