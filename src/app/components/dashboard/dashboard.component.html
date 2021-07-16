@@ -1,15 +1,37 @@
-<div><button>main</button><h4>ParkMark</h4></div>
-<div>      <img src="assets/images/UserIcon.png"  />
+<div><button>main</button>
+    <h4>ParkMark</h4>
+</div>
+<!-- <div> <img src="assets/images/UserIcon.png" />
     <h3>{{newUser.Username}}</h3>
     <button (click)="updateUserDetails()">update</button>
     <button (click)="deleteUserDetails()">delete</button>
+</div> -->
+<div class="wrap-user-details">
+    <div class="wrap-top">
+        <mat-icon>account_circle</mat-icon>
+        <p>{{newUser.Username}}</p>
+    </div>
+    <div class="wrap-details">
+        <span><strong>Email: </strong>{{newUser.UserEmail}}</span>
+        <span *ngIf="phone===true"><strong>Phone: </strong>{{newUser.UserPhoneNumber}}</span>
+    </div>
+    <div class="wrap-buttons">
+        <button mat-flat-button>
+            <span>update</span>
+            <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-flat-button>
+            <span>delete</span>
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
 </div>
-<div>Email: <span>{{newUser.UserEmail}}</span></div>
-<div *ngIf="phone===true">Phone: <span>{{newUser.UserPhoneNumber}}</span></div>
-<div>Payment details <img src="assets/images/CreditCardIcon.png" ></div>
+<!-- <div>Email: <span>{{newUser.UserEmail}}</span></div>
+<div *ngIf="phone===true">Phone: <span>{{newUser.UserPhoneNumber}}</span></div> -->
+<div>Payment details <img src="assets/images/CreditCardIcon.png"></div>
 <div>My parking spot <img src="assets/images/CarIcon.png"></div>
 <div><button (click)="regSearchResults()">Regularly renting parking spot search results</button></div>
-<div><button (click)="feedbacks()" >My feedbacks</button><button (click)="imidSearch()">Add quick search</button></div>
+<div><button (click)="feedbacks()">My feedbacks</button><button (click)="imidSearch()">Add quick search</button></div>
 <div>my searches</div>
 <app-feedback-details *ngIf="disable==true"></app-feedback-details>
 <button>add parking spot</button>

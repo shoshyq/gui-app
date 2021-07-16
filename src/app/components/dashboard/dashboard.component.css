@@ -1,0 +1,39 @@
+.wrap-user-details {
+    border: solid 1px #d8d8d8;
+    padding: 8px;
+    border-radius: 4px;
+    margin-inline: 20px;
+    display: grid;
+    grid-row-gap: 7px;
+}
+
+.wrap-top {
+    display: grid;
+    grid-template-columns: fit-content(50%) auto;
+    grid-column-gap: 10px;
+    align-items: end;
+}
+
+.wrap-top > mat-icon {
+    font-size: 42px;
+    height: fit-content;
+    width: fit-content;
+}
+
+.wrap-details {
+    display: grid;
+    grid-row-gap: 4px;
+    padding-inline: 52px;
+}
+
+.wrap-buttons {
+    text-align: right;
+}
+
+.wrap-buttons > button {
+    color: #3373b3;
+}
+
+.wrap-buttons > button mat-icon {
+    margin-left: 6px;
+}
