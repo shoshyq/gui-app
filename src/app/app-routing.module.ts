@@ -19,6 +19,7 @@ import {AddScheduleComponent} from './components/add-schedule/add-schedule.compo
 import { SearchAddedMsgComponent } from './components/search-added-msg/search-added-msg.component';
 import { ImidSearchResultsComponent } from './components/imid-search-results/imid-search-results.component';
 import { RegSearchDetailsComponent } from './components/reg-search-details/reg-search-details.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
 
 const routes: Routes = [
   { path: 'LogIn', component:  LogInComponent},
@@ -35,7 +36,7 @@ const routes: Routes = [
   { path: 'AddPaymentDetails', component: AddPaymentDetailsComponent },
   { path: 'ConfirmIResultMsg', component: ImidSearchResultsComponent },
   { path: 'UserRegSearchDetails', component: RegSearchDetailsComponent },
-
+  { path: '', component: HomePageComponent},
   { path: 'UpdateUserDetails', component: UpdateUserDetailsComponent },
  
   { path: 'AddRegularSearch/:ucode', component: AddRegularSearchComponent,pathMatch:'full',children: [ 

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit  } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'header',
@@ -9,12 +10,32 @@ import { Component, Input, OnInit  } from '@angular/core';
 export class HeaderComponent implements OnInit {
   @Input() bigger?: boolean = false;
 
-
-  constructor() { }
-
-  ngOnInit(): void {
+  disableMb=false; 
+  selectedData:any;
+  constructor(private router: Router) { 
   }
+ngOnInit()
+{
 
-}    
+}
+ login(){
+  this.router.navigate(['/Home']);
+  sessionStorage.setItem('disableMb','true')
+  this.disableMb = (sessionStorage.getItem('disableMb') ==='true');
+
+ }
+ signup(){
+  //sessionStorage.setItem('disable','false')
+        this.router.navigate(['/SignUp']);
+        sessionStorage.setItem('disableMb','true')
+        this.disableMb = (sessionStorage.getItem('disableMb') ==='true');
+       // this.disable=(sessionStorage.getItem('disable') ==='true');
+}
+openLogIn(){
+  
+}
+}
+
+
 
 

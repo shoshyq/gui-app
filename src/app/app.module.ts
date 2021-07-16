@@ -56,6 +56,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { SearchesService } from './services/searches.service';
 import { ImidSearchResultsComponent } from './components/imid-search-results/imid-search-results.component';
 import { RegSearchDetailsComponent } from './components/reg-search-details/reg-search-details.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
 
 
 @NgModule({
@@ -84,7 +85,8 @@ import { RegSearchDetailsComponent } from './components/reg-search-details/reg-s
      MapComponent,
      HeaderComponent,
      ImidSearchResultsComponent,
-     RegSearchDetailsComponent
+     RegSearchDetailsComponent,
+     HomePageComponent
      
   ],
   imports: [
