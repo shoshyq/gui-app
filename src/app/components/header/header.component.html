@@ -2,7 +2,7 @@
     <div class="wrap-header" [class.bigger]="bigger">
         <img src="assets/images/logo.png">
     </div>
-    <div class="wrap-buttons" *ngIf="disableMb===false">
+    <div class="wrap-buttons" *ngIf="isButtonActive && disableMb===false">
         <button mat-icon-button><mat-icon>menu</mat-icon></button>
         <button mat-flat-button (click)="signup()">
             <span>Sign up</span>

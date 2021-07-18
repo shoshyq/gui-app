@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit {
   disableMb = false;
   selectedData: any;
   @Input() bigger?: boolean = false;
+  @Input() isButtonActive?: boolean = true;
   constructor(private router: Router) { }
 
   ngOnInit(): void {
