@@ -14,7 +14,6 @@
             <div class="selected-day">
               <p>{{dropdownList[day-1].item_text}}</p>
             </div>
-            <span style="font-size: small; color: red;">please choose time in quarter hours</span>
             <div class="wrap-range">
               <input matInput #st type="time" step="900"><span> - </span> <input matInput #en type="time" step="900">
               <button mat-icon-button (click)="addhours(day,st.value,en.value)">

@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+
 import { LogInMessageComponent } from '../log-in-message/log-in-message.component';
-// import { Component, Input, OnInit } from '@angular/
 
 
 @Component({
@@ -11,6 +11,36 @@ import { LogInMessageComponent } from '../log-in-message/log-in-message.componen
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  @Input() bigger?: boolean = false;
+
+  enable=true; 
+  selectedData:any;
+  constructor(private router: Router) { }
+
+  ngOnInit(): void {
+  }
+
+ login(){
+  this.enable=false;
+
+  this.router.navigate(['/Home']);
+  //sessionStorage.setItem('disableMb','true')
+ // this.disableMb = (sessionStorage.getItem('disableMb') ==='true');
+
+ }
+ signup(){
+  //sessionStorage.setItem('disable','false')
+  this.enable=false;
+      
+  this.router.navigate(['/SignUp']);
+        // sessionStorage.setItem('disableMb','true')
+      // this.enable = (sessionStorage.getItem('disableMb') ==='true');
+        //this.disable=(sessionStorage.getItem('disable') ==='true');
+}
+openLogIn(){
+  
+}
+}
 
   disableMb = false;
   selectedData: any;
@@ -20,10 +50,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  // ngOnInit()
-  // {
 
-  // }
   login() {
     this.router.navigate(['/Home']);
     sessionStorage.setItem('disableMb', 'true')
@@ -40,6 +67,7 @@ export class HeaderComponent implements OnInit {
   openLogIn() {
 
   }
+
 
   openMainPage() {
     let ucode = sessionStorage.getItem('ucode');
