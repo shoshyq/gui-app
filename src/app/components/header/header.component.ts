@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { LogInMessageComponent } from '../log-in-message/log-in-message.component';
 // import { Component, Input, OnInit } from '@angular/
 
 
@@ -14,7 +16,7 @@ export class HeaderComponent implements OnInit {
   selectedData: any;
   @Input() bigger?: boolean = false;
   @Input() isButtonActive?: boolean = true;
-  constructor(private router: Router) { }
+  constructor(private router: Router, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
@@ -37,5 +39,20 @@ export class HeaderComponent implements OnInit {
   }
   openLogIn() {
 
+  }
+
+  openMainPage() {
+    let ucode = sessionStorage.getItem('ucode');
+    if (ucode != null && ucode != undefined) {
+      this.router.navigate(['/Main', sessionStorage.getItem('ucode')]);
+    }
+    else {
+      this.openSnackBar();
+    }
+  }
+  openSnackBar() {
+    this._snackBar.openFromComponent(LogInMessageComponent, {
+      duration: 2000,
+    });
   }
 }

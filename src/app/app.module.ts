@@ -59,6 +59,7 @@ import { RegSearchDetailsComponent } from './components/reg-search-details/reg-s
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { LogInMessageComponent } from './components/log-in-message/log-in-message.component';
 
 
 
@@ -89,7 +90,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
      HeaderComponent,
      ImidSearchResultsComponent,
      RegSearchDetailsComponent,
-     HomePageComponent
+     HomePageComponent,
+     LogInMessageComponent
      
   ],
   imports: [
