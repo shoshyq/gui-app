@@ -1,6 +1,77 @@
-.wrapdiv{
-    padding: 1% 4%;
-    display: block;
-    margin: 5% 15%;
-    text-align: center;
-  }
+.wrap-add-imid-search {
+  text-align: center;
+  display: grid;
+}
+
+mat-form-field {
+  margin-inline: auto;
+  padding-bottom: 5px;
+  font-family: assistant;
+  width: 220px;
+}
+
+.wrap-checkboxes, mat-radio-group {
+  display: grid;
+  text-align: left;
+  margin: 5px auto 15px;
+  width: 220px;
+  grid-row-gap: 7px;
+}
+
+.wrap-prices > p {
+  width: 220px;
+  margin: 20px auto 0;
+  text-align: left;
+}
+
+.wrap-range {
+  display: grid;
+  grid-template-columns: 80px 5px 80px 25px;
+    grid-column-gap: 10px;
+    align-items: baseline;
+    width: 220px;
+    margin-inline: auto;
+}
+
+.wrap-range mat-form-field {
+  width: 80px;
+}
+
+.wrap-hours-range > input[type=time] {
+  height: 26px;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: assistant;
+  padding: 2px;
+  border-radius: 4px;
+  border: solid 1px #8fbbe273;
+}
+
+.wrap-hours-range {
+  display: grid;
+  grid-template-columns: 42% 16% 42%;
+  align-items: center;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.wrap-hours-section {
+  width: 220px;
+  margin-inline: auto;
+}
+
+button.btnOK {
+  margin: auto;
+    width: 250px;
+    margin-block: 25px;
+    background-color: #3373b3;
+    color: #ffffff;
+    font-size: 17px;
+    font-family: assistant;
+}
+
+button.mat-button-disabled {
+  background-color: #8fbbe2 !important;
+  color: #ffffff !important;
+  font-weight: 400;
+}

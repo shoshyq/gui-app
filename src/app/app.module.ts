@@ -60,6 +60,7 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { LogInMessageComponent } from './components/log-in-message/log-in-message.component';
+import { CustomTitleComponent } from './components/custom-title/custom-title.component';
 
 
 
@@ -91,7 +92,8 @@ import { LogInMessageComponent } from './components/log-in-message/log-in-messag
      ImidSearchResultsComponent,
      RegSearchDetailsComponent,
      HomePageComponent,
-     LogInMessageComponent
+     LogInMessageComponent,
+     CustomTitleComponent
      
   ],
   imports: [
