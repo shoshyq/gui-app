@@ -1,16 +1,18 @@
 <div class="wrap-header" [class.bigger]="bigger">
     <img src="assets/images/logo.png">
 </div>
-<div *ngIf="enable===true">
-    
-    <button (click)="signup()">Sign up</button>
-     <button (click)="login()">Log in</button>
+<!-- <div *ngIf="enable===true"> -->
+
+<!-- <button (click)="signup()">Sign up</button>
+    <button (click)="login()">Log in</button> -->
 <div class="wrap-section">
     <div class="wrap-header" [class.bigger]="bigger">
         <img src="assets/images/logo.png">
     </div>
-    <div class="wrap-buttons" *ngIf="isButtonActive && disableMb===false">
-        <button mat-icon-button (click)="openMainPage()"><mat-icon>menu</mat-icon></button>
+    <div class="wrap-buttons" *ngIf="isButtonActive && enable===true">
+        <button mat-icon-button (click)="openMainPage()">
+            <mat-icon>menu</mat-icon>
+        </button>
         <button mat-flat-button (click)="signup()">
             <span>Sign up</span>
             <mat-icon>app_registration</mat-icon>
@@ -20,4 +22,4 @@
             <mat-icon>login</mat-icon>
         </button>
     </div>
-</div>
+    <!-- </div> -->

@@ -12,57 +12,31 @@ import { LogInMessageComponent } from '../log-in-message/log-in-message.componen
 })
 export class HeaderComponent implements OnInit {
   @Input() bigger?: boolean = false;
-
-  enable=true; 
-  selectedData:any;
-  constructor(private router: Router) { }
-
-  ngOnInit(): void {
-  }
-
- login(){
-  this.enable=false;
-
-  this.router.navigate(['/Home']);
-  //sessionStorage.setItem('disableMb','true')
- // this.disableMb = (sessionStorage.getItem('disableMb') ==='true');
-
- }
- signup(){
-  //sessionStorage.setItem('disable','false')
-  this.enable=false;
-      
-  this.router.navigate(['/SignUp']);
-        // sessionStorage.setItem('disableMb','true')
-      // this.enable = (sessionStorage.getItem('disableMb') ==='true');
-        //this.disable=(sessionStorage.getItem('disable') ==='true');
-}
-openLogIn(){
-  
-}
-}
-
-  disableMb = false;
-  selectedData: any;
-  @Input() bigger?: boolean = false;
   @Input() isButtonActive?: boolean = true;
+
+  enable = true;
+  selectedData: any;
   constructor(private router: Router, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
 
   login() {
+    this.enable = false;
+
     this.router.navigate(['/Home']);
-    sessionStorage.setItem('disableMb', 'true')
-    this.disableMb = (sessionStorage.getItem('disableMb') === 'true');
+    //sessionStorage.setItem('disableMb','true')
+    // this.disableMb = (sessionStorage.getItem('disableMb') ==='true');
 
   }
   signup() {
     //sessionStorage.setItem('disable','false')
+    this.enable = false;
+
     this.router.navigate(['/SignUp']);
-    sessionStorage.setItem('disableMb', 'true')
-    this.disableMb = (sessionStorage.getItem('disableMb') === 'true');
-    // this.disable=(sessionStorage.getItem('disable') ==='true');
+    // sessionStorage.setItem('disableMb','true')
+    // this.enable = (sessionStorage.getItem('disableMb') ==='true');
+    //this.disable=(sessionStorage.getItem('disable') ==='true');
   }
   openLogIn() {
 
