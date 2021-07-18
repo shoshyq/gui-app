@@ -61,6 +61,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { LogInMessageComponent } from './components/log-in-message/log-in-message.component';
 import { CustomTitleComponent } from './components/custom-title/custom-title.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 
 
@@ -93,7 +94,8 @@ import { CustomTitleComponent } from './components/custom-title/custom-title.com
      RegSearchDetailsComponent,
      HomePageComponent,
      LogInMessageComponent,
-     CustomTitleComponent
+     CustomTitleComponent,
+     NotFoundComponent
      
   ],
   imports: [

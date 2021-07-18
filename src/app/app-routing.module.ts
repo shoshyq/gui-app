@@ -20,6 +20,7 @@ import { SearchAddedMsgComponent } from './components/search-added-msg/search-ad
 import { ImidSearchResultsComponent } from './components/imid-search-results/imid-search-results.component';
 import { RegSearchDetailsComponent } from './components/reg-search-details/reg-search-details.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
   { path: 'LogIn', component:  LogInComponent},
@@ -42,7 +43,8 @@ const routes: Routes = [
   { path: 'AddRegularSearch/:ucode', component: AddRegularSearchComponent,pathMatch:'full',children: [ 
     { path: 'AddSchedule', component:  AddScheduleComponent} ]},
   { path: 'UpdateRegularSearch', component: UpdateRegularSearchComponent },
-  { path: 'AddedRSearch', component: SearchAddedMsgComponent }
+  { path: 'AddedRSearch', component: SearchAddedMsgComponent },
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
