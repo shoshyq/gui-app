@@ -1,6 +1,7 @@
 .wrap-title {
     font-family: 'assistant';
     margin-block: 25px 15px;
+    text-align: center;
 }
 
 .wrap-title > p {
