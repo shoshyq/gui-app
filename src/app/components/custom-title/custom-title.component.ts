@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CustomTitleComponent implements OnInit {
 
   @Input() text?: string = "";
+  @Input() subTitle?: string = "";
 
   constructor() { }
 

@@ -1,6 +1,13 @@
-p {
-    font-size: 19px;
+.wrap-title {
     font-family: 'assistant';
     margin-block: 25px 15px;
+}
+
+.wrap-title > p {
+    font-size: 19px;
     color: #3373b3;
+}
+
+.wrap-title > span {
+    font-size: 15px;
 }
