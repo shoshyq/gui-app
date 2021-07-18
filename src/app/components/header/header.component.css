@@ -3,7 +3,6 @@
     background-color: #8fbbe13d;
     align-items: center;
     display: grid;
-    margin-bottom: 25px;
 }
 
 .wrap-header img {
@@ -19,4 +18,25 @@
 .wrap-header.bigger img {
     width: 75%;
     max-width: 280px;
+}
+
+.wrap-section {
+    margin-bottom: 25px;
+}
+
+.wrap-buttons {
+    text-align: right;
+    padding: 7px 10px 0;
+    border-bottom: solid 1px #3373b333;
+    display: grid;
+    grid-template-columns: auto fit-content(50%) fit-content(50%);
+}
+
+.wrap-buttons > button {
+    color: #3373b3;
+    font-weight: 400;
+}
+
+.wrap-buttons > button:not(:first-of-type) mat-icon {
+    margin-left: 6px;
 }

@@ -1,0 +1,38 @@
+.wrap-home-page {
+    height: 100%;
+    text-align: center;
+}
+
+.top-part {
+    background-color: #8fbbe13d;
+    height: 30%;
+    display: grid;
+}
+
+.wrap-home-page img {
+    width: 60%;
+    max-width: 250px;
+    margin: auto auto 10px;
+}
+
+.wrap-home-page p {
+    font-family: assistant;
+    font-size: 17px;
+    margin-block: 35px 15px;
+    color: #3373b3;
+}
+
+.wrap-buttons > button {
+    color: #3373b3;
+    font-weight: 400;
+    border: solid 1px;
+    margin: 7px;
+}
+
+.triangle-left {
+    width: 0;
+    height: 0;
+    border-top: 0px solid transparent;
+    border-right: 364px solid #e4eff8;
+    border-bottom: 35px solid transparent;
+}
