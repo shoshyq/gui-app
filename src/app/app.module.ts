@@ -58,6 +58,7 @@ import { ImidSearchResultsComponent } from './components/imid-search-results/imi
 import { RegSearchDetailsComponent } from './components/reg-search-details/reg-search-details.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -114,6 +115,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatIconModule,
     MatCheckboxModule,
     MatMenuModule,
+    MatSnackBarModule,
   //  GooglePlaceModule,
     NgMultiSelectDropDownModule.forRoot()
   ],
