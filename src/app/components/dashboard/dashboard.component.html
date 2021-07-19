@@ -19,14 +19,14 @@
 
         <mat-menu #menu="matMenu">
             <button mat-menu-item (click)="updateUserDetails()">
-              <mat-icon>edit</mat-icon>
-              <span>Update</span>
+                <mat-icon>edit</mat-icon>
+                <span>Update</span>
             </button>
             <button mat-menu-item (click)="deleteUserDetails()">
-              <mat-icon>delete</mat-icon>
-              <span>Delete</span>
+                <mat-icon>delete</mat-icon>
+                <span>Delete</span>
             </button>
-          </mat-menu>
+        </mat-menu>
 
         <div class="wrap-details">
             <span><strong>Email: </strong>{{newUser.UserEmail}}</span>
@@ -35,18 +35,25 @@
     </div>
     <!-- <div>Email: <span>{{newUser.UserEmail}}</span></div>
 <div *ngIf="phone===true">Phone: <span>{{newUser.UserPhoneNumber}}</span></div> -->
-    <div class="wrap-content">
-        <p>Payment details</p>
+    <!-- <div class="wrap-content"> -->
+    <!-- <p>Payment details</p> -->
+    <!-- <img src="assets/images/CreditCardIcon.png"> -->
+    <!-- </div> -->
+    <div class="wrap-parking-details">
         <p>My parking spot</p>
-        <img src="assets/images/CreditCardIcon.png">
-        <img src="assets/images/CarIcon.png">
+        <img src="assets/images/blue-car.png">
+    </div>
+    <div class="wrap-buttons">
         <span (click)="regSearchResults()">Regularly renting parking spot search results</span>
+        <button mat-flat-button (click)="imidSearch()">
+            <span>Add quick search</span>
+            <mat-icon>flash_on</mat-icon>
+        </button>
     </div>
 
-    <button mat-flat-button (click)="feedbacks()">My feedbacks</button>
-    <button mat-flat-button (click)="imidSearch()">Add quick search</button>
+    <!-- <button mat-flat-button (click)="feedbacks()">My feedbacks</button> -->
 
-    <div>my searches</div>
+    <!-- <div>my searches</div>
     <app-feedback-details *ngIf="disable==true"></app-feedback-details>
-    <button>add parking spot</button>
+    <button>add parking spot</button> -->
 </div>
