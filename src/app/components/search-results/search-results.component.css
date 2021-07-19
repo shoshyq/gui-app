@@ -1,9 +1,9 @@
 
   .wrap-div{
-    display: block;
+    /* display: block; */
     text-align: center;
-    margin: auto;
-     max-width: 300px;
+    /* margin: auto;
+     max-width: 300px; */
   }
   heroes {
     margin: 0 0 2em 0;
