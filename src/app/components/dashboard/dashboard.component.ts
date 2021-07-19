@@ -9,56 +9,58 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class DashboardComponent implements OnInit {
 
-newUser:User=new User();
-phone=false;
-  disable=false;
-    constructor(private userService:UserService,private router: Router) { }
+  newUser: User = new User();
+  phone = false;
+  disable = false;
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
-    this.userService.GetUser(sessionStorage.getItem('ucode')).subscribe(user=>
-      {      
-        this.newUser=user; 
-        if(this.newUser.UserPhoneNumber!=null)  
-          if(this.newUser.UserPhoneNumber!="")
-            this.phone=true;
-       });
+    this.userService.GetUser(sessionStorage.getItem('ucode')).subscribe(user => {
+      this.newUser = user;
+      if (this.newUser.UserPhoneNumber != null)
+        if (this.newUser.UserPhoneNumber != "")
+          this.phone = true;
+    });
   }
-  imidSearch(){
-      this.router.navigate(['ImmidSearch/',sessionStorage.getItem('ucode')]); 
+  imidSearch() {
+    this.router.navigate(['ImmidSearch/', sessionStorage.getItem('ucode')]);
 
   }
-  addRegSearch(){
-    this.router.navigate(['AddRegularSearch/',sessionStorage.getItem('ucode')]); 
+  addRegSearch() {
+    this.router.navigate(['AddRegularSearch/', sessionStorage.getItem('ucode')]);
 
-}
-feedbacks(){
-  //this.router.navigate(['FeedbackDetails/']); 
-  this.disable=true
+  }
+  feedbacks() {
+    //this.router.navigate(['FeedbackDetails/']); 
+    this.disable = true
 
-}
-updateUserDetails(){
-  this.router.navigate(['UpdateUserDetails/']); 
+  }
+  updateUserDetails() {
+    this.router.navigate(['UpdateUserDetails/']);
 
-}
-deleteUserDetails(){
-  console.log("delete user?");
-  
-}
-regSearchResults(){
-  this.router.navigate(['UserRegSearchDetails/']); 
+  }
+  deleteUserDetails() {
+    console.log("delete user?");
 
-}
-updatePaymentDetails(){
-  this.router.navigate(['UpdatePaymentDetails/']); 
+  }
+  regSearchResults() {
+    this.router.navigate(['UserRegSearchDetails/']);
 
-}
-addPaymentDetails(){
-  this.router.navigate(['AddPaymentDetails/']); 
+  }
+  updatePaymentDetails() {
+    this.router.navigate(['UpdatePaymentDetails/']);
 
-}
-updateRegSearch(){
-  this.router.navigate(['UpdateRegularSearch/']); 
-  
-}
+  }
+  addPaymentDetails() {
+    this.router.navigate(['AddPaymentDetails/']);
+
+  }
+  updateRegSearch() {
+    this.router.navigate(['UpdateRegularSearch/']);
+
+  }
+  openParkingDetails() {
+    this.router.navigate(['ParkSpotDetails']);
+  }
 
 }
