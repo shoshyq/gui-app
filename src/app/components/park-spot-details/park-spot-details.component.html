@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div>You parking spot details:</div>
 <div>Address: {{pspot.FullAddress}}</div>
 <div *ngIf="(pspot.SpotWidth!=null)&&(pspot.SpotWidth!=0)">Width: {{pspot.SpotWidth}}</div>
@@ -10,38 +11,85 @@
     <div>Sunday:</div>
     <div *ngFor="let hours of schedule.SundayHours;">
       <div>{{hours.StartHour}} - {{hours.EndHour}}</div>
+=======
+<div class="wrap-park-spot-details">
+  <header [isButtonActive]="false"></header>
+  <custom-title text="Your parking spot details"></custom-title>
+  <div class="wrap-details">
+    <p>Address: <span>{{pspot.FullAddress}}</span></p>
+    <p>Width: <span>{{pspot.SpotWidth}}</span></p>
+    <p>Length: <span>{{pspot.SpotLength}}</span></p>
+    <p>Price: <span>{{pspot.SpotWidth}} /h</span></p>
+    <!--*ngIf=""-->
+    <span>Your parking spot has roof</span>
+    <p class="section-title">Schedule:</p>
+    <div class="wrap-day"><!-- *ngIf="schedule.SundayHours!=null"-->
+      <p>Sunday:</p>
+      <span><!-- *ngFor="let hours of schedule.SundayHours;"-->
+        16:15 - 17:20<!--{{hours.StartHour}} - {{hours.EndHour}}-->
+      </span>
+>>>>>>> 833460ce976c1f3539cd6a01a67bf73409e74b8c
     </div>
-  </div>
-  <div *ngIf="schedule.MondayHours!=null">
-    <div>Monday:</div>
-    <div *ngFor="let hours of schedule.MondayHours;">
-      <div>{{hours.StartHour}} - {{hours.EndHour}}</div>
+    <div class="wrap-day"><!-- *ngIf="schedule.SundayHours!=null"-->
+      <p>Monday:</p>
+      <span><!-- *ngFor="let hours of schedule.SundayHours;"-->
+        16:15 - 17:20<!--{{hours.StartHour}} - {{hours.EndHour}}-->
+      </span>
+      <span><!-- *ngFor="let hours of schedule.SundayHours;"-->
+        16:15 - 17:20<!--{{hours.StartHour}} - {{hours.EndHour}}-->
+      </span>
+      <span><!-- *ngFor="let hours of schedule.SundayHours;"-->
+        16:15 - 17:20<!--{{hours.StartHour}} - {{hours.EndHour}}-->
+      </span>
     </div>
-  </div>
-  <div *ngIf="schedule.TuesdayHours!=null">
-    <div>Tuesday:</div>
-    <div *ngFor="let hours of schedule.TuesdayHours;">
-      <div>{{hours.StartHour}} - {{hours.EndHour}}</div>
+    <div *ngIf="schedule.MondayHours!=null">
+      <div>Monday:</div>
+      <div *ngFor="let hours of schedule.MondayHours;">
+        <div>{{hours.StartHour}} - {{hours.EndHour}}</div>
+      </div>
     </div>
-  </div>
-  <div *ngIf="schedule.WednesdayHours!=null">
-    <div>Wednesday:</div>
-    <div *ngFor="let hours of schedule.WednesdayHours;">
-      <div>{{hours.StartHour}} - {{hours.EndHour}}</div>
+    <div *ngIf="schedule.TuesdayHours!=null">
+      <div>Tuesday:</div>
+      <div *ngFor="let hours of schedule.TuesdayHours;">
+        <div>{{hours.StartHour}} - {{hours.EndHour}}</div>
+      </div>
     </div>
-  </div>
-  <div *ngIf="schedule.ThursdayHours!=null">
-    <div>Thursday:</div>
-    <div *ngFor="let hours of schedule.ThursdayHours;">
-      <div>{{hours.StartHour}} - {{hours.EndHour}}</div>
+    <div *ngIf="schedule.WednesdayHours!=null">
+      <div>Wednesday:</div>
+      <div *ngFor="let hours of schedule.WednesdayHours;">
+        <div>{{hours.StartHour}} - {{hours.EndHour}}</div>
+      </div>
     </div>
-  </div>
-  <div *ngIf="schedule.FridayHours!=null">
-    <div>Friday:</div>
-    <div *ngFor="let hours of schedule.FridayHours;">
-      <div>{{hours.StartHour}} - {{hours.EndHour}}</div>
+    <div *ngIf="schedule.ThursdayHours!=null">
+      <div>Thursday:</div>
+      <div *ngFor="let hours of schedule.ThursdayHours;">
+        <div>{{hours.StartHour}} - {{hours.EndHour}}</div>
+      </div>
     </div>
+<<<<<<< HEAD
   </div>
 <!--*ngIf=""--><div *ngIf="pspot.AvRegularly==true" >You want rent out your parking spot regularly, too</div>
+=======
+    <div *ngIf="schedule.FridayHours!=null">
+      <div>Friday:</div>
+      <div *ngFor="let hours of schedule.FridayHours;">
+        <div>{{hours.StartHour}} - {{hours.EndHour}}</div>
+      </div>
+    </div>
+    <!--*ngIf=""-->
+    <p>You want rent out your parking spot regularly, too</p>
+>>>>>>> 833460ce976c1f3539cd6a01a67bf73409e74b8c
 
-<button (click)="update()">Update</button><button (click)="add()">Add</button>
+    <div class="wrap-buttons">
+      <button mat-flat-button (click)="update()">
+        <span>Update</span>
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-flat-button (click)="add()">
+        <span>Add</span>
+        <mat-icon>add_circle</mat-icon>
+      </button>
+    </div>
+
+  </div>
+</div>
