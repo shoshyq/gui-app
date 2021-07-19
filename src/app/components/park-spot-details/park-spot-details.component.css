@@ -13,7 +13,7 @@
 
 .wrap-buttons {
     text-align: center;
-    padding-top: 10px;
+    padding-block: 10px 22px;
 }
 
 .wrap-buttons button mat-icon {
@@ -30,4 +30,25 @@
 
 .wrap-details p span {
     padding-left: 4px;
+}
+
+p.section-title {
+    margin: 12px 0 8px;
+    border-bottom: solid 1px #3373b338;
+    padding-block: 5px;
+    color: #3373b3;
+    font-size: 17px;
+}
+
+.wrap-day {
+    margin-bottom: 10px;
+}
+
+.wrap-day p {
+    margin: 0 0 2px;
+}
+
+.wrap-day span {
+    display: block;
+    line-height: 26px;
 }
