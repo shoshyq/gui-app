@@ -1,1 +1,62 @@
-<p>update-park-spot works!</p>
+<div class="wrap-update-park-spot">
+    <header [isButtonActive]="false"></header>
+    <custom-title text="Park spot updating"></custom-title>
+    <form>
+        <!-- city -->
+        <mat-form-field appearance="legacy">
+            <mat-label>City</mat-label>
+            <mat-select (selectionChange)="onSelection($event)" name="city">
+                <mat-option #city *ngFor="let city of cities" [value]="city.Code">
+                    {{city.CityName}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <!-- address -->
+        <mat-form-field appearance="legacy">
+            <mat-label>Address (destination)</mat-label>
+            <input matInput placeholder="address" name="myLocationAddress" type="text" required #address>
+            <!-- <mat-error *ngIf="myGroup.controls.addressFormControl.hasError('required')">
+              Address is required
+            </mat-error>
+             formControlName="addressFormControl" -->
+        </mat-form-field>
+        <!-- width -->
+        <mat-form-field appearance="legacy">
+            <mat-label>Width</mat-label>
+            <input matInput placeholder="width" name="PreferableWidth" type="text" #width>
+            <!-- <mat-error *ngIf="myGroup.controls.widthFormControl.hasError('pattern')">
+              Number only
+            </mat-error> 
+                formControlName="widthFormControl" -->
+        </mat-form-field>
+        <!-- length -->
+        <mat-form-field appearance="legacy">
+            <mat-label>Length</mat-label>
+            <input matInput placeholder="length" name="PreferableLength" type="text">
+            <!-- <mat-error *ngIf="myGroup.controls.lengthFormControl.hasError('pattern')" #length>
+              Number only
+            </mat-error> 
+            formControlName="lengthFormControl"-->
+        </mat-form-field>
+        <div class="wrap-checkboxes">
+            <!-- has a roof -->
+            <mat-checkbox color="primary" #roofOpt>Has a roof
+            </mat-checkbox><!-- (change)="chRO($event.checked)" formControlName="roofOpt" -->
+        </div>
+        <!-- <div class="wrap-prices"> -->
+        <p class="custom-style">Price per hour:</p>
+        <!-- <div class="wrap-range"> -->
+        <mat-form-field appearance="legacy">
+            <input matInput placeholder="00.00" name="MinPrice" type="text" required #minprice>
+            <!-- <mat-error *ngIf="myGroup.controls.minpriceFormControl.hasError('pattern')">
+                        Number only
+                    </mat-error> 
+                     formControlName="minpriceFormControl"-->
+        </mat-form-field>
+        <app-add-schedule></app-add-schedule>
+        <button mat-flat-button class="btnOK">
+            <span>Update park spot</span>
+            <mat-icon>edit</mat-icon>
+        </button>
+    </form>
+</div>
