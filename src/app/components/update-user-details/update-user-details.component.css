@@ -1,0 +1,45 @@
+.wrap-update-user-details {
+    font-size: 16px;
+    text-align: center;
+}
+
+form {
+    display: grid;
+    grid-row-gap: 15px;
+    align-items: center;
+    grid-template-rows: 45px 45px 45px 45px 60px;
+}
+
+mat-form-field {
+    margin-inline: auto;
+    padding-bottom: 5px;
+    border-radius: 4px;
+    font-family: assistant;
+    width: 220px;
+}
+
+mat-form-field mat-icon {
+  font-size: 21px;
+  cursor: pointer;
+  color: #000000c9;
+}
+
+button.submit-button {
+  margin: auto;
+  width: 250px;
+  margin-block: 25px;
+  background-color: #3373b3;
+  color: #ffffff;
+  font-size: 17px;
+  font-family: assistant;
+}
+
+button.submit-button span {
+  margin-right: 7px;
+}
+
+button.mat-button-disabled {
+    background-color: #8fbbe2 !important;
+    color: #ffffff !important;
+    font-weight: 400;
+}

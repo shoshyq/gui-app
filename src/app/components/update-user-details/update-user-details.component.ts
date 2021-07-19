@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateUserDetailsComponent implements OnInit {
 
+  hide = true;
   constructor() { }
 
   ngOnInit(): void {
