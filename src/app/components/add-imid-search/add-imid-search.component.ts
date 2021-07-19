@@ -55,7 +55,7 @@ export class AddImidSearchComponent implements OnInit {
 
   constructor(private cityservice: CitiesService, private searchesService: SearchesService, private router: Router) {
     this.searchGroup = new FormGroup({
-      addressFormControl: new FormControl('', [ Validators.required]),
+      addressFormControl: new FormControl(''),
       widthFormControl: new FormControl('', [Validators.pattern("^[-+]?[0-9]*\.?[0-9]+$")]),
       lengthFormControl: new FormControl('', [Validators.pattern("^[-+]?[0-9]*\.?[0-9]+$")]),
       minpriceFormControl: new FormControl('', [Validators.pattern("^[-+]?[0-9]*\.?[0-9]+$"), Validators.required]),
