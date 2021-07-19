@@ -34,8 +34,11 @@ export class ImidSearchResultsComponent implements OnInit {
     console.log(this.passedList);
     this.searchCode = this.passedList[0].searchCode;
     this.pspot = this.passedList[0].spot;
-   
-    this.searchesService.GetSchedule(this.pspot.DaysSchedule).subscribe(schedule=>
+    this.searchesService.GetSearch(this.searchCode).subscribe(search=>
+      {   this.search= search;
+        console.log(this.search);
+     
+    this.searchesService.GetSchedule(this.search.DaysSchedule).subscribe(schedule=>
       {   this.schedule= schedule;
         if(this.today == 0)
         {
@@ -47,7 +50,7 @@ export class ImidSearchResultsComponent implements OnInit {
         }
         if(this.today == 2)
         {
-          this.hours =  this.schedule[0].TuesdayHours[0];
+          this.hours =  this.schedule.TuesdayHours[0];
         }
         if(this.today == 3)
         {
@@ -63,17 +66,16 @@ export class ImidSearchResultsComponent implements OnInit {
         }
         console.log(this.schedule);
       });
-      this.searchesService.GetSearch(this.searchCode).subscribe(search=>
-        {   this.search= search;
-          console.log(this.search);
-        });
-        this.userService.GetUser(this.pspot.UserCode.toString()).subscribe(user=>
-          {           
-            this.spotOwner=user; 
-            console.log(this.spotOwner);
-            if((this.spotOwner.UserPhoneNumber!="")&&(this.spotOwner.UserPhoneNumber!=null))
-               this.phone=true;
-           });
+      this.userService.GetUser(this.pspot.UserCode.toString()).subscribe(user=>
+        {           
+          this.spotOwner=user; 
+          console.log(this.spotOwner);
+          if((this.spotOwner.UserPhoneNumber!="")&&(this.spotOwner.UserPhoneNumber!=null))
+             this.phone=true;
+         });
+    
+    });
+     
       
   }
   main()
