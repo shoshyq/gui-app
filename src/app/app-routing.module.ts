@@ -23,12 +23,14 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AddParkSpotComponent } from './components/add-park-spot/add-park-spot.component';
 import { ParkSpotDetailsComponent } from './components/park-spot-details/park-spot-details.component';
+import { UpdateParkSpotComponent } from './coomponents/update-park-spot/update-park-spot.component';
 
 const routes: Routes = [
   { path: 'LogIn', component:  LogInComponent},
   { path: 'SignUp', component: SignUpComponent },
   { path: 'AddParkSpot', component:  AddParkSpotComponent},
   { path: 'ParkSpotDetails', component: ParkSpotDetailsComponent },
+  { path: 'UpdateParkSpot', component: UpdateParkSpotComponent },
   { path: 'Exc', component: ExcComponent },
   { path:'Home', component : HomeComponent} ,
   { path:'PaymentDetails', component : AddPaymdetailsComponent,children:[

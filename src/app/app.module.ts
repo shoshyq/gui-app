@@ -64,6 +64,7 @@ import { CustomTitleComponent } from './components/custom-title/custom-title.com
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AddParkSpotComponent } from './components/add-park-spot/add-park-spot.component';
 import { ParkSpotDetailsComponent } from './components/park-spot-details/park-spot-details.component';
+import { UpdateParkSpotComponent } from './coomponents/update-park-spot/update-park-spot.component';
 
 
 
@@ -99,7 +100,8 @@ import { ParkSpotDetailsComponent } from './components/park-spot-details/park-sp
      CustomTitleComponent,
      NotFoundComponent,
      AddParkSpotComponent,
-     ParkSpotDetailsComponent
+     ParkSpotDetailsComponent,
+     UpdateParkSpotComponent
      
   ],
   imports: [

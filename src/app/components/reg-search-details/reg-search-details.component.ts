@@ -15,7 +15,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class RegSearchDetailsComponent implements OnInit {
 
-  resultslist :Array<Search_Results>;
+  resultslist :Array<Search_Results>=[];
   searches:Array<Search> =[];
   pspots:Array<ParkSpot>=[];
   users:Array<User> = [];
@@ -37,10 +37,11 @@ export class RegSearchDetailsComponent implements OnInit {
       for(let i=0; i<this.resultslist.length; i++){
 
         this.searchesService.GetSearch(this.resultslist[i].SearchCode).subscribe(search=>
-          {   this.searches.push(search);
+          {   
+            this.searches.push(search);
             console.log(this.searches);
             
-          });
+        
           this.spotService.GetPSpot(this.resultslist[i].ResultPSCode).subscribe(pspot=>
             {   this.pspots.push(pspot);
               console.log(this.pspots);
@@ -48,7 +49,7 @@ export class RegSearchDetailsComponent implements OnInit {
               this.searchesService.GetSchedule(this.pspots[i].DaysSchedule).subscribe(schedule=>
               {  
                   this.schedulelst.push(schedule);
-                  this.schedulelst[i].SundayHours[0].StartHour;
+                  //this.schedulelst[i].SundayHours[0].StartHour;
                   this.userService.GetUser(pspot.UserCode.toString()).subscribe(user=>
                     {   
                       this.users.push(user);
@@ -58,6 +59,7 @@ export class RegSearchDetailsComponent implements OnInit {
               });
 
             });
+              });
             
       }       
     });
