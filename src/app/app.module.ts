@@ -62,6 +62,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { LogInMessageComponent } from './components/log-in-message/log-in-message.component';
 import { CustomTitleComponent } from './components/custom-title/custom-title.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { AddParkSpotComponent } from './components/add-park-spot/add-park-spot.component';
+import { ParkSpotDetailsComponent } from './components/park-spot-details/park-spot-details.component';
 
 
 
@@ -95,7 +97,9 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
      HomePageComponent,
      LogInMessageComponent,
      CustomTitleComponent,
-     NotFoundComponent
+     NotFoundComponent,
+     AddParkSpotComponent,
+     ParkSpotDetailsComponent
      
   ],
   imports: [

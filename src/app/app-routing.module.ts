@@ -21,10 +21,14 @@ import { ImidSearchResultsComponent } from './components/imid-search-results/imi
 import { RegSearchDetailsComponent } from './components/reg-search-details/reg-search-details.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { AddParkSpotComponent } from './components/add-park-spot/add-park-spot.component';
+import { ParkSpotDetailsComponent } from './components/park-spot-details/park-spot-details.component';
 
 const routes: Routes = [
   { path: 'LogIn', component:  LogInComponent},
   { path: 'SignUp', component: SignUpComponent },
+  { path: 'AddParkSpot', component:  AddParkSpotComponent},
+  { path: 'ParkSpotDetails', component: ParkSpotDetailsComponent },
   { path: 'Exc', component: ExcComponent },
   { path:'Home', component : HomeComponent} ,
   { path:'PaymentDetails', component : AddPaymdetailsComponent,children:[
