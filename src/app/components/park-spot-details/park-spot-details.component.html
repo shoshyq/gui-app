@@ -42,6 +42,6 @@
       <div>{{hours.StartHour}} - {{hours.EndHour}}</div>
     </div>
   </div>
-<!--*ngIf=""--><div>You want rent out your parking spot regularly, too</div>
+<!--*ngIf=""--><div *ngIf="pspot.AvRegularly==true" >You want rent out your parking spot regularly, too</div>
 
 <button (click)="update()">Update</button><button (click)="add()">Add</button>
