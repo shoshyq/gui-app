@@ -1,12 +1,12 @@
 <div class="wrap-add-imid-search">
   <header></header>
   <custom-title text="Quick Search Adding" subTitle="Find parking now"></custom-title>
-  <form novalidate (submit)="AddImmidiateSearch(frm,st.value,en.value)" #frm="ngForm">
+  <form novalidate (submit)="AddImmidiateSearch(frm,st.value,en.value)" #frm="ngForm" [formGroup]="searchGroup">
 
     <div>
       <mat-form-field appearance="legacy">
         <mat-label>City</mat-label>
-        <mat-select (selectionChange)="onSelection($event)" [(ngModel)]="selectedCity" name="city">
+        <mat-select (selectionChange)="onSelection($event)" name="city">
           <mat-option #city *ngFor="let city of cities" [value]="city.Code">
             {{city.CityName}}
           </mat-option>
@@ -26,8 +26,8 @@
       <mat-form-field appearance="legacy">
         <mat-label>Address (destination)</mat-label>
         <input matInput placeholder="address" style="text-align: left; align-content: flex-end;"
-          [(ngModel)]="newSearch.MyLocationAddress" name="myLocationAddress" type="text" #address="ngModel" required>
-        <mat-error *ngIf="addressFormControl.hasError('required')">
+          name="myLocationAddress" type="text" #address required>
+        <mat-error *ngIf="searchGroup.controls.addressFormControl.hasError('required')">
           Address is required
         </mat-error>
       </mat-form-field>
@@ -41,40 +41,40 @@
         <mat-form-field appearance="legacy">
           <mat-label>Width</mat-label>
           <input matInput placeholder="width" style="text-align: left; align-content: flex-end; width:50px;"
-            [(ngModel)]="newSearch.PreferableWidth" name="PreferableWidth" type="text" #width="ngModel">
-          <mat-error *ngIf="widthFormControl.hasError('pattern')">
+            name="PreferableWidth" type="text" #width>
+          <mat-error *ngIf="searchGroup.controls.widthFormControl.hasError('pattern')">
             Number only
           </mat-error>
         </mat-form-field>
         <mat-form-field appearance="legacy">
           <mat-label>Length</mat-label>
           <input matInput placeholder="length" style="text-align: left; align-content: flex-end; width:50px;"
-            [(ngModel)]="newSearch.PreferableLength" name="PreferableLength" type="text" #length="ngModel">
-          <mat-error *ngIf="lengthFormControl.hasError('pattern')">
+            name="PreferableLength" type="text" #length>
+          <mat-error *ngIf="searchGroup.controls.lengthFormControl.hasError('pattern')">
             Number only
           </mat-error>
         </mat-form-field>
       </div>
 
 
-      <mat-checkbox color="primary" (change)="chRO($event.checked)" #roofOpt [(ngModel)]="newSearch.RoofOpt"
+      <mat-checkbox color="primary" (change)="chRO($event.checked)" #roofOpt
         formControlName="roofOpt">Has a roof</mat-checkbox>
     </div>
     <div class="wrap-prices">
       <p>Prices:</p>
       <div class="wrap-range">
         <mat-form-field appearance="legacy">
-          <input matInput placeholder="00.00" [(ngModel)]="newSearch.MinPrice" name="MinPrice" type="text"
-            #minprice="ngModel" required>
-          <mat-error *ngIf="minpriceFormControl.hasError('pattern')">
+          <input matInput placeholder="00.00" name="MinPrice" type="text"
+            #minprice required>
+          <mat-error *ngIf="searchGroup.controls.minpriceFormControl.hasError('pattern')">
             Number only
           </mat-error>
         </mat-form-field>
         <p> - </p>
         <mat-form-field appearance="legacy">
-          <input matInput placeholder="00.00" [(ngModel)]="newSearch.MaxPrice" name="MaxPrice" type="text"
-            #maxprice="ngModel" required>
-          <mat-error *ngIf="maxpriceFormControl.hasError('pattern')">
+          <input matInput placeholder="00.00" name="MaxPrice" type="text"
+            #maxprice required>
+          <mat-error *ngIf="searchGroup.controls.maxpriceFormControl.hasError('pattern')">
             Number only
           </mat-error>
         </mat-form-field>
