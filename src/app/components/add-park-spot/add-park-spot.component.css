@@ -17,23 +17,10 @@
     grid-row-gap: 7px;
   }
   
-  .wrap-prices > p {
+  p.custom-style {
     width: 220px;
     margin: 20px auto 0;
     text-align: left;
-  }
-
-  .wrap-range {
-    display: grid;
-    grid-template-columns: 80px 5px 80px 25px;
-      grid-column-gap: 10px;
-      align-items: baseline;
-      width: 220px;
-      margin-inline: auto;
-  }
-  
-  .wrap-range mat-form-field {
-    width: 80px;
   }
 
   button.mat-button-disabled {
