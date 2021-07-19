@@ -43,27 +43,27 @@
             <mat-checkbox color="primary" #roofOpt>Has a roof
             </mat-checkbox><!-- (change)="chRO($event.checked)" formControlName="roofOpt" -->
         </div>
-        <div class="wrap-prices">
-            <p>Prices:</p>
-            <div class="wrap-range">
-                <mat-form-field appearance="legacy">
-                    <input matInput placeholder="00.00" name="MinPrice" type="text" required #minprice>
-                    <!-- <mat-error *ngIf="myGroup.controls.minpriceFormControl.hasError('pattern')">
+        <!-- <div class="wrap-prices"> -->
+        <p class="custom-style">Price per hour:</p>
+        <!-- <div class="wrap-range"> -->
+        <mat-form-field appearance="legacy">
+            <input matInput placeholder="00.00" name="MinPrice" type="text" required #minprice>
+            <!-- <mat-error *ngIf="myGroup.controls.minpriceFormControl.hasError('pattern')">
                         Number only
                     </mat-error> 
                      formControlName="minpriceFormControl"-->
-                </mat-form-field>
-                <p> - </p>
+        </mat-form-field>
+        <!-- <p> - </p>
                 <mat-form-field appearance="legacy">
                     <input matInput placeholder="00.00" name="MaxPrice" type="text" required #maxprice>
-                    <!-- <mat-error *ngIf="myGroup.controls.maxpriceFormControl.hasError('pattern')">
+                    <mat-error *ngIf="myGroup.controls.maxpriceFormControl.hasError('pattern')">
                         Number only
                     </mat-error> 
-                     formControlName="maxpriceFormControl"-->
+                     formControlName="maxpriceFormControl"
                 </mat-form-field>
-                <p>ILS</p>
-            </div>
-        </div>
+                <p>ILS</p> -->
+        <!-- </div> -->
+        <!-- </div> -->
         <app-add-schedule></app-add-schedule>
         <button mat-flat-button class="btnOK">
             <span>Add park spot</span>
