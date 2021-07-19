@@ -20,7 +20,7 @@ export class ParkSpotDetailsComponent implements OnInit {
     this.spotService.GetPSpotByUCode(+sessionStorage.getItem('ucode')).subscribe(pspot=>
       {   this.pspot = pspot;
         sessionStorage.setItem('pspotCode',this.pspot.Code.toString());
-        console.log(this.pspot.SpotLength);
+        console.log(this.pspot.PricePerHour);
         this.spotService.GetSchedule(this.pspot.DaysSchedule).subscribe(schedule=>
           {
             this.schedule = schedule;

@@ -1,3 +1,17 @@
+<<<<<<< HEAD
+<div>You parking spot details:</div>
+<div>Address: {{pspot.FullAddress}}</div>
+<div *ngIf="(pspot.SpotWidth!=null)&&(pspot.SpotWidth!=0)">Width: {{pspot.SpotWidth}}</div>
+<div *ngIf="(pspot.SpotLength!=null)&&(pspot.SpotLength!=0)">Length: {{pspot.SpotLength}}</div>
+<div>Price:{{pspot.PricePerHour}} /h</div>
+<!--*ngIf=""-->
+<div>Your parking spot has roof</div>
+<div>Schedule:</div>
+<div *ngIf="schedule.SundayHours!=null">
+    <div>Sunday:</div>
+    <div *ngFor="let hours of schedule.SundayHours;">
+      <div>{{hours.StartHour}} - {{hours.EndHour}}</div>
+=======
 <div class="wrap-park-spot-details">
   <header [isButtonActive]="false"></header>
   <custom-title text="Your parking spot details"></custom-title>
@@ -14,6 +28,7 @@
       <span><!-- *ngFor="let hours of schedule.SundayHours;"-->
         16:15 - 17:20<!--{{hours.StartHour}} - {{hours.EndHour}}-->
       </span>
+>>>>>>> 833460ce976c1f3539cd6a01a67bf73409e74b8c
     </div>
     <div class="wrap-day"><!-- *ngIf="schedule.SundayHours!=null"-->
       <p>Monday:</p>
@@ -51,6 +66,10 @@
         <div>{{hours.StartHour}} - {{hours.EndHour}}</div>
       </div>
     </div>
+<<<<<<< HEAD
+  </div>
+<!--*ngIf=""--><div *ngIf="pspot.AvRegularly==true" >You want rent out your parking spot regularly, too</div>
+=======
     <div *ngIf="schedule.FridayHours!=null">
       <div>Friday:</div>
       <div *ngFor="let hours of schedule.FridayHours;">
@@ -59,6 +78,7 @@
     </div>
     <!--*ngIf=""-->
     <p>You want rent out your parking spot regularly, too</p>
+>>>>>>> 833460ce976c1f3539cd6a01a67bf73409e74b8c
 
     <div class="wrap-buttons">
       <button mat-flat-button (click)="update()">
