@@ -46,7 +46,7 @@ export class ImidSearchResultsComponent implements OnInit {
         this.hours = this.schedule[0].MondayHours[0];
       }
       if (this.today == 2) {
-        this.hours = this.schedule[0].TuesdayHours[0];
+        this.hours = this.schedule.TuesdayHours[0];
       }
       if (this.today == 3) {
         this.hours = this.schedule.WednesdayHours[0];
