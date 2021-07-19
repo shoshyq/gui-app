@@ -1,88 +1,97 @@
-<div class="wrapdiv">
-    <h4>Find parking now</h4>
-    <form  novalidate  (submit)="AddImmidiateSearch(frm,st.value,en.value)" #frm="ngForm">
-       
-        <div>
-            <mat-form-field appearance="fill">
-              <mat-label>City</mat-label>
-              <mat-select (selectionChange)="onSelection($event)" [(ngModel)]="selectedCity" name="city">
-                <mat-option #city *ngFor="let city of cities" [value]="city.Code">
-                  {{city.CityName}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-            <!--<div><label>No such city?</label><span (click)="open_add_city()" >  Add city</span></div>
+<div class="wrap-add-imid-search">
+  <header></header>
+  <custom-title text="Quick Search Adding" subTitle="Find parking now"></custom-title>
+  <form novalidate (submit)="AddImmidiateSearch(frm,st.value,en.value)" #frm="ngForm" [formGroup]="searchGroup">
+
+    <div>
+      <mat-form-field appearance="legacy">
+        <mat-label>City</mat-label>
+        <mat-select (selectionChange)="onSelection($event)" name="city">
+          <mat-option #city *ngFor="let city of cities" [value]="city.Code">
+            {{city.CityName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!--<div><label>No such city?</label><span (click)="open_add_city()" >  Add city</span></div>
             <div *ngIf="addcitydiv===true">
               <input #addcity  />
               <button (click)="AddCity(addcity.value)">Add</button>
             </div>-->
-          </div>
-          <mat-radio-group>
-            <mat-radio-button (change)="chl($event)" value="1">My location</mat-radio-button>
-            <mat-radio-button (change)="chl($event)" value="2">Other location</mat-radio-button>
-          </mat-radio-group>
-           <div *ngIf="addressdiv===true">
-            <mat-form-field appearance="fill">
-                <mat-label>Address (destination)</mat-label>
-                <input matInput placeholder="address" style="text-align: left; align-content: flex-end;"  [(ngModel)]="newSearch.MyLocationAddress" name="myLocationAddress" type="text" #address="ngModel" required >
-                <mat-error *ngIf="addressFormControl.hasError('required')">
-                   Address is required
-                </mat-error>  
-            </mat-form-field>
-          
-            </div>
-          <div>
-            <p><mat-checkbox color="primary" formControlName="sizePref" #size (change)="chSO($event.checked)" [(ngModel)]="newSearch.SizeOpt">Size preferences</mat-checkbox></p>
-          </div>
-          <div *ngIf="size.checked" style="display: inline-block;">
-      <mat-form-field appearance="fill">
-            <mat-label>Width</mat-label>
-            <input matInput placeholder="width" style="text-align: left; align-content: flex-end; width:50px;"  [(ngModel)]="newSearch.PreferableWidth" name="PreferableWidth" type="text" #width="ngModel" >
-            <mat-error *ngIf="widthFormControl.hasError('pattern')">
-               Number only
-            </mat-error>  
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>Length</mat-label>
-          <input matInput placeholder="length" style="text-align: left; align-content: flex-end; width:50px;"  [(ngModel)]="newSearch.PreferableLength" name="PreferableLength" type="text" #length="ngModel" >
-          <mat-error *ngIf="lengthFormControl.hasError('pattern')">
-             Number only
-          </mat-error>  
+    </div>
+    <mat-radio-group>
+      <mat-radio-button (change)="chl($event)" value="1">My location</mat-radio-button>
+      <mat-radio-button (change)="chl($event)" value="2">Other location</mat-radio-button>
+    </mat-radio-group>
+    <div *ngIf="addressdiv===true">
+      <mat-form-field appearance="legacy">
+        <mat-label>Address (destination)</mat-label>
+        <input matInput placeholder="address" style="text-align: left; align-content: flex-end;"
+          name="myLocationAddress" type="text" #address required>
+        <mat-error *ngIf="searchGroup.controls.addressFormControl.hasError('required')">
+          Address is required
+        </mat-error>
       </mat-form-field>
-          </div>
-          
-      
-          <div>
-            <p><mat-checkbox color="primary" (change)="chRO($event.checked)" #roofOpt [(ngModel)]="newSearch.RoofOpt" formControlName="roofOpt">Has a roof</mat-checkbox></p>
-          </div>
-          <p>Prices:</p> 
-          <div  >
-            <mat-form-field appearance="fill" >
-                  <input matInput placeholder="00.00"   [(ngModel)]="newSearch.MinPrice" name="MinPrice" type="text" #minprice="ngModel" required >
-                  <mat-error *ngIf="minpriceFormControl.hasError('pattern')">
-                     Number only
-                  </mat-error>  
-              </mat-form-field>
-              <p> - </p>
-              <mat-form-field appearance="fill">
-                <input matInput placeholder="00.00"   [(ngModel)]="newSearch.MaxPrice" name="MaxPrice" type="text" #maxprice="ngModel" required >
-                <mat-error *ngIf="maxpriceFormControl.hasError('pattern')">
-                   Number only
-                </mat-error>  
-            </mat-form-field>
-            <p>ILS</p>
-          </div>
-          <div>
-              <span style="font-size: small; color: red;">please choose time in quarter hours</span>
-             <div>
-                    <input #st type="time" step="900"><span> - </span>  <input #en  type="time" step="900" >
-                                <!--<button (click)="addhours(day,st.value,en.value)">Add</button>-->
-                </div>
-          </div>
-          
-        <div class="btnfrm">
-            <button mat-button type="submit" [disabled]="!frm.valid"  class="btnOK" selected>search</button>
 
-        </div>
-    </form>
+    </div>
+    <div class="wrap-checkboxes">
+      <mat-checkbox color="primary" formControlName="sizePref" #size (change)="chSO($event.checked)"
+        [(ngModel)]="newSearch.SizeOpt">Size preferences</mat-checkbox>
+
+      <div *ngIf="size.checked" style="display: inline-block;">
+        <mat-form-field appearance="legacy">
+          <mat-label>Width</mat-label>
+          <input matInput placeholder="width" style="text-align: left; align-content: flex-end; width:50px;"
+            name="PreferableWidth" type="text" #width>
+          <mat-error *ngIf="searchGroup.controls.widthFormControl.hasError('pattern')">
+            Number only
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="legacy">
+          <mat-label>Length</mat-label>
+          <input matInput placeholder="length" style="text-align: left; align-content: flex-end; width:50px;"
+            name="PreferableLength" type="text" #length>
+          <mat-error *ngIf="searchGroup.controls.lengthFormControl.hasError('pattern')">
+            Number only
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+
+      <mat-checkbox color="primary" (change)="chRO($event.checked)" #roofOpt
+        formControlName="roofOpt">Has a roof</mat-checkbox>
+    </div>
+    <div class="wrap-prices">
+      <p>Prices:</p>
+      <div class="wrap-range">
+        <mat-form-field appearance="legacy">
+          <input matInput placeholder="00.00" name="MinPrice" type="text"
+            #minprice required>
+          <mat-error *ngIf="searchGroup.controls.minpriceFormControl.hasError('pattern')">
+            Number only
+          </mat-error>
+        </mat-form-field>
+        <p> - </p>
+        <mat-form-field appearance="legacy">
+          <input matInput placeholder="00.00" name="MaxPrice" type="text"
+            #maxprice required>
+          <mat-error *ngIf="searchGroup.controls.maxpriceFormControl.hasError('pattern')">
+            Number only
+          </mat-error>
+        </mat-form-field>
+        <p>ILS</p>
+      </div>
+    </div>
+    <div class="wrap-hours-section">
+      <span style="font-size: small; color: red;">please choose time in quarter hours</span>
+      <div class="wrap-hours-range">
+        <input #st type="time" step="900"><span> - </span> <input #en type="time" step="900">
+        <!--<button (click)="addhours(day,st.value,en.value)">Add</button>-->
+      </div>
+    </div>
+
+    <div class="btnfrm">
+      <button mat-button type="submit" [disabled]="!frm.valid" class="btnOK" selected>search</button>
+
+    </div>
+  </form>
 </div>

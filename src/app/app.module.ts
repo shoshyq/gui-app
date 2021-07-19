@@ -57,6 +57,12 @@ import { SearchesService } from './services/searches.service';
 import { ImidSearchResultsComponent } from './components/imid-search-results/imid-search-results.component';
 import { RegSearchDetailsComponent } from './components/reg-search-details/reg-search-details.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { LogInMessageComponent } from './components/log-in-message/log-in-message.component';
+import { CustomTitleComponent } from './components/custom-title/custom-title.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+
 
 
 @NgModule({
@@ -86,7 +92,10 @@ import { HomePageComponent } from './components/home-page/home-page.component';
      HeaderComponent,
      ImidSearchResultsComponent,
      RegSearchDetailsComponent,
-     HomePageComponent
+     HomePageComponent,
+     LogInMessageComponent,
+     CustomTitleComponent,
+     NotFoundComponent
      
   ],
   imports: [
@@ -111,6 +120,8 @@ import { HomePageComponent } from './components/home-page/home-page.component';
     MatButtonModule,
     MatIconModule,
     MatCheckboxModule,
+    MatMenuModule,
+    MatSnackBarModule,
   //  GooglePlaceModule,
     NgMultiSelectDropDownModule.forRoot()
   ],

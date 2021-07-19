@@ -31,31 +31,40 @@ export class AddRegularSearchComponent implements OnInit {
   subscribe:any;
   cities: City[];
   addcitydiv= false;
+  myGroup: FormGroup;
   sizePref =  new FormControl('', [
     ]);
 
-   addressFormControl = new FormControl('', [
-      Validators.required,
-      ]);
-  widthFormControl = new FormControl('', [
-        Validators.pattern("^[0-9]*$"),
-        ]);
-  lengthFormControl = new FormControl('', [
-          Validators.pattern("^[0-9]*$"),
-          ]);
-   minpriceFormControl = new FormControl('', [
-            Validators.pattern("^[0-9]*$"),
-            ]);
-            maxpriceFormControl = new FormControl('', [
-              Validators.pattern("^[0-9]*$"),
-              ]);
-              roofOpt=  new FormControl('', [
-              ]);
+  //  addressFormControl = new FormControl('', [
+  //     Validators.required,
+  //     ]);
+  // widthFormControl = new FormControl('', [
+  //       Validators.pattern("^[0-9]*$"),
+  //       ]);
+  // lengthFormControl = new FormControl('', [
+  //         Validators.pattern("^[0-9]*$"),
+  //         ]);
+  //  minpriceFormControl = new FormControl('', [
+  //           Validators.pattern("^[0-9]*$"),
+  //           ]);
+  //           maxpriceFormControl = new FormControl('', [
+  //             Validators.pattern("^[0-9]*$"),
+  //             ]);
+  //             roofOpt=  new FormControl('', [
+  //             ]);
 
   formattedaddress=" ";
       
   constructor(private cityservice:CitiesService, private searchesService:SearchesService,private router: Router, private fb: FormBuilder) {
-   
+   this.myGroup = new FormGroup({
+    addressFormControl: new FormControl('', [Validators.pattern("^[0-9]*$"), Validators.required]),
+    widthFormControl: new FormControl('', [Validators.pattern("^[0-9]*$")]),
+    lengthFormControl: new FormControl('', [Validators.pattern("^[0-9]*$")]),
+    minpriceFormControl: new FormControl('', [Validators.pattern("^[0-9]*$"), Validators.required]),
+    maxpriceFormControl: new FormControl('', [Validators.pattern("^[0-9]*$"), Validators.required]),
+    roofOpt: new FormControl(''),
+    sizePref: new FormControl('')
+   });
   }
  
   ngOnInit()
