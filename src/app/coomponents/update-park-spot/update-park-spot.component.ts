@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { City } from 'src/app/models/city.models';
 
 @Component({
   selector: 'app-update-park-spot',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateParkSpotComponent implements OnInit {
 
+  cities: City[];
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+  
+  onSelection(e) {
   }
 
 }

@@ -1,0 +1,44 @@
+.wrap-update-park-spot {
+    text-align: center;
+  }
+  
+  mat-form-field {
+    margin-inline: auto;
+    padding-bottom: 5px;
+    font-family: assistant;
+    width: 220px;
+  }
+  
+  .wrap-checkboxes {
+    display: grid;
+    text-align: left;
+    margin: 5px auto 15px;
+    width: 220px;
+    grid-row-gap: 7px;
+  }
+  
+  p.custom-style {
+    width: 220px;
+    margin: 20px auto 0;
+    text-align: left;
+  }
+
+  button.mat-button-disabled {
+    background-color: #8fbbe2 !important;
+    color: #ffffff !important;
+    font-weight: 400;
+  }
+  
+  button.btnOK {
+    margin: auto;
+    width: 250px;
+    margin-block: 0 40px;
+    background-color: #3373b3;
+    color: #ffffff;
+    font-size: 17px;
+    font-family: assistant;
+  }
+  
+  button.btnOK span {
+  margin-right: 7px;
+  }
