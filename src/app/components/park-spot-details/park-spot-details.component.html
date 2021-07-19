@@ -1,8 +1,8 @@
 <div>You parking spot details:</div>
 <div>Address: {{pspot.FullAddress}}</div>
-<div>Width: {{pspot.SpotWidth}}</div>
-<div>Length: {{pspot.SpotLength}}</div>
-<div>Price:{{pspot.SpotWidth}} /h</div>
+<div *ngIf="(pspot.SpotWidth!=null)&&(pspot.SpotWidth!=0)">Width: {{pspot.SpotWidth}}</div>
+<div *ngIf="(pspot.SpotLength!=null)&&(pspot.SpotLength!=0)">Length: {{pspot.SpotLength}}</div>
+<div>Price:{{pspot.PricePerHour}} /h</div>
 <!--*ngIf=""-->
 <div>Your parking spot has roof</div>
 <div>Schedule:</div>
