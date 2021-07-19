@@ -57,11 +57,11 @@ export class AddRegularSearchComponent implements OnInit {
       
   constructor(private cityservice:CitiesService, private searchesService:SearchesService,private router: Router, private fb: FormBuilder) {
    this.myGroup = new FormGroup({
-    addressFormControl: new FormControl('', [Validators.pattern("^[0-9]*$"), Validators.required]),
-    widthFormControl: new FormControl('', [Validators.pattern("^[0-9]*$")]),
-    lengthFormControl: new FormControl('', [Validators.pattern("^[0-9]*$")]),
-    minpriceFormControl: new FormControl('', [Validators.pattern("^[0-9]*$"), Validators.required]),
-    maxpriceFormControl: new FormControl('', [Validators.pattern("^[0-9]*$"), Validators.required]),
+    addressFormControl: new FormControl('', [ Validators.required]),
+    widthFormControl: new FormControl('', [Validators.pattern("^[-+]?[0-9]*\.?[0-9]+$")]),
+    lengthFormControl: new FormControl('', [Validators.pattern("^[-+]?[0-9]*\.?[0-9]+$")]),
+    minpriceFormControl: new FormControl('', [Validators.pattern("^[-+]?[0-9]*\.?[0-9]+$"), Validators.required]),
+    maxpriceFormControl: new FormControl('', [Validators.pattern("^[-+]?[0-9]*\.?[0-9]+$"), Validators.required]),
     roofOpt: new FormControl(''),
     sizePref: new FormControl('')
    });
@@ -121,10 +121,18 @@ public AddressChange(address: any) {
       }
   AddRegularSearch(frm:any){
     this.newSearch.UserId = +sessionStorage.getItem('ucode');
- this.newSearch.MyLocationAddress += ", " + this.citystring
+    this.newSearch.MyLocationAddress = this.myGroup.get('addressFormControl').value;
+    this.newSearch.MaxPrice = this.myGroup.get('maxpriceFormControl').value;
+    this.newSearch.MinPrice = this.myGroup.get('minpriceFormControl').value;
+    this.newSearch.PreferableLength = this.myGroup.get('lengthFormControl').value;
+    this.newSearch.PreferableWidth = this.myGroup.get('widthFormControl').value;
+    this.newSearch.RoofOpt = this.myGroup.get('roofOpt').value;
+    this.newSearch.SizeOpt = this.myGroup.get('sizePref').value;
+
+ this.newSearch.MyLocationAddress += ", " + this.citystring;
     this.newSearch.CityCode  = this.selectedCity;
     this.newSearch.Regularly = true;
-    this.newSearch.SearchDate = new Date()
+    this.newSearch.SearchDate = new Date();
     this.newSearch.DaysSchedule = +sessionStorage.getItem('scheduleCode');
     this.searchesService.AddRegularSearch(this.newSearch).subscribe(code=>
       {

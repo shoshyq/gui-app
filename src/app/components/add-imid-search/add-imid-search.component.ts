@@ -55,11 +55,11 @@ export class AddImidSearchComponent implements OnInit {
 
   constructor(private cityservice: CitiesService, private searchesService: SearchesService, private router: Router) {
     this.searchGroup = new FormGroup({
-      addressFormControl: new FormControl('', [Validators.pattern("^[0-9]*$"), Validators.required]),
-      widthFormControl: new FormControl('', [Validators.pattern("^[0-9]*$")]),
-      lengthFormControl: new FormControl('', [Validators.pattern("^[0-9]*$")]),
-      minpriceFormControl: new FormControl('', [Validators.pattern("^[0-9]*$"), Validators.required]),
-      maxpriceFormControl: new FormControl('', [Validators.pattern("^[0-9]*$"), Validators.required]),
+      addressFormControl: new FormControl('', [ Validators.required]),
+      widthFormControl: new FormControl('', [Validators.pattern("^[-+]?[0-9]*\.?[0-9]+$")]),
+      lengthFormControl: new FormControl('', [Validators.pattern("^[-+]?[0-9]*\.?[0-9]+$")]),
+      minpriceFormControl: new FormControl('', [Validators.pattern("^[-+]?[0-9]*\.?[0-9]+$"), Validators.required]),
+      maxpriceFormControl: new FormControl('', [Validators.pattern("^[-+]?[0-9]*\.?[0-9]+$"), Validators.required]),
       roofOpt: new FormControl(''),
       sizePref: new FormControl('')
     });
@@ -125,7 +125,9 @@ export class AddImidSearchComponent implements OnInit {
         console.log(this.newSchedule.Code)
         sessionStorage.setItem('imScheduleCode', code.toString());
         this.newSearch.UserId = +sessionStorage.getItem('ucode');
+      
         if (this.addressdiv == true) {
+          this.newSearch.MyLocationAddress = this.searchGroup.get('addressFormControl').value;
           this.newSearch.MyLocationAddress += ", " + this.citystring;
         }
         else {
@@ -151,6 +153,12 @@ export class AddImidSearchComponent implements OnInit {
 
           });
         }
+        this.newSearch.MaxPrice = this.searchGroup.get('maxpriceFormControl').value;
+        this.newSearch.MinPrice = this.searchGroup.get('minpriceFormControl').value;
+        this.newSearch.PreferableLength = this.searchGroup.get('lengthFormControl').value;
+        this.newSearch.PreferableWidth = this.searchGroup.get('widthFormControl').value;
+        this.newSearch.RoofOpt = this.searchGroup.get('roofOpt').value;
+        this.newSearch.SizeOpt = this.searchGroup.get('sizePref').value;
         this.newSearch.CityCode = this.selectedCity;
         this.newSearch.Regularly = false;
         this.newSearch.DaysSchedule = code;
