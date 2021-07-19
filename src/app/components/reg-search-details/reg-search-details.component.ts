@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ParkSpot } from 'src/app/models/parkspot.model';
 import { Search } from 'src/app/models/search.model';
 import { Search_Results } from 'src/app/models/search_results.model';
+import { User } from 'src/app/models/user.model';
 import { WeekDay } from 'src/app/models/weekDay.models';
 import { ParkingSpotService } from 'src/app/services/parkingSpot.service';
 import { SearchesService } from 'src/app/services/searches.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-reg-search-details',
@@ -16,10 +18,11 @@ export class RegSearchDetailsComponent implements OnInit {
   resultslist :Array<Search_Results>;
   searches:Array<Search> =[];
   pspots:Array<ParkSpot>=[];
+  users:Array<User> = [];
   schedulelst: Array<WeekDay>=[];
   doesnthave=false;
   schedule:WeekDay= new  WeekDay();
-  constructor(private spotService:ParkingSpotService, private searchesService:SearchesService) { }
+  constructor(private userService:UserService,private spotService:ParkingSpotService, private searchesService:SearchesService) { }
 
   ngOnInit(): void {
     this.doesnthave = true;
@@ -35,13 +38,23 @@ export class RegSearchDetailsComponent implements OnInit {
 
         this.searchesService.GetSearch(this.resultslist[i].SearchCode).subscribe(search=>
           {   this.searches.push(search);
+            console.log(this.searches);
+            
           });
           this.spotService.GetPSpot(this.resultslist[i].ResultPSCode).subscribe(pspot=>
             {   this.pspots.push(pspot);
+              console.log(this.pspots);
+
               this.searchesService.GetSchedule(this.pspots[i].DaysSchedule).subscribe(schedule=>
               {  
                   this.schedulelst.push(schedule);
-                  this.schedulelst[i].SundayHours[0].StartHour
+                  this.schedulelst[i].SundayHours[0].StartHour;
+                  this.userService.GetUser(pspot.UserCode.toString()).subscribe(user=>
+                    {   
+                      this.users.push(user);
+                      console.log(this.users);
+
+                     });
               });
 
             });

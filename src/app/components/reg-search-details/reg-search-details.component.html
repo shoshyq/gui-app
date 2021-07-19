@@ -4,9 +4,10 @@
     <mat-card class="wrap-div">
       <mat-card-header>
         <mat-card-title>Search result for request on {{searches[i].SearchDate}}</mat-card-title>
-        <mat-card-subtitle>for address: {{searches[i].SearchDate}}}</mat-card-subtitle>
+        <mat-card-subtitle>for address: {{searches[i].MyLocationAddress}}}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
+        <div>{{users[i].Username}}'s parking spot</div>
         <div>Price: {{pspots[i].PricePerHour}}/h</div>
         <div *ngIf="(pspots[i].SpotWidth!=0)&&(pspots[i].SpotWidth!=null)">
           Parking spot width: {{pspots[i].SpotWidth}}
