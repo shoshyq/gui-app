@@ -1,1 +1,40 @@
-<p>update-user-details works!</p>
+<div class="wrap-update-user-details">
+    <header></header>
+    <custom-title text="User Details Updating" subTitle="update your details"></custom-title>
+    <form>
+        <!-- user-name -->
+        <mat-form-field appearance="legacy">
+            <input value="" placeholder="User Name" matInput name="Username"
+                type="text" #username required minlength="5" maxlength="20">
+            <!-- <mat-error *ngIf="username.invalid">{{getErrorMessage(username)}}</mat-error>
+                 [(ngModel)]="newUser.Username" ="ngModel"-->
+        </mat-form-field>
+        <!-- password -->
+        <mat-form-field appearance="legacy">
+            <input value="" placeholder="Password" matInput [type]="hide ? 'password' : 'text'" name="UserPassword"
+                type="password" #userpassword required minlength="5" maxlength="12">
+                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <!-- <mat-error *ngIf="password.invalid">{{getErrorMessage(password)}}</mat-error>
+                 [(ngModel)]="newUser.password" ="ngModel"-->
+        </mat-form-field>
+        <!-- email -->
+        <mat-form-field appearance="legacy">
+            <input value="" placeholder="Ex.pat@example.com" matInput name="UserEmail"
+                type="email" #email required minlength="5" maxlength="12">
+            <!-- <mat-error *ngIf="password.invalid">{{getErrorMessage(password)}}</mat-error>
+                 [(ngModel)]="newUser.password" ="ngModel"-->
+        </mat-form-field>
+        <!-- phone -->
+        <mat-form-field appearance="legacy">
+            <input matInput placeholder="Phone Number" name="UserPhoneNumber"
+                type="text" #userphone minlength="5" maxlength="10">
+            <!-- <mat-error *ngIf="userphone.invalid">{{getErrorMessage(userphone)}}</mat-error>
+              [(ngModel)]="newUser.UserPhoneNumber" ="ngModel"-->
+        </mat-form-field>
+
+        <button mat-flat-button type="submit" class="submit-button">
+            <span>Save Changes</span>
+            <mat-icon>check_circle</mat-icon>
+        </button>
+    </form>
+</div>
