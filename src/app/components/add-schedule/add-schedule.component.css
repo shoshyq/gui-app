@@ -13,7 +13,7 @@ mat-form-field {
 button.submit-button {
     margin: auto;
     width: 250px;
-    margin-block: 25px;
+    margin-block: 5px 25px;
     background-color: #3373b3;
     color: #ffffff;
     font-size: 17px;
