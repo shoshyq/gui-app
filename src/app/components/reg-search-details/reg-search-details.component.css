@@ -15,3 +15,38 @@
     line-height: 26px;
     font-family: assistant;
 }
+
+mat-card.mat-card {
+    margin: 3px 22px;
+    border: solid 1px #3373b33b;
+    box-shadow: none !important;
+    font-family: 'assistant';
+}
+
+button.submit-button {
+  background-color: #3373b3;
+  color: #ffffff;
+  font-size: 17px;
+  font-family: assistant;
+}
+
+button.submit-button span {
+  margin-right: 7px;
+}
+
+mat-card-content.mat-card-content {
+    font-size: 16px;
+    line-height: 23px;
+}
+
+span.blue {
+    color: #3373b3 !important;
+}
+
+.section-title {
+    font-size: 19px;
+    margin-block: 23px 4px;
+    border-bottom: solid 1px #3373b32e;
+    padding-bottom: 5px;
+    color: #3373b3;
+}
