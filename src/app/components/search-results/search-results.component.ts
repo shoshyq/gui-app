@@ -44,6 +44,8 @@ export class SearchResultsComponent implements OnInit {
               this.searchesService.GetSchedule(this.resultList[j].PSpot.DaysSchedule).subscribe(schedule => {
                 this.schdl = schedule;
                 this.schedlst.push(this.schdl);
+                console.log(this.schedlst[i].TuesdayHours );
+                
 
               });
             }
