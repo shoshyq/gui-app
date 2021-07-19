@@ -1,46 +1,62 @@
-<div>Address:</div>
-<div>Width: </div>
-<div>Length: </div>
-<div>Price: /h</div>
-<!--*ngIf=""-->
-<div>Your parking spot has roof</div>
-<div>Schedule:</div>
-<!--<div *ngIf="schedulelst[i].SundayHours!=null">
-    <div>Sunday:</div>
-    <div *ngFor="let hours of schedulelst[i].SundayHours;">
-      <div>{{hours.StartHour}} - {{hours.EndHour}}</div>
+<div class="wrap-park-spot-details">
+  <header></header>
+  <custom-title text="Parking spot details"></custom-title>
+  <div class="wrap-details">
+    <p>Address: <span>shmaya 32</span></p>
+    <p>Width: <span>220</span></p>
+    <p>Length: <span>540</span></p>
+    <p>Price: <span>150/h</span></p>
+    <!--*ngIf=""-->
+    <span>Your parking spot has roof</span>
+    <p>Schedule:</p>
+    <!--<div *ngIf="schedulelst[i].SundayHours!=null">
+        <div>Sunday:</div>
+        <div *ngFor="let hours of schedulelst[i].SundayHours;">
+          <div>{{hours.StartHour}} - {{hours.EndHour}}</div>
+        </div>
+      </div>
+      <div *ngIf="schedulelst[i].MondayHours!=null">
+        <div>Monday:</div>
+        <div *ngFor="let hours of schedulelst[i].MondayHours;">
+          <div>{{hours.StartHour}} - {{hours.EndHour}}</div>
+        </div>
+      </div>
+      <div *ngIf="schedulelst[i].TuesdayHours!=null">
+        <div>Tuesday:</div>
+        <div *ngFor="let hours of schedulelst[i].TuesdayHours;">
+          <div>{{hours.StartHour}} - {{hours.EndHour}}</div>
+        </div>
+      </div>
+      <div *ngIf="schedulelst[i].WednesdayHours!=null">
+        <div>Wednesday:</div>
+        <div *ngFor="let hours of schedulelst[i].WednesdayHours;">
+          <div>{{hours.StartHour}} - {{hours.EndHour}}</div>
+        </div>
+      </div>
+      <div *ngIf="schedulelst[i].ThursdayHours!=null">
+        <div>Thursday:</div>
+        <div *ngFor="let hours of schedulelst[i].ThursdayHours;">
+          <div>{{hours.StartHour}} - {{hours.EndHour}}</div>
+        </div>
+      </div>
+      <div *ngIf="schedulelst[i].FridayHours!=null">
+        <div>Friday:</div>
+        <div *ngFor="let hours of schedulelst[i].FridayHours;">
+          <div>{{hours.StartHour}} - {{hours.EndHour}}</div>
+        </div>
+      </div>-->
+    <!--*ngIf=""-->
+    <p>You want rent out your parking spot regularly, too</p>
+    <div class="wrap-buttons">
+      <button mat-flat-button>
+        <span>update</span>
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-flat-button>
+        <span>delete</span>
+        <mat-icon>delete</mat-icon>
+      </button>
     </div>
   </div>
-  <div *ngIf="schedulelst[i].MondayHours!=null">
-    <div>Monday:</div>
-    <div *ngFor="let hours of schedulelst[i].MondayHours;">
-      <div>{{hours.StartHour}} - {{hours.EndHour}}</div>
-    </div>
-  </div>
-  <div *ngIf="schedulelst[i].TuesdayHours!=null">
-    <div>Tuesday:</div>
-    <div *ngFor="let hours of schedulelst[i].TuesdayHours;">
-      <div>{{hours.StartHour}} - {{hours.EndHour}}</div>
-    </div>
-  </div>
-  <div *ngIf="schedulelst[i].WednesdayHours!=null">
-    <div>Wednesday:</div>
-    <div *ngFor="let hours of schedulelst[i].WednesdayHours;">
-      <div>{{hours.StartHour}} - {{hours.EndHour}}</div>
-    </div>
-  </div>
-  <div *ngIf="schedulelst[i].ThursdayHours!=null">
-    <div>Thursday:</div>
-    <div *ngFor="let hours of schedulelst[i].ThursdayHours;">
-      <div>{{hours.StartHour}} - {{hours.EndHour}}</div>
-    </div>
-  </div>
-  <div *ngIf="schedulelst[i].FridayHours!=null">
-    <div>Friday:</div>
-    <div *ngFor="let hours of schedulelst[i].FridayHours;">
-      <div>{{hours.StartHour}} - {{hours.EndHour}}</div>
-    </div>
-  </div>-->
-<!--*ngIf=""--><div>You want rent out your parking spot regularly, too</div>
 
-<button>update</button><button>delete</button>
+</div>
