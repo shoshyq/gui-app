@@ -16,6 +16,12 @@
     padding-block: 10px 22px;
 }
 
+.wrap-buttons button {
+    color: #3373b3;
+    font-family: assistant;
+    font-size: 16px;
+}
+
 .wrap-buttons button mat-icon {
     margin-left: 6px;
 }
