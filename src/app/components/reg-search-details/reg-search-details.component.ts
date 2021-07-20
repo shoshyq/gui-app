@@ -33,7 +33,7 @@ export class RegSearchDetailsComponent implements OnInit {
       this.checkifIs();
       
       if((this.resultslist!=[])&&(this.resultslist!=null))
-          this.doesnthave = true;
+          this.doesnthave = false;
       for(let i=0; i<this.resultslist.length; i++){
 
         this.searchesService.GetSearch(this.resultslist[i].SearchCode).subscribe(search=>

@@ -36,14 +36,15 @@ export class ImidSearchResultsComponent implements OnInit {
       this.searchCode = this.passedList[0].searchCode;
       this.pspot = this.passedList[0].spot;
     }
-
-    this.searchesService.GetSchedule(this.pspot.DaysSchedule).subscribe(schedule => {
+    this.searchesService.GetSearch(this.searchCode).subscribe(search => {
+      this.search = search;
+    this.searchesService.GetSchedule(this.search.DaysSchedule).subscribe(schedule => {
       this.schedule = schedule;
       if (this.today == 0) {
-        this.hours = this.schedule[0].SundayHours[0];
+        this.hours = this.schedule.SundayHours[0];
       }
       if (this.today == 1) {
-        this.hours = this.schedule[0].MondayHours[0];
+        this.hours = this.schedule.MondayHours[0];
       }
       if (this.today == 2) {
         this.hours = this.schedule.TuesdayHours[0];
@@ -52,15 +53,14 @@ export class ImidSearchResultsComponent implements OnInit {
         this.hours = this.schedule.WednesdayHours[0];
       }
       if (this.today == 4) {
-        this.hours = this.schedule[0].ThursdayHours[0];
+        this.hours = this.schedule.ThursdayHours[0];
       }
       if (this.today == 5) {
-        this.hours = this.schedule[0].FridayHours[0];
+        this.hours = this.schedule.FridayHours[0];
       }
       console.log(this.schedule);
     });
-    this.searchesService.GetSearch(this.searchCode).subscribe(search => {
-      this.search = search;
+    
       console.log(this.search);
     });
     this.userService.GetUser(this.pspot.UserCode.toString()).subscribe(user => {

@@ -39,9 +39,9 @@
         {{hours.StartHour}} - {{hours.EndHour}}
       </span>
     </div>
+    <span *ngIf="pspot.AvRegularly==true">You want rent out your parking spot regularly</span>
   </div>
   <!--*ngIf=""-->
-  <p *ngIf="pspot.AvRegularly==true">You want rent out your parking spot regularly, too</p>
 
   <div class="wrap-buttons">
     <button mat-flat-button (click)="update()">
