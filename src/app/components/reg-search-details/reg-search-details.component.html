@@ -2,71 +2,71 @@
   <header [isButtonActive]="false"></header>
   <custom-title text="Regularly renting parking spot search results"></custom-title>
   <div *ngIf="checkifIs()">
-    <div *ngFor="let result of resultslist; let i = index;">
+   <!-- <div *ngFor="let result of resultslist; let i = index;">-->
       <mat-card class="wrap-div">
         <mat-card-header>
-          <mat-card-title>Search result for request on <span class="blue">{{searches[i].SearchDate | date: 'H:mm dd/MM/yyyy'}}</span></mat-card-title>
-          <mat-card-subtitle>for address: <span class="blue">{{searches[i].MyLocationAddress}}</span></mat-card-subtitle>
+          <mat-card-title>Search result for request on <span class="blue">{{searches[0].SearchDate | date: 'H:mm dd/MM/yyyy'}}</span></mat-card-title>
+          <mat-card-subtitle>for address: <span class="blue">{{searches[0].MyLocationAddress}}</span></mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-          <div><span class="blue">{{users[i].Username}}'s parking spot</span></div>
-          <div>Price: <span class="blue">{{pspots[i].PricePerHour}}/h</span></div>
-          <div *ngIf="(pspots[i].SpotWidth!=0)&&(pspots[i].SpotWidth!=null)">
-            Parking spot width: <span class="blue">{{pspots[i].SpotWidth}}</span>
+          <div><span class="blue">{{users[0].Username}}'s parking spot</span></div>
+          <div>Price: <span class="blue">{{pspots[0].PricePerHour}}/h</span></div>
+          <div *ngIf="(pspots[0].SpotWidth!=0)&&(pspots[0].SpotWidth!=null)">
+            Parking spot width: <span class="blue">{{pspots[0].SpotWidth}}</span>
           </div>
-          <div *ngIf="(pspots[i].SpotLength!=0)&&(pspots[i].SpotLength!=null)">
-            Parking spot length: {{pspots[i].SpotLength}}
+          <div *ngIf="(pspots[0].SpotLength!=0)&&(pspots[0].SpotLength!=null)">
+            Parking spot length: {{pspots[0].SpotLength}}
           </div>
-          <div *ngIf="pspots[i].HasRoof===true">
+          <div *ngIf="pspots[0].HasRoof===true">
             <span class="blue">Parking spot has a roof</span>
           </div>
           <div class="section-title">Free hours</div>
-          <div *ngIf="schedulelst[i].SundayHours!=null">
+          <div *ngIf="schedulelst[0].SundayHours!=null">
             <div>Sunday:</div>
-            <div *ngFor="let hours of schedulelst[i].SundayHours;">
+            <div *ngFor="let hours of schedulelst[0].SundayHours;">
               <div><span class="blue">{{hours.StartHour}} - {{hours.EndHour}}</span></div>
             </div>
           </div>
-          <div *ngIf="schedulelst[i].MondayHours!=null">
+          <div *ngIf="schedulelst[0].MondayHours!=null">
             <div>Monday:</div>
-            <div *ngFor="let hours of schedulelst[i].MondayHours;">
+            <div *ngFor="let hours of schedulelst[0].MondayHours;">
               <div><span class="blue">{{hours.StartHour}} - {{hours.EndHour}}</span></div>
             </div>
           </div>
-          <div *ngIf="schedulelst[i].TuesdayHours!=null">
+          <div *ngIf="schedulelst[0].TuesdayHours!=null">
             <div>Tuesday:</div>
-            <div *ngFor="let hours of schedulelst[i].TuesdayHours;">
+            <div *ngFor="let hours of schedulelst[0].TuesdayHours;">
               <div><span class="blue">{{hours.StartHour}} - {{hours.EndHour}}</span></div>
             </div>
           </div>
-          <div *ngIf="schedulelst[i].WednesdayHours!=null">
+          <div *ngIf="schedulelst[0].WednesdayHours!=null">
             <div>Wednesday:</div>
-            <div *ngFor="let hours of schedulelst[i].WednesdayHours;">
+            <div *ngFor="let hours of schedulelst[0].WednesdayHours;">
               <div><span class="blue">{{hours.StartHour}} - {{hours.EndHour}}</span></div>
             </div>
           </div>
-          <div *ngIf="schedulelst[i].ThursdayHours!=null">
+          <div *ngIf="schedulelst[0].ThursdayHours!=null">
             <div>Thursday:</div>
-            <div *ngFor="let hours of schedulelst[i].ThursdayHours;">
+            <div *ngFor="let hours of schedulelst[0].ThursdayHours;">
               <div><span class="blue">{{hours.StartHour}} - {{hours.EndHour}}</span></div>
             </div>
           </div>
-          <div *ngIf="schedulelst[i].FridayHours!=null">
+          <div *ngIf="schedulelst[0].FridayHours!=null">
             <div>Friday:</div>
-            <div *ngFor="let hours of schedulelst[i].FridayHours;">
+            <div *ngFor="let hours of schedulelst[0].FridayHours;">
               <div><span class="blue">{{hours.StartHour}} - {{hours.EndHour}}</span></div>
             </div>
           </div>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-flat-button class="submit-button" (click)="selectResult(i)">
+          <button mat-flat-button class="submit-button" (click)="selectResult()">
             <span>Select</span>
             <mat-icon>check_circle</mat-icon>
           </button>
         </mat-card-actions>
       </mat-card>
       <br />
-    </div>
+  <!-- </div>--> 
   </div>
   <div class="notFound" *ngIf="doesnthave===true">
     <mat-icon>mood</mat-icon>

@@ -1,7 +1,7 @@
 <div class="wrap-add-park-spot">
     <header [isButtonActive]="false"></header>
     <custom-title text="Park spot Adding"></custom-title>
-    <form>
+    <form novalidate (submit)="AddRegularSearch(frm)" #frm="ngForm"  [formGroup]="pspotGroup">
         <!-- city -->
         <mat-form-field appearance="legacy">
             <mat-label>City</mat-label>
@@ -14,47 +14,47 @@
         <!-- address -->
         <mat-form-field appearance="legacy">
             <mat-label>Address (destination)</mat-label>
-            <input matInput placeholder="address" name="myLocationAddress" type="text" required #address>
-            <!-- <mat-error *ngIf="myGroup.controls.addressFormControl.hasError('required')">
+            <input formControlName="addressFormControl" matInput placeholder="address" name="myLocationAddress" type="text" required #address>
+           <mat-error *ngIf="pspotGroup.controls.addressFormControl.hasError('required')">
               Address is required
             </mat-error>
-             formControlName="addressFormControl" -->
+            
         </mat-form-field>
         <!-- width -->
         <mat-form-field appearance="legacy">
             <mat-label>Width</mat-label>
-            <input matInput placeholder="width" name="PreferableWidth" type="text" #width>
-            <!-- <mat-error *ngIf="myGroup.controls.widthFormControl.hasError('pattern')">
+            <input formControlName="widthFormControl" matInput placeholder="width" name="PreferableWidth" type="text" #width>
+        <mat-error *ngIf="pspotGroup.controls.widthFormControl.hasError('pattern')">
               Number only
             </mat-error> 
-                formControlName="widthFormControl" -->
+              
         </mat-form-field>
         <!-- length -->
         <mat-form-field appearance="legacy">
             <mat-label>Length</mat-label>
-            <input matInput placeholder="length" name="PreferableLength" type="text">
-            <!-- <mat-error *ngIf="myGroup.controls.lengthFormControl.hasError('pattern')" #length>
+            <input  formControlName="lengthFormControl" matInput placeholder="length" name="PreferableLength" type="text">
+          <mat-error *ngIf="pspotGroup.controls.lengthFormControl.hasError('pattern')" #length>
               Number only
             </mat-error> 
-            formControlName="lengthFormControl"-->
+           
         </mat-form-field>
         <div class="wrap-checkboxes">
             <!-- has a roof -->
-            <mat-checkbox color="primary" #roofOpt>Has a roof
-            </mat-checkbox><!-- (change)="chRO($event.checked)" formControlName="roofOpt" -->
+            <mat-checkbox formControlName="roofOpt" (change)="chRO($event.checked)"  color="primary" #roofOpt>Has a roof
+            </mat-checkbox><!--  -->
         </div>
         <!-- <div class="wrap-prices"> -->
         <p class="custom-style">Price per hour:</p>
         <!-- <div class="wrap-range"> -->
         <mat-form-field appearance="legacy">
-            <input matInput placeholder="00.00" name="MinPrice" type="text" required #minprice>
-            <!-- <mat-error *ngIf="myGroup.controls.minpriceFormControl.hasError('pattern')">
+            <input formControlName="priceFormControl" matInput placeholder="00.00" name="MinPrice" type="text" required #minprice>
+          <mat-error *ngIf="pspotGroup.controls.priceFormControl.hasError('pattern')">
                         Number only
                     </mat-error> 
-                     formControlName="minpriceFormControl"-->
+                     
         </mat-form-field>
         <app-add-schedule></app-add-schedule>
-        <button mat-flat-button class="btnOK">
+        <button mat-flat-button type="submit" [disabled]="!pspotGroup.valid" selected class="btnOK">
             <span>Add park spot</span>
             <mat-icon>add_circle</mat-icon>
         </button>

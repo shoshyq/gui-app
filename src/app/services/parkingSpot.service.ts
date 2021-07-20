@@ -29,5 +29,8 @@ export class ParkingSpotService {
       {
         return this.http.get<WeekDay>(`${this.url}/getSchedule/${scode}`)
       }
+      AddSpot(spot:ParkSpot):Observable<number> {
+          return this.http.post<number>(`${this.url}/addParkSpot`,spot);
+          }
     
 }

@@ -65,6 +65,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AddParkSpotComponent } from './components/add-park-spot/add-park-spot.component';
 import { ParkSpotDetailsComponent } from './components/park-spot-details/park-spot-details.component';
 import { UpdateParkSpotComponent } from './coomponents/update-park-spot/update-park-spot.component';
+import { ConfirmSuccessComponent } from './components/confirm-success/confirm-success.component';
 
 
 
@@ -101,7 +102,8 @@ import { UpdateParkSpotComponent } from './coomponents/update-park-spot/update-p
      NotFoundComponent,
      AddParkSpotComponent,
      ParkSpotDetailsComponent,
-     UpdateParkSpotComponent
+     UpdateParkSpotComponent,
+     ConfirmSuccessComponent
      
   ],
   imports: [

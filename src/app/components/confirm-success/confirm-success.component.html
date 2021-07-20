@@ -1,0 +1,12 @@
+<div class="wrapper-msg">
+    <header [isButtonActive]="false"></header>
+    <custom-title text="Result confirmation"></custom-title>
+    <mat-icon>mood</mat-icon>
+    <p>You have selected {{spotOwner.Username}}'s parking spot on {{pspot.FullAddress}}.</p>
+    <p>Please, be sure to leave the parking spot and pay to {{spotOwner.Username}} on time!</p>
+    <p>Here is {{spotOwner.Username}}'s contact information:</p>
+    <p *ngIf="phone===true">Phone: {{spotOwner.UserPhoneNumber}}</p>
+    <p>Email: {{spotOwner.UserEmail}}</p>
+    <p>Enjoy!</p>
+    <button mat-flat-button (click)="main()">Main</button>
+</div>

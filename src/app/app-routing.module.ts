@@ -24,6 +24,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AddParkSpotComponent } from './components/add-park-spot/add-park-spot.component';
 import { ParkSpotDetailsComponent } from './components/park-spot-details/park-spot-details.component';
 import { UpdateParkSpotComponent } from './coomponents/update-park-spot/update-park-spot.component';
+import { ConfirmSuccessComponent } from './components/confirm-success/confirm-success.component';
 
 const routes: Routes = [
   { path: 'LogIn', component:  LogInComponent},
@@ -50,6 +51,7 @@ const routes: Routes = [
     { path: 'AddSchedule', component:  AddScheduleComponent} ]},
   { path: 'UpdateRegularSearch', component: UpdateRegularSearchComponent },
   { path: 'AddedRSearch', component: SearchAddedMsgComponent },
+  { path: 'ConfirmSuccess', component: ConfirmSuccessComponent },
   { path: '**', component: NotFoundComponent }
 ];
 

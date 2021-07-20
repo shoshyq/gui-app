@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ParkSpot } from 'src/app/models/parkspot.model';
 import { Search } from 'src/app/models/search.model';
 import { Search_Results } from 'src/app/models/search_results.model';
@@ -22,10 +23,12 @@ export class RegSearchDetailsComponent implements OnInit {
   schedulelst: Array<WeekDay>=[];
   doesnthave=false;
   schedule:WeekDay= new  WeekDay();
-  constructor(private userService:UserService,private spotService:ParkingSpotService, private searchesService:SearchesService) { }
+  passlist=[];
+  constructor(private router: Router,private userService:UserService,private spotService:ParkingSpotService, private searchesService:SearchesService) { }
 
   ngOnInit(): void {
     this.doesnthave = true;
+    
     this.searchesService.GetRegSearchesResults(+sessionStorage.getItem('ucode')).subscribe(lst =>{
      
       this.resultslist = lst;
@@ -76,9 +79,18 @@ export class RegSearchDetailsComponent implements OnInit {
     return true;
 
   }
-  selectResult(i:number)
+  selectResult()
   {
-    console.log(i);
-    
+    this.searchesService.ConfirmResult(this.resultslist[0].Code).subscribe(result=>
+      {  
+         if(result==1)
+         {
+         this.passlist = [{ code: this.resultslist[0].Code, searchCode: this.resultslist[0].SearchCode,pspotCode:this.resultslist[0].ResultPSCode }];
+          //this.schedulelst[i].SundayHours[0].StartHour;
+          this.router.navigate(['/ConfirmSuccess'],{ state: { data: this.passlist } });
+         }
+         
+
+      });
   }
 }

@@ -46,6 +46,10 @@ AddRegularSearch(newSearch:Search):Observable<number> {
     {
      return this.http.get<number>(`${this.url}/confirmImidSearchResult/${pspotCode}/${psearchCode}`)
     }
+    ConfirmResult(srCode:number):Observable<number>
+    {
+     return this.http.get<number>(`${this.url}/confirmRegSearchResult/${srCode}`)
+    }
     GetRegSearchesResults(ucode:number):Observable<Array<Search_Results>>
     {
      return this.http.get<Array<Search_Results>>(this.url+'/getRegSearchesResults/'+ucode)
